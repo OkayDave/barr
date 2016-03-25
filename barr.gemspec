@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["dave.kerr@gmail.com"]
 
   spec.summary       = "Barr is a status line generate for use with Lemonbar"
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/OkayDave/barr"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
