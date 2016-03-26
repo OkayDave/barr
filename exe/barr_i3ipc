@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'i3ipc'
+
+@i3 = I3Ipc::Connection.new
+cmd = ARGV.join(" ")
+@i3.command(cmd)
+@i3.close

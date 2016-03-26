@@ -16,14 +16,13 @@ Gem::Specification.new do |spec|
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
   else
     raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
   end
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.executables   = `git ls-files -- exe/*`.split("\n").map{ |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.11"
@@ -32,4 +31,8 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "i3ipc", "0.2.0"
   spec.add_runtime_dependency "weather-api", "1.2.0"
+
+  spec.requirements << "Lemonbar with XFT support (https://github.com/krypt-n/bar)"
+  spec.requirements << "(Optional) I3 for Workspace support"
+  spec.requirements << "(Optional) RhythmBox"
 end
