@@ -16,8 +16,8 @@ module Barr
                                                      
     def initialize(opts={})                          
       @align = opts[:align] || :l                    
-      @fcolor = opts[:fcolor] || "#FFF"           
-      @bcolor = opts[:bcolor] || "#000"           
+      @fcolor = opts[:fcolor] || "-"           
+      @bcolor = opts[:bcolor] || "-"           
       @interval = opts[:interval] || 5               
       @icon = opts[:icon] || ""
       @output = ""

@@ -32,8 +32,8 @@ module Barr
       opr = outputs[:r].join(" ")
 
       bar_render = ""
-      bar_render += "%{l} #{opl}%{F-}%{B-}"  if opl.length > 0
-      bar_render += " %{c} #{opc}%{F-}%{B-}" if opl.length > 0
+      bar_render += "%{l}#{opl}%{F-}%{B-}"  if opl.length > 0
+      bar_render += "%{c} #{opc}%{F-}%{B-}" if opl.length > 0
       bar_render += "%{r} #{opr}%{F-}%{B-} " if opr.length > 0
       bar_render.gsub!("\n","")
 
@@ -46,6 +46,14 @@ module Barr
 
     def add_block block
       @blocks << block
+    end
+
+    def run
+      while true
+        update
+        draw
+        sleep 1
+      end
     end
   end
 end

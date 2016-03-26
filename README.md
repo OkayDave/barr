@@ -1,28 +1,68 @@
 # Barr
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/barr`. To experiment with that code, run `bin/console` for an interactive prompt.
+Barr is a status line generator for Lemonbar. It is an alternative to the common method of using shell scripts to generate the bar's content. Barr is written in, and configured with, Ruby.
 
-TODO: Delete this and the text above, and describe your gem
+Barr aims to make creating and maintaining Lemonbar scripts much easier. At its core is a suite of re-usable and configurable Blocks. These blocks can be added to your bar as-is; configured to your liking; or extended to create your own behaviour. This allows status lines to be created in a more declarative manner. 
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'barr'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install barr
 
 ## Usage
 
-TODO: Write usage instructions here
+See [Examples folder](http://github.com/okaydave/barr/tree/master/examples) for more detailed usage examples.
+
+Documentation about all available blocks and their options can be found further down in this document.
+
+### Simple Usage Example 
+
+*barr_example.rb*
+```ruby
+ #!/usr/bin/env ruby
+
+ # pull in the Barr gem
+ require 'rubygems'
+ require 'barr'
+
+ # Create a new manager instance.
+ # The manager is responsible for organising the blocks and delivering their output to lemonbar
+ @manager = Barr::Manager.new
+
+ # Add a 'WhoAmI' block. This just outputs logged in username
+ # Give it a peach background, grey text and updates every 10000 seconds
+ # It will be aligned to the left of the bar
+ @manager.add_block Barr::Blocks::WhoAmI.new(bcolor: "#FFAAAA", fcolor: "#333333", interval: 10000)
+
+ # Add a 'Clock' block.
+ # Clocks can be formatted in the type strftime fashion. This example outputs the current Hour and Minute
+ # It will update every second.
+ # By default, the background text colour will be deferred to the Lemonbar config
+ # If FontAwesome font is available to lemonbar, it will be prepended with a clock icon.
+ @manager.add_block Barr::Blocks::Clock.new(icon: "\uf017", format: "%H:%M", align: :c, interval: 1)
+
+
+ # Add a 'Cpu' block. This shows the current CPU usage (averaged across all cores if present)
+ # It will be aligned to the right side of of the bar
+ # As an interval is not provided, it will update every 5 seconds.
+ # It will be prepended with the text 'Cpu:'
+ @manager.add_block Barr::Blocks::Cpu.new(icon: "Cpu:", align: :r)
+
+
+ # Tell the manager to run the loop. This will continue indefinitely, outputing the data ready to be piped in to lemonbar.
+ @manager.run
+```
+
+This can be piped in to lemonbar as usual:
+
+```bash
+#!/bin/bash
+
+./barr_example.rb | lemonbar -g 800x30+960+00 -d -B "#333333" -f "Roboto Mono Medium:size=11" -f "Font Awesome:size=11" | sh
+```
+
+Which should have Lemonbar appear as: 
+
+![simple example](http://i.imgur.com/r4dtoqm.png)
 
 ## Development
 
@@ -32,7 +72,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/barr. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/OkayDave/barr. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
