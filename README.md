@@ -137,11 +137,28 @@ You can also add Blocks straight to the manager if you'd like to skip that step,
 seperate_block = Barr::Blocks::WhoAmI.new 
 
 @man.add_block Barr::Blocks::WhoAmI.new bcolor: "#000", fcolor: "#FFF"
-
 @man.add_block(Barr::Blocks::WhoAmI.new(icon: "Me!", align: :c)
-
 @man.add_block separate_block 
 ```
+
+
+### Block Specific Configuration
+
+#### Clock 
+
+`clock = Barr::Blocks::Clock.new`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- | 
+| `format` | strftime String | This takes a [strftime](http://ruby-doc.org/core-2.2.0/Time.html#method-i-strftime) formatted string. If you're not familiar with this syntax, you could use an [online generator](http://www.foragoodstrftime.com/).  | "%H:%M %m %b %Y" |
+
+#### Cpu 
+
+`cpu = Barr::Blocks::Cpu.new` 
+ 
+This has no configurable options.
+ 
+
  
 ## Contributing
 
