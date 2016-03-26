@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'barr'
+
+@manager = Barr::Manager.new
+
+@manager.add_block Barr::Blocks::WhoAmI.new bcolor: "#FFAAAA", fcolor: "#CCDDEE"
+@manager.add_block Barr::Blocks::Clock.new format: "%H:%M", align: :c
+@manager.add_block Barr::Blocks::Temperature.new icon: "Milnthorpe", align: :r, location: "29024", interval: 1800
+
+while true
+  @manager.update
+  @manager.draw
+  sleep 1
+end
+

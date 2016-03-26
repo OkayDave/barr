@@ -1,6 +1,7 @@
 module Barr
   class Block                                        
     attr_reader :output, :align, :fcolor, :bcolor, :interval, :icon                            
+    
 
     def align; @align; end                           
     def fcolor; @fcolor; end                         
@@ -18,7 +19,12 @@ module Barr
       @fcolor = opts[:fcolor] || "#FFF"           
       @bcolor = opts[:bcolor] || "#000"           
       @interval = opts[:interval] || 5               
-      @icon = opts[:icon] || ""                      
-    end                                              
+      @icon = opts[:icon] || ""
+      @output = ""
+    end
+
+    def append_output str
+      @output += str
+    end
   end                                                
 end

@@ -1,6 +1,7 @@
 module Barr
   class Manager
     attr_reader :count, :blocks
+    ERROR_ICON = "%{F#FF0000}\uf071"
     def initialize
       @count = 0
       @blocks = []
@@ -8,7 +9,13 @@ module Barr
 
     def update
       @blocks.each do |block|
-        block.update if @count == 0 || @count%block.interval==0
+        begin
+          block.update if @count == 0 || @count%block.interval==0
+        rescue StandardError => e
+          STDERR.puts e.message
+          block.append_output(ERROR_ICON) unless block.output.include?(ERROR_ICON)
+          next
+        end
       end
       @count += 1
     end
@@ -28,6 +35,7 @@ module Barr
       bar_render += "%{l} #{opl}%{F-}%{B-}"  if opl.length > 0
       bar_render += " %{c} #{opc}%{F-}%{B-}" if opl.length > 0
       bar_render += "%{r} #{opr}%{F-}%{B-} " if opr.length > 0
+      bar_render.gsub!("\n","")
 
       system("echo", "-e", bar_render.encode("UTF-8"))
     end

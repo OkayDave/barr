@@ -8,7 +8,7 @@ module Barr
       end
 
       def sys_cmd
-        `whoami`
+        `whoami`.chomp
       end
     end
   end
