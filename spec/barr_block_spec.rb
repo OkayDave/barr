@@ -12,8 +12,8 @@ describe Barr::Block do
       @b = Barr::Block.new
 
       expect(@b.align).to eq(:l)
-      expect(@b.fcolor).to eq("#FFF")
-      expect(@b.bcolor).to eq("#000")
+      expect(@b.fcolor).to eq("-")
+      expect(@b.bcolor).to eq("-")
       expect(@b.interval).to eq(5)
       expect(@b.icon).to eq("")
     end
@@ -40,7 +40,7 @@ describe Barr::Block do
 
   describe "#color_out" do
     before do
-      @b = Barr::Block.new
+      @b = Barr::Block.new bcolor: "#000", fcolor: "#FFF"
       @b.update
     end
     
@@ -58,7 +58,7 @@ describe Barr::Block do
 
   describe "draw" do
     before do
-      @b = OutputBlockTest.new icon: "I"
+      @b = OutputBlockTest.new icon: "I", bcolor: "#000"
     end
     it "calls color_out and icon " do
       expect(@b).to receive(:color_out).once
@@ -69,7 +69,7 @@ describe Barr::Block do
 
     it "renders the correct output" do
       @b.output = "test"
-      expect(@b.draw).to eq("%{B#000}%{F#FFF} I test ")
+      expect(@b.draw).to eq("%{B#000}%{F-} I test ")
     end
   end
 end
