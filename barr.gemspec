@@ -34,6 +34,6 @@ Gem::Specification.new do |spec|
 
   spec.requirements << "Lemonbar with XFT support (https://github.com/krypt-n/bar)"
   spec.requirements << "(Optional) I3 for Workspace support"
-  spec.requirements << "(Optional) RhythmBox"
+  spec.requirements << "(Optional) RhythmBox & rhythmbox-client"
   spec.requirements << "(Optional) FontAwesome font"
 end

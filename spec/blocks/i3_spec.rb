@@ -64,4 +64,26 @@ describe Barr::Blocks::I3 do
       expect(@b.output).to eq("%{A:barr_i3ipc workspace 1:} a %{A}%{A:barr_i3ipc workspace 2:} b %{A}>c<")
     end
   end
+
+  describe "set markers" do
+    before { @b = I3Test.new focus_markers: ["(",")"]}
+
+    it "renders the set left marker" do
+      expect(@b.l_marker).to eq("(")
+    end
+
+    it "renders the set right marker" do
+      expect(@b.r_marker).to eq(")")
+    end
+  end
+
+  describe "default markers" do
+    it "renders default left marker" do
+      expect(I3Test.new.l_marker).to eq(">")
+    end
+
+    it "renders default right marker" do
+      expect(I3Test.new.r_marker).to eq("<")
+    end
+  end
 end
