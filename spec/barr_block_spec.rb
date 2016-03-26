@@ -12,8 +12,8 @@ describe Barr::Block do
       @b = Barr::Block.new
 
       expect(@b.align).to eq(:l)
-      expect(@b.fcolor).to eq("#FFFFFF")
-      expect(@b.bcolor).to eq("#AA4444")
+      expect(@b.fcolor).to eq("#FFF")
+      expect(@b.bcolor).to eq("#000")
       expect(@b.interval).to eq(5)
       expect(@b.icon).to eq("")
     end
@@ -21,8 +21,8 @@ describe Barr::Block do
     it "accepts options" do
       opts = {
         align: :r,
-        fcolor: "#FFF",
-        bcolor: "#000",
+        fcolor: "#AAA",
+        bcolor: "#BBB",
         interval: 2,
         icon: "B"
       }
@@ -30,8 +30,8 @@ describe Barr::Block do
       @b = Barr::Block.new(opts)
 
       expect(@b.align).to eq(:r)
-      expect(@b.fcolor).to eq("#FFF")
-      expect(@b.bcolor).to eq("#000")       
+      expect(@b.fcolor).to eq("#AAA")
+      expect(@b.bcolor).to eq("#BBB")       
       expect(@b.interval).to eq(2)
       expect(@b.icon).to eq("B")
       
@@ -52,7 +52,7 @@ describe Barr::Block do
     end
 
     it "is of the correct format" do
-      expect(@b.color_out).to eq("%{B#AA4444}%{F#FFFFFF}")
+      expect(@b.color_out).to eq("%{B#000}%{F#FFF}")
     end
   end
 
@@ -69,7 +69,7 @@ describe Barr::Block do
 
     it "renders the correct output" do
       @b.output = "test"
-      expect(@b.draw).to eq("%{B#AA4444}%{F#FFFFFF} I test ")
+      expect(@b.draw).to eq("%{B#000}%{F#FFF} I test ")
     end
   end
 end
