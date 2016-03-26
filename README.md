@@ -68,16 +68,45 @@ Which should have Lemonbar appear as:
 
 ![simple example](http://i.imgur.com/r4dtoqm.png)
 
-## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## Block Configuration 
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### Common
 
+All blocks inherit their behaviour from a base Block. This means that all blocks will respond to the following configuration options:
+
+| Option | Value | Description | Default |
+| ------ | ----- | ----------- |
+| `fcolor` | RGB Hex string or `-` | Equivalent to lemonbar's `%{F}` format. Takes a hex string in the format of `#FFF`, `#FFFFFF`, or '#FFFFFFFF' (for transparency). | `"-"`
+| `bcolor` | RGB Hex string or `-` | As above. To use the configured lemonbar colors, use `"-"`. This also applies to the `fcolor` option. | `"-"`
+| `icon`   | String | This is prepended to each blocks' output. It can be a normal string like `"CPU:"` or a unicode string like `"\uf164"` (thumbs up in Font Awesome | `""`
+| `interval` | Integer | How frequently the Block should perform its update method in seconds. The block is drawn to lemonbar every second, this just affects how frequently the data can change.  | `5`
+| `align` | Symbol | One of `:l`, `:c`, `:r` for left, centre and right alignment respectively. | `:l`
+ 
+ These are set when a Block is initialized:
+ 
+ ```ruby 
+ @man = Barr::Manager.new 
+ 
+ @block = Barr::Block.new fcolor: "#FF0000",
+                          bcolor: "#000000",
+                          icon:   "Sample:",
+                          interval: 10, 
+                          align: :r
+
+@man.add_block @block
+  
+ ```
+ 
+ 
+ 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/OkayDave/barr. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
+I'd love to see PRs for more blocks. If you do make any, please ensure that you've added their config options to this README and that you've written some specs for it (including stubbing / mocking out any system and/or API calls it makes). 
+
+If there's a block you'd like to see, but don't have the time, knowledge, or desire to make one then please do open a request on the [Issue Tracker](https://github.com/OkayDave/barr/issues).
 
 ## License
 
