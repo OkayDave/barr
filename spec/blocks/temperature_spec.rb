@@ -1,9 +1,27 @@
 # coding: utf-8
 require 'spec_helper'
 
-Temperature = Barr::Blocks::Temperature
+class Temperature < Barr::Blocks::Temperature
+  def weather_data
+    WeatherDataTest.new
+  end
+end
 
-describe Temperature do
+class WeatherDataTest
+  def condition
+    Class.new do
+      def temp
+        return "100"
+      end
+
+      def text
+        return "Nice day"
+      end
+    end.new
+  end
+end
+
+describe Barr::Blocks::Temperature do
   it "exists" do
     expect(Temperature.new).to be_a_kind_of(Barr::Blocks::Temperature)
     expect(Temperature.new).to be_a_kind_of(Barr::Block)
