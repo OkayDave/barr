@@ -8,6 +8,10 @@ Barr aims to make creating and maintaining Lemonbar scripts much easier. At its 
 
     $ gem install barr
 
+If that doesn't work, you probably don't have Ruby installed. I'd recommend you install it via [RVM](http://rvm.io) or [rbenv](https://github.com/rbenv/rbenv), though they're probably overkill if you don't already use Ruby regularly.
+
+For a simpler install, check your distro's package manager. That should be fine.
+
 ## Usage
 
 See [Examples folder](http://github.com/okaydave/barr/tree/master/examples) for more detailed usage examples.
