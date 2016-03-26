@@ -77,28 +77,71 @@ All blocks inherit their behaviour from a base Block. This means that all blocks
 
 | Option | Value | Description | Default |
 | ------ | ----- | ----------- | ------- |
-| `fcolor` | RGB Hex string or `-` | Equivalent to lemonbar's `%{F}` format. Takes a hex string in the format of `#FFF`, `#FFFFFF`, or '#FFFFFFFF' (for transparency). | `"-"` |
+| `fcolor` | RGB Hex string or `-` | Equivalent to lemonbar's `%{F}` format. Takes a hex string in the format of `#FFF`, `#FFFFFF`, or `#FFFFFFFF` (for transparency). | `"-"` |
 | `bcolor` | RGB Hex string or `-` | As above. To use the configured lemonbar colors, use `"-"`. This also applies to the `fcolor` option. | `"-"` |
 | `icon`   | String | This is prepended to each blocks' output. It can be a normal string like `"CPU:"` or a unicode string like `"\uf164"` (thumbs up in Font Awesome | `""` |
 | `interval` | Integer | How frequently the Block should perform its update method in seconds. The block is drawn to lemonbar every second, this just affects how frequently the data can change.  | `5` |
 | `align` | Symbol | One of `:l`, `:c`, `:r` for left, centre and right alignment respectively. | `:l` |
  
- These are set when a Block is initialized:
+These are set when a Block is initialized:
  
- ```ruby 
- @man = Barr::Manager.new 
- 
- @block = Barr::Block.new fcolor: "#FF0000",
-                          bcolor: "#000000",
-                          icon:   "Sample:",
-                          interval: 10, 
-                          align: :r
+```ruby 
+@man = Barr::Manager.new
 
-@man.add_block @block
-  
- ```
+block1 = Barr::Block.new fcolor: "#FF0000",
+                         bcolor: "#000000",
+                         icon:   "I am:",
+                         interval: 10, 
+                         align: :r
+
+man.add_block block1
  
+```
+
+If you're unfamiliar with Ruby here's a couple of tips that might help with reading and writing your own blocks:
+
+* Parentheses are optional most of the time. The exception is when their absense causes ambiguity as to which arguments belong to which methods. 
+* The arguments to `Barr::Block.new` are supplied as a `Hash`. This means that you don't need to put them in a specific order. 
+* If you want to use a default value, you can just omit the option altogether.
+* Whitespace isn't that important, at least compared to languages like Python. Feel free to use whitespace to make your code more readable.
+
+For example, the following code:
+
+```ruby 
+@man = Barr::Manager.new()
+
+block1 = Barr::Blocks::WhoAmI.new({fcolor: "#FFF", bcolor: "#000", align: :c})
+
+@man.add_block(block1)
+
+```
  
+Is functionally the same as this:
+
+```ruby 
+@man = Barr::Manager.new 
+
+block1 = Barr::Blocks::WhoAmI.new align: :c,
+                                  fcolor: "#FFF",
+                                  bcolor: "#000"
+
+@man.add_block block1
+
+```
+
+You can also add Blocks straight to the manager if you'd like to skip that step, or even mix/match:
+
+```ruby 
+@man = Barr::Manager.new 
+
+seperate_block = Barr::Blocks::WhoAmI.new 
+
+@man.add_block Barr::Blocks::WhoAmI.new bcolor: "#000", fcolor: "#FFF"
+
+@man.add_block(Barr::Blocks::WhoAmI.new(icon: "Me!", align: :c)
+
+@man.add_block separate_block 
+```
  
 ## Contributing
 
