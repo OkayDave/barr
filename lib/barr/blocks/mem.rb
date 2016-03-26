@@ -3,7 +3,11 @@ module Barr
     class Mem < Block
 
       def update
-        @output = `free -m | grep Mem | awk '{printf "%sM / %sM", $3, $2}'`.chomp
+        @output = sys_cmd.chomp
+      end
+
+      def sys_cmd
+        `free -m | grep Mem | awk '{printf "%sM / %sM", $3, $2}'`
       end
     end
   end

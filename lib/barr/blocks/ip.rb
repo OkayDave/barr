@@ -10,12 +10,15 @@ module Barr
       end
 
       def update
-        ip, dev = `ip addr | grep #{@device} | tail -n1 | awk '{printf "%s %s", $2, $8}'`.chomp.split(" ")
+        ip, dev = sys_cmd.chomp.split(" ")
         ip = ip.split("/")[0]                                                                             
         
         @output = "#{dev} > #{ip}"                                                                        
       end
       
+      def sys_cmd
+        `ip addr | grep #{@device} | tail -n1 | awk '{printf "%s %s", $2, $8}'`
+      end
     end
   end
 end

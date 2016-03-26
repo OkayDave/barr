@@ -1,17 +1,21 @@
 require 'spec_helper'
 
-Ip = Barr::Blocks::Ip
+class IpTest < Barr::Blocks::Ip
+  def sys_cmd
+    return "192.168.0.2/24 enp3s0"
+  end
+end
 
-describe Ip do
-  before { @b = Ip.new }
+describe Barr::Blocks::Ip do
+  before { @b = IpTest.new }
 
   describe "#initialize" do
     it "sets default device" do
-      expect(Ip.new.device).to eq("192")
+      expect(IpTest.new.device).to eq("192")
     end
 
     it "accepts device option" do
-      expect(Ip.new(device: "dev").device).to eq("dev")
+      expect(IpTest.new(device: "dev").device).to eq("dev")
     end
   end
 
