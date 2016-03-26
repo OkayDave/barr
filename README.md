@@ -76,12 +76,12 @@ Which should have Lemonbar appear as:
 All blocks inherit their behaviour from a base Block. This means that all blocks will respond to the following configuration options:
 
 | Option | Value | Description | Default |
-| ------ | ----- | ----------- |
-| `fcolor` | RGB Hex string or `-` | Equivalent to lemonbar's `%{F}` format. Takes a hex string in the format of `#FFF`, `#FFFFFF`, or '#FFFFFFFF' (for transparency). | `"-"`
-| `bcolor` | RGB Hex string or `-` | As above. To use the configured lemonbar colors, use `"-"`. This also applies to the `fcolor` option. | `"-"`
-| `icon`   | String | This is prepended to each blocks' output. It can be a normal string like `"CPU:"` or a unicode string like `"\uf164"` (thumbs up in Font Awesome | `""`
-| `interval` | Integer | How frequently the Block should perform its update method in seconds. The block is drawn to lemonbar every second, this just affects how frequently the data can change.  | `5`
-| `align` | Symbol | One of `:l`, `:c`, `:r` for left, centre and right alignment respectively. | `:l`
+| ------ | ----- | ----------- | ------- |
+| `fcolor` | RGB Hex string or `-` | Equivalent to lemonbar's `%{F}` format. Takes a hex string in the format of `#FFF`, `#FFFFFF`, or '#FFFFFFFF' (for transparency). | `"-"` |
+| `bcolor` | RGB Hex string or `-` | As above. To use the configured lemonbar colors, use `"-"`. This also applies to the `fcolor` option. | `"-"` |
+| `icon`   | String | This is prepended to each blocks' output. It can be a normal string like `"CPU:"` or a unicode string like `"\uf164"` (thumbs up in Font Awesome | `""` |
+| `interval` | Integer | How frequently the Block should perform its update method in seconds. The block is drawn to lemonbar every second, this just affects how frequently the data can change.  | `5` |
+| `align` | Symbol | One of `:l`, `:c`, `:r` for left, centre and right alignment respectively. | `:l` |
  
  These are set when a Block is initialized:
  
