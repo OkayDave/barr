@@ -4,7 +4,10 @@ module Barr
     class Processes < Block
       def initialize opts={}
         super 
-        @output = sys_cmd
+      end
+
+      def update
+	@output=sys_cmd
       end
 
       def sys_cmd
