@@ -5,20 +5,20 @@ require 'barr'
 
 @man = Barr::Manager.new
 
-nyc = Barr::Blocks::Temperature.new bcolor: "#42C7AA",
-                                    fcolor: "#FFF",
-                                    icon: "New York: ",
-                                    location: "2459115",
+nyc = Barr::Blocks::Temperature.new bgcolor: '#42C7AA',
+                                    fgcolor: '#FFF',
+                                    icon: 'New York: ',
+                                    location: '2459115',
                                     interval: 1800
 
-sanfran = Barr::Blocks::Temperature.new bcolor: "#92A084",
-                                        fcolor: "#FFF",
-                                        icon: "San Francisco: ",
-                                        location: "2487956",
+sanfran = Barr::Blocks::Temperature.new bgcolor: '#92A084',
+                                        fgcolor: '#FFF',
+                                        icon: 'San Francisco: ',
+                                        location: '2487956',
                                         align: :r,
                                         interval: 1800
 
-@man.add_block nyc
-@man.add_block sanfran
+@man.add nyc
+@man.add sanfran
 
-@man.run
+@man.run!
