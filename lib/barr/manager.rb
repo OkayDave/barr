@@ -8,6 +8,7 @@ module Barr
     end
 
     def update
+      # STDERR.puts "update"
       @blocks.each do |block|
         begin
           block.update if @count == 0 || @count%block.interval==0
@@ -21,6 +22,7 @@ module Barr
     end
 
     def draw
+      # STDERR.puts "draw"
       outputs = { l: [], c: [], r: []}
 
       @blocks.each do |block|
@@ -32,12 +34,13 @@ module Barr
       opr = outputs[:r].join(" ")
 
       bar_render = ""
-      bar_render += "%{l}#{opl}%{F-}%{B-}"  if opl.length > 0
-      bar_render += "%{c} #{opc}%{F-}%{B-}" if opl.length > 0
-      bar_render += "%{r} #{opr}%{F-}%{B-} " if opr.length > 0
+      bar_render += "%{l}#{opl} %{F-}%{B-}"  if opl.length > 0
+      bar_render += "%{c} #{opc} %{F-}%{B-}" if opc.length > 0
+      bar_render += "%{r} #{opr}%{F-}%{B-}" if opr.length > 0
       bar_render.gsub!("\n","")
 
       system("echo", "-e", bar_render.encode("UTF-8"))
+      # STDERR.puts bar_render
     end
 
     def destroy
@@ -50,8 +53,9 @@ module Barr
 
     def run
       while true
-        update
-        draw
+        # STDERR.puts "hello?"
+        self.update
+        self.draw
         sleep 1
       end
     end

@@ -1,5 +1,9 @@
 # Examples 
 
+## all_in.rb 
+
+![all_in.rb](http://i.imgur.com/uSereZl.png)
+
 ## barr_example.rb 
 
 ![barr_example.rb](http://i.imgur.com/r4dtoqm.png)
