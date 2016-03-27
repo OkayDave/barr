@@ -1,24 +1,13 @@
-require 'spec_helper'
-
-Clock = Barr::Blocks::Clock
+require 'barr/blocks/clock'
  
-describe Barr::Blocks::Clock do
-  describe "#initialize" do
-    it "should set default format" do
-      expect(Clock.new.format).to eq("%H:%M %m %b %Y")
-    end
+RSpec.describe Barr::Blocks::Clock do
+  describe '#update!' do
+    subject { described_class.new format: '%Y' }
 
-    it "should allow custom format" do
-      expect(Clock.new(format: "%H").format).to eq("%H")
-    end
-  end
+    before { subject.update! }
 
-  describe "#update" do
-    it "should set the output correctly" do
-      @b = Clock.new format: "%Y"
-      @b.update
-      
-      expect(@b.output).to eq(Time.now.year.to_s)
+    it 'sets the correct output' do
+      expect(subject.data).to eq(Time.now.year.to_s)
     end
   end
 end
