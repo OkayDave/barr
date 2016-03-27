@@ -27,7 +27,7 @@ module Barr
     def destroy
     end
 
-    def update
+    def update!
     end
 
     private
