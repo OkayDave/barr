@@ -3,8 +3,6 @@ require 'barr/blocks/cpu'
 RSpec.describe Barr::Blocks::CPU do
 
   describe '#update!' do
-    subject { described_class.new }
-
     let(:sys_cmd) { '%Cpu(s):  7.9 us,  1.2 sy,  1.7 ni, 88.6 id,  0.5 wa' }
 
     before do

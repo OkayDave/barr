@@ -1,9 +1,8 @@
 require 'barr/blocks/clock'
 
 RSpec.describe Barr::Blocks::Clock do
-  describe '#update!' do
-    subject { described_class.new }
 
+  describe '#update!' do
     before do
       time = Time.local(2016, 3, 17, 20, 0, 0)
       Timecop.travel(time)
@@ -17,4 +16,5 @@ RSpec.describe Barr::Blocks::Clock do
       expect(subject.data).to eq '20:00 17 Mar 2016'
     end
   end
+
 end
