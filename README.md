@@ -146,19 +146,54 @@ seperate_block = Barr::Blocks::WhoAmI.new
 
 #### Clock 
 
-`clock = Barr::Blocks::Clock.new`
+Shows the current date and/or time.
+
+`clock = Barr::Blocks::Clock.new format: "%m %b %Y", icon: "Date: "`
 
 | Option | Value | Description | Default |
 | --- | --- | --- | --- | 
-| `format` | strftime String | This takes a [strftime](http://ruby-doc.org/core-2.2.0/Time.html#method-i-strftime) formatted string. If you're not familiar with this syntax, you could use an [online generator](http://www.foragoodstrftime.com/).  | "%H:%M %m %b %Y" |
+| `format` | strftime String | This takes a [strftime](http://ruby-doc.org/core-2.2.0/Time.html#method-i-strftime) formatted string. If you're not familiar with this syntax, you could use an [online generator](http://www.foragoodstrftime.com/).  | `"%H:%M %m %b %Y"` |
 
 #### Cpu 
 
+Shows CPU load averaged across all cores.
+
 `cpu = Barr::Blocks::Cpu.new` 
  
-This has no configurable options.
- 
+This has Cpu block specific configurable options.
 
+#### Hdd 
+
+Shows selected filesystem's used and free space.
+
+`hdd = Barr::Blocks::Hdd.new device: "sda2"`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `device` | String | This is the name of the device for which you'd like to see free/used space. Something like `/dev/sda2`. Run `df -h` in your terminal and look at the first column.  | **REQUIRED** | 
+
+#### I3 
+
+**Requires i3wm**. Shows the current workspaces and highlights the active one. You can click a workspace name to change to there.
+
+`i3 = Barr::Blocks::I3.new focus_markers: ["\u",""]`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- | 
+| `focus_markers` | 2 element Array | These are used to 'highlight' the active workspace. The first element is used on the left of the active workspace, the second element on the right. | [">", "<"] | 
+
+#### ip 
+
+Shows the selected adaptor's IPv4 address. If no device is specified, it will make a guess.
+
+`ip = Barr::Blocks::Ip.new device: "enp3s0"`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `device` | String | The name of the device | `192` | 
+ 
+ 
+ 
  
 ## Contributing
 
