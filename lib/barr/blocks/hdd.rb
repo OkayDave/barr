@@ -4,12 +4,13 @@ module Barr
       attr_reader :device
       def initialize opts={}
         super
+	@name = opts[:name]
         @device = opts[:device]
       end
 
       def update
         total, used, perc = sys_cmd.chomp.split(" ")
-        @output = "#{used} / #{total} (#{perc})"                                                              
+        @output = "#{@name}: #{used} / #{total} (#{perc})"
       end
 
       def sys_cmd
