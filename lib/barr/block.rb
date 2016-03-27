@@ -1,6 +1,6 @@
 module Barr
   class Block
-    attr_reader :align, :bgcolor, :fgcolor, :icon, :interval, :output
+    attr_reader :align, :bgcolor, :data, :fgcolor, :icon, :interval
 
     def initialize(opts = {})
       @align = opts[:align] || :l
@@ -9,19 +9,19 @@ module Barr
       @icon = opts[:icon] || ''
       @interval = opts[:interval] || 5
 
-      @output = ''
+      @data = ''
     end
 
     def <<(str)
-      @output << str
+      @data << str
     end
 
-    def color_out
+    def colors
       "%{B#{bgcolor}}%{F#{fgcolor}}"
     end
 
     def draw
-      "#{color_out} #{icon} #{@output} "
+      "#{colors} #{icon} #{@data} #{reset_colors}"
     end
 
     def destroy
@@ -29,5 +29,12 @@ module Barr
 
     def update
     end
+
+    private
+
+    def reset_colors
+      '%{F-}%{B-}'
+    end
+
   end
 end
