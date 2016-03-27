@@ -1,9 +1,21 @@
+require 'barr/block'
+
 module Barr
   module Blocks
-    class Cpu < Block 
-      def update
-        @output = `top -bn1 | grep load | awk '{print $(NF-2)+$(NF-1)+$(NF)}'`.chomp + "%"
+    class CPU < Block
+
+      def update!
+        idle = sys_cmd.scan(/(\d{1,3}\.\d) id/).flatten.first.to_f
+
+        @data = "#{(100 - idle).round(1)}%"
       end
+
+      private
+
+      def sys_cmd
+        `top -bn1 | grep 'Cpu(s)'`.chomp
+      end
+
     end
   end
 end
