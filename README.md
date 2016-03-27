@@ -160,7 +160,7 @@ Shows CPU load averaged across all cores.
 
 `cpu = Barr::Blocks::Cpu.new` 
  
-This has Cpu block specific configurable options.
+There are no `Cpu` block specific configurable options.
 
 #### Hdd 
 
@@ -192,8 +192,45 @@ Shows the selected adaptor's IPv4 address. If no device is specified, it will ma
 | --- | --- | --- | --- |
 | `device` | String | The name of the device | `192` | 
  
+#### Mem 
+
+Shows current RAM usage. 
+
+`mem = Barr::Blocks::Mem.new`
  
- 
+There are no `Mem` block specific configurable options.
+
+#### Rhythmbox 
+
+**Requires Rhythmbox and rhythmbox-client**. Shows currently playing artist and/or track, as well as control buttons.
+
+`rb = Barr::Blocks::Rhythmbox.new show_buttons: false` 
+
+| Option | Value | Description | Default 
+| --- | --- | --- | --- |
+| `show_artist` | bool | Set to `true` or `false` to set whether or not the currently playing artist should be shown. | `true` |
+| `show_title` | bool | As above, but for the track title | `true` |
+| `show_buttons` | bool | As above, but for the player control buttons | `true` |
+
+#### Temperature
+
+Shows the current temperature and summary of a given location ID. Clicking it will open the full report in your browser.
+
+`temp = Barr::Blocks::Temperature.new location: "11921", unit: "F"`
+
+| Option | Value | Description | Default | 
+| --- | --- | --- | --- |
+| `location` | Yahoo Weather string | The ID [Yahoo Weather](https://weather.yahoo.com) uses for your chosen location. Search for your location then use the number that appears at the end of the URL. For example, New York is 2459115| **REQUIRED**
+| `unit` | `'C'` or `'F'` | Choose between Celcius and Fahrenheit. | `'C'`
+
+
+#### WhoAmI 
+
+Shows the currently logged in user. 
+
+`who = Barr::Blocks::WhoAmI.new` 
+
+There are no `WhoAmI` block specific configurable options.
  
 ## Contributing
 
