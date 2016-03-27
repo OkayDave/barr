@@ -1,13 +1,17 @@
+require 'barr/block'
+
 module Barr
   module Blocks
     class Mem < Block
 
-      def update
-        @output = sys_cmd.chomp
+      def update!
+        @data = sys_cmd
       end
 
+      private
+
       def sys_cmd
-        `free -m | grep Mem | awk '{printf "%sM / %sM", $3, $2}'`
+        `free -h | grep 'cache:' | awk '{printf "%s / %sG", $(NF-1), $(NF-1)+$(NF)}'`.chomp
       end
     end
   end

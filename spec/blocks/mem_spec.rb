@@ -1,20 +1,18 @@
-require 'spec_helper'
+require 'barr/blocks/mem'
 
-class MemTest < Barr::Blocks::Mem
-  def sys_cmd
-    return "7634M / 15909M"
-  end
-end
+RSpec.describe Barr::Blocks::Mem do
 
-describe Barr::Blocks::Mem do
-  before { @b = MemTest.new }
-  it "exists" do
-    expect(@b).to be_a_kind_of(Barr::Blocks::Mem)
-    expect(@b).to be_a_kind_of(Barr::Block)
+  describe '#update!' do
+    let(:sys_cmd) { '6.0G / 15.6G' }
+
+    before do
+      allow(subject).to receive(:sys_cmd).and_return(sys_cmd)
+      subject.update!
+    end
+
+    it 'sets the data correctly' do
+      expect(subject.data).to eq '6.0G / 15.6G'
+    end
   end
 
-  it "renders the correct format" do
-    @b.update
-    expect(@b.output).to match(/\d+M \/ \d+M/)
-  end
 end
