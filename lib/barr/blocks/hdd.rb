@@ -1,21 +1,27 @@
+require 'barr/block'
+
 module Barr
   module Blocks
-    class Hdd < Block
-      attr_reader :device
-      def initialize opts={}
+    class HDD < Block
+
+      def initialize(opts = {})
         super
+
         @device = opts[:device]
       end
 
-      def update
-        total, used, perc = sys_cmd.chomp.split(" ")
-        @output = "#{used} / #{total} (#{perc})"                                                              
+      def update!
+        total, used, perc = sys_cmd.split(' ')
+
+        @data = "#{used} / #{total} (#{perc})"
       end
+
+      private
 
       def sys_cmd
-        `df -h | grep #{@device} | awk '{printf "%s %s %s", $2, $3, $5}'`
+        `df -h | grep #{@device} | awk '{printf "%s %s %s", $2, $3, $5}'`.chomp
       end
-    end
 
+    end
   end
 end
