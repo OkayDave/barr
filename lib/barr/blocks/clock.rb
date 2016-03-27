@@ -6,7 +6,7 @@ module Barr
 
       def initialize(opts = {})
         super
-        @format = opts[:format] || '%H:%M %m %b %Y'
+        @format = opts[:format] || '%H:%M %d %b %Y'
       end
 
       def update!

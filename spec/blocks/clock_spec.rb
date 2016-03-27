@@ -1,13 +1,20 @@
 require 'barr/blocks/clock'
- 
+
 RSpec.describe Barr::Blocks::Clock do
   describe '#update!' do
-    subject { described_class.new format: '%Y' }
+    subject { described_class.new }
 
-    before { subject.update! }
+    before do
+      time = Time.local(2016, 3, 17, 20, 0, 0)
+      Timecop.travel(time)
+
+      subject.update!
+    end
+
+    after { Timecop.return }
 
     it 'sets the correct output' do
-      expect(subject.data).to eq(Time.now.year.to_s)
+      expect(subject.data).to eq '20:00 17 Mar 2016'
     end
   end
 end
