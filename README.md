@@ -231,6 +231,61 @@ Shows the currently logged in user.
 `who = Barr::Blocks::WhoAmI.new` 
 
 There are no `WhoAmI` block specific configurable options.
+
+## Create Your Own Block
+
+It's reasonably simple to add your own block to your script. Create a `class` that inherits from `Barr::Block` and add your custom `initialize` and `update` methods. The `Barr::Manager` object will read your block's `@output` on each update. 
+
+For example, a block which increments an integer might look like this:
+
+```ruby 
+#!/usr/bin/env ruby 
+
+require 'rubygems'
+require 'barr'
+
+class Incrementer < Barr::Block 
+
+    def initialize opts={}  # Don't forget to accept your options hash!
+    
+      # super ensures the common configurable options can be set 
+      super 
+      
+      # Accept a 'count' option, defaulting to 0 if none is provided
+      @count = opts[:count] || 0       
+    
+    end
+    
+    def update 
+     
+      # Increment the current count
+      @count += 1 
+      
+      # Set the @output to be the current count. This is what will be sent to lemonbar
+      @output = @count.to_s
+    end
+
+end
+
+@man = Barr::Manager.new 
+
+block = Incrementer.new count: 1, align: :r
+@man.add_block block
+
+@man.run
+```
+
+## TODO 
+
+Here are a few things I have planned
+
+* MPD support 
+* Powerline styling options 
+* More configuration for existing blocks 
+* Some form of Conky support 
+* Volume display / control 
+* Stricter option typing 
+* RSS support
  
 ## Contributing
 
