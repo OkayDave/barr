@@ -236,6 +236,14 @@ Shows the currently logged in user.
 
 There are no `Whoami` block specific configurable options.
 
+#### Processes
+
+Shows the number of currently active processes on your system.
+
+`proc = Barr::Blocks::Processes.new`
+
+There are no `Processes` block specific configurable options.
+
 ## Create Your Own Block
 
 It's reasonably simple to add your own block to your script. Create a `class` that inherits from `Barr::Block` and add your custom `initialize` and `update!` methods. The `Barr::Manager` object will read your block's `@output` on each update.
