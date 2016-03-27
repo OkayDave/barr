@@ -4,10 +4,6 @@ module Barr
   module Blocks
     class Whoami < Block
 
-      def initialize(opts = {})
-        super
-      end
-
       def update!
         @data = sys_cmd
       end
