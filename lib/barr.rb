@@ -10,7 +10,7 @@ require 'barr/blocks/ip'
 require 'barr/blocks/mem'
 require 'barr/blocks/rhythmbox'
 require 'barr/blocks/temperature'
-require 'barr/blocks/who_am_i'
+require 'barr/blocks/whoami'
 
 module Barr
 end
