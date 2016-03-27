@@ -182,7 +182,7 @@ Shows selected filesystem's used and free space.
 
 | Option | Value | Description | Default |
 | --- | --- | --- | --- |
-| `focus_markers` | 2 element Array | These are used to 'highlight' the active workspace. The first element is used on the left of the active workspace, the second element on the right. | ['>', '<'] |
+| `focus_markers` | 2 element Array | These are used to 'highlight' the active workspace. The first element is used on the left of the active workspace, the second element on the right. | `['>', '<']` |
 
 #### ip
 
