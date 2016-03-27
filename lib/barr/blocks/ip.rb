@@ -1,23 +1,27 @@
+require 'barr/block'
+
 module Barr
   module Blocks
-    class Ip < Block
+    class IP < Block
 
       attr_reader :device
-      
-      def initialize opts={}
+
+      def initialize(opts = {})
         super
-        @device = opts[:device] || "192"
+        @device = opts[:device] || 'lo'
+        @version = opts[:ipv6] ? 'inet6' : 'inet'
       end
 
-      def update
-        ip, dev = sys_cmd.chomp.split(" ")
-        ip = ip.split("/")[0]                                                                             
-        
-        @output = "#{dev} > #{ip}"                                                                        
+      def update!
+        ip = sys_cmd.split('/').first
+
+        @data = "#{@device} > #{ip}"
       end
-      
+
+      private
+
       def sys_cmd
-        `ip addr | grep #{@device} | tail -n1 | awk '{printf "%s %s", $2, $8}'`
+        `ip addr show #{@device} | grep '#{@version}\s' | awk '{print $2}'`.chomp
       end
     end
   end

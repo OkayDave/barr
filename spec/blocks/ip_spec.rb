@@ -1,29 +1,43 @@
-require 'spec_helper'
+require 'barr/blocks/ip'
 
-class IpTest < Barr::Blocks::Ip
-  def sys_cmd
-    return "192.168.0.2/24 enp3s0"
-  end
-end
+RSpec.describe Barr::Blocks::IP do
 
-describe Barr::Blocks::Ip do
-  before { @b = IpTest.new }
-
-  describe "#initialize" do
-    it "sets default device" do
-      expect(IpTest.new.device).to eq("192")
-    end
-
-    it "accepts device option" do
-      expect(IpTest.new(device: "dev").device).to eq("dev")
+  describe '#initialize' do
+    it 'sets a default device' do
+      expect(subject.device).to eq 'lo'
     end
   end
 
-  describe "#update" do
-    it "renders correct format" do
-      @b.update
+  context 'IPv4 address' do
+    describe '#update!' do
+      let(:sys_cmd) { '192.168.1.100/24' }
 
-      expect(@b.output).to match(/.+ > \d{,3}\.\d{,3}\.\d{,3}\.\d{,3}/)
+      before do
+        allow(subject).to receive(:sys_cmd).and_return(sys_cmd)
+        subject.update!
+      end
+
+      it 'sets the data correctly' do
+        expect(subject.data).to eq 'lo > 192.168.1.100'
+      end
     end
   end
+
+  context 'IPv6 address' do
+    describe '#update!' do
+      subject { described_class.new ipv6: true }
+
+      let(:sys_cmd) { 'dead::beef/64' }
+
+      before do
+        allow(subject).to receive(:sys_cmd).and_return(sys_cmd)
+        subject.update!
+      end
+
+      it 'sets the data correctly' do
+        expect(subject.data).to eq 'lo > dead::beef'
+      end
+    end
+  end
+
 end

@@ -4,7 +4,7 @@
 
 Barr is a status line generator for Lemonbar. It is an alternative to the common method of using shell scripts to generate the bar's content. Barr is written in, and configured with, Ruby.
 
-Barr aims to make creating and maintaining Lemonbar scripts much easier. At its core is a suite of re-usable and configurable Blocks. These blocks can be added to your bar as-is; configured to your liking; or extended to create your own behaviour. This allows status lines to be created in a more declarative manner. 
+Barr aims to make creating and maintaining Lemonbar scripts much easier. At its core is a suite of re-usable and configurable Blocks. These blocks can be added to your bar as-is; configured to your liking; or extended to create your own behaviour. This allows status lines to be created in a more declarative manner.
 
 ## Installation
 
@@ -20,42 +20,42 @@ See [Examples folder](http://github.com/okaydave/barr/tree/master/examples) for 
 
 Documentation about all available blocks and their options can be found further down in this document.
 
-### Simple Usage Example 
+### Simple Usage Example
 
 *barr_example.rb*
 ```ruby
- #!/usr/bin/env ruby
+#!/usr/bin/env ruby
 
- # pull in the Barr gem
- require 'rubygems'
- require 'barr'
+# pull in the Barr gem
+require 'rubygems'
+require 'barr'
 
- # Create a new manager instance.
- # The manager is responsible for organising the blocks and delivering their output to lemonbar
- @manager = Barr::Manager.new
+# Create a new manager instance.
+# The manager is responsible for organising the blocks and delivering their output to lemonbar
+@manager = Barr::Manager.new
 
- # Add a 'WhoAmI' block. This just outputs logged in username
- # Give it a peach background, grey text and updates every 10000 seconds
- # It will be aligned to the left of the bar
- @manager.add_block Barr::Blocks::WhoAmI.new(bcolor: "#FFAAAA", fcolor: "#333333", interval: 10000)
+# Add a 'Whoami' block. This just outputs logged in username
+# Give it a peach background, grey text and updates every 10000 seconds
+# It will be aligned to the left of the bar
+@manager.add Barr::Blocks::Whoami.new(bcolor: '#FFAAAA', fcolor: '#333333', interval: 10000)
 
- # Add a 'Clock' block.
- # Clocks can be formatted in the type strftime fashion. This example outputs the current Hour and Minute
- # It will update every second.
- # By default, the background text colour will be deferred to the Lemonbar config
- # If FontAwesome font is available to lemonbar, it will be prepended with a clock icon.
- @manager.add_block Barr::Blocks::Clock.new(icon: "\uf017", format: "%H:%M", align: :c, interval: 1)
-
-
- # Add a 'Cpu' block. This shows the current CPU usage (averaged across all cores if present)
- # It will be aligned to the right side of of the bar
- # As an interval is not provided, it will update every 5 seconds.
- # It will be prepended with the text 'Cpu:'
- @manager.add_block Barr::Blocks::Cpu.new(icon: "Cpu:", align: :r)
+# Add a 'Clock' block.
+# Clocks can be formatted in the type strftime fashion. This example outputs the current Hour and Minute
+# It will update every second.
+# By default, the background text colour will be deferred to the Lemonbar config
+# If FontAwesome font is available to lemonbar, it will be prepended with a clock icon.
+@manager.add Barr::Blocks::Clock.new(icon: "\uf017", format: '%H:%M', align: :c, interval: 1)
 
 
- # Tell the manager to run the loop. This will continue indefinitely, outputing the data ready to be piped in to lemonbar.
- @manager.run
+# Add a 'CPU' block. This shows the current CPU usage (averaged across all cores if present)
+# It will be aligned to the right side of of the bar
+# As an interval is not provided, it will update every 5 seconds.
+# It will be prepended with the text 'Cpu:'
+@manager.add Barr::Blocks::CPU.new(icon: 'Cpu:', align: :r)
+
+
+# Tell the manager to run the loop. This will continue indefinitely, outputing the data ready to be piped in to lemonbar.
+@manager.run!
 ```
 
 This can be piped in to lemonbar as usual:
@@ -66,12 +66,12 @@ This can be piped in to lemonbar as usual:
 ./barr_example.rb | lemonbar -g 800x30+960+00 -d -B "#333333" -f "Roboto Mono Medium:size=11" -f "Font Awesome:size=11" | sh
 ```
 
-Which should have Lemonbar appear as: 
+Which should have Lemonbar appear as:
 
 ![simple example](http://i.imgur.com/r4dtoqm.png)
 
 
-## Block Configuration 
+## Block Configuration
 
 ### Common
 
@@ -79,225 +79,224 @@ All blocks inherit their behaviour from a base Block. This means that all blocks
 
 | Option | Value | Description | Default |
 | ------ | ----- | ----------- | ------- |
-| `fcolor` | RGB Hex string or `-` | Equivalent to lemonbar's `%{F}` format. Takes a hex string in the format of `#FFF`, `#FFFFFF`, or `#FFFFFFFF` (for transparency). | `"-"` |
-| `bcolor` | RGB Hex string or `-` | As above. To use the configured lemonbar colors, use `"-"`. This also applies to the `fcolor` option. | `"-"` |
-| `icon`   | String | This is prepended to each blocks' output. It can be a normal string like `"CPU:"` or a unicode string like `"\uf164"` (thumbs up in Font Awesome | `""` |
-| `interval` | Integer | How frequently the Block should perform its update method in seconds. The block is drawn to lemonbar every second, this just affects how frequently the data can change.  | `5` |
+| `fgcolor` | RGB Hex string or `-` | Equivalent to lemonbar's `%{F}` format. Takes a hex string in the format of `#FFF`, `#FFFFFF`, or `#FFFFFFFF` (for transparency). | `'-'` |
+| `bgcolor` | RGB Hex string or `-` | As above. To use the configured lemonbar colors, use `'-'`. This also applies to the `fcolor` option. | `'-'` |
+| `icon`   | String | This is prepended to each blocks' data. It can be a normal string like `'CPU:'` or a unicode string like `"\uf164"` (thumbs up in Font Awesome | `''` |
+| `interval` | Integer | How frequently the Block should perform its `update!` method in seconds. The block is drawn to lemonbar every second, this just affects how frequently the data can change.  | `5` |
 | `align` | Symbol | One of `:l`, `:c`, `:r` for left, centre and right alignment respectively. | `:l` |
- 
+
 These are set when a Block is initialized:
- 
-```ruby 
+
+```ruby
 @man = Barr::Manager.new
 
-block1 = Barr::Block.new fcolor: "#FF0000",
-                         bcolor: "#000000",
-                         icon:   "I am:",
-                         interval: 10, 
+block1 = Barr::Block.new fgcolor: '#FF0000',
+                         bgcolor: '#000000',
+                         icon:   'I am:',
+                         interval: 10,
                          align: :r
 
-man.add_block block1
- 
+man.add block1
+
 ```
 
 If you're unfamiliar with Ruby here's a couple of tips that might help with reading and writing your own blocks:
 
-* Parentheses are optional most of the time. The exception is when their absense causes ambiguity as to which arguments belong to which methods. 
-* The arguments to `Barr::Block.new` are supplied as a `Hash`. This means that you don't need to put them in a specific order. 
+* Parentheses are optional most of the time. The exception is when their absense causes ambiguity as to which arguments belong to which methods.
+* The arguments to `Barr::Block.new` are supplied as a `Hash`. This means that you don't need to put them in a specific order.
 * If you want to use a default value, you can just omit the option altogether.
 * Whitespace isn't that important, at least compared to languages like Python. Feel free to use whitespace to make your code more readable.
 
 For example, the following code:
 
-```ruby 
+```ruby
 @man = Barr::Manager.new()
 
-block1 = Barr::Blocks::WhoAmI.new({fcolor: "#FFF", bcolor: "#000", align: :c})
+block1 = Barr::Blocks::Whoami.new({fgcolor: '#FFF', bgcolor: '#000', align: :c})
 
-@man.add_block(block1)
+@man.add(block1)
 
 ```
- 
+
 Is functionally the same as this:
 
-```ruby 
-@man = Barr::Manager.new 
+```ruby
+@man = Barr::Manager.new
 
-block1 = Barr::Blocks::WhoAmI.new align: :c,
-                                  fcolor: "#FFF",
-                                  bcolor: "#000"
+block1 = Barr::Blocks::Whoami.new align: :c,
+                                  fgcolor: '#FFF',
+                                  bgcolor: '#000'
 
-@man.add_block block1
+@man.add block1
 
 ```
 
 You can also add Blocks straight to the manager if you'd like to skip that step, or even mix/match:
 
-```ruby 
-@man = Barr::Manager.new 
+```ruby
+@man = Barr::Manager.new
 
-seperate_block = Barr::Blocks::WhoAmI.new 
+seperate_block = Barr::Blocks::Whoami.new
 
-@man.add_block Barr::Blocks::WhoAmI.new bcolor: "#000", fcolor: "#FFF"
-@man.add_block(Barr::Blocks::WhoAmI.new(icon: "Me!", align: :c)
-@man.add_block separate_block 
+@man.add Barr::Blocks::Whoami.new bcolor: '#000', fcolor: '#FFF'
+@man.add(Barr::Blocks::Whoami.new(icon: 'Me!', align: :c))
+@man.add separate_block
 ```
 
 
 ### Block Specific Configuration
 
-#### Clock 
+#### Clock
 
 Shows the current date and/or time.
 
-`clock = Barr::Blocks::Clock.new format: "%m %b %Y", icon: "Date: "`
+`clock = Barr::Blocks::Clock.new format: '%m %b %Y', icon: 'Date: '`
 
 | Option | Value | Description | Default |
-| --- | --- | --- | --- | 
-| `format` | strftime String | This takes a [strftime](http://ruby-doc.org/core-2.2.0/Time.html#method-i-strftime) formatted string. If you're not familiar with this syntax, you could use an [online generator](http://www.foragoodstrftime.com/).  | `"%H:%M %m %b %Y"` |
+| --- | --- | --- | --- |
+| `format` | strftime String | This takes a [strftime](http://ruby-doc.org/core-2.2.0/Time.html#method-i-strftime) formatted string. If you're not familiar with this syntax, you could use an [online generator](http://www.foragoodstrftime.com/).  | `'%H:%M %m %b %Y'` |
 
-#### Cpu 
+#### CPU
 
 Shows CPU load averaged across all cores.
 
-`cpu = Barr::Blocks::Cpu.new` 
- 
-There are no `Cpu` block specific configurable options.
+`cpu = Barr::Blocks::CPU.new`
 
-#### Hdd 
+There are no `CPU` block specific configurable options.
+
+#### HDD
 
 Shows selected filesystem's used and free space.
 
-`hdd = Barr::Blocks::Hdd.new device: "sda2"`
+`hdd = Barr::Blocks::HDD.new device: 'sda2'`
 
 | Option | Value | Description | Default |
 | --- | --- | --- | --- |
-| `device` | String | This is the name of the device for which you'd like to see free/used space. Something like `/dev/sda2`. Run `df -h` in your terminal and look at the first column.  | **REQUIRED** | 
+| `device` | String | This is the name of the device for which you'd like to see free/used space. Something like `/dev/sda2`. Run `df -h` in your terminal and look at the first column.  | **REQUIRED** |
 
-#### I3 
+#### I3
 
 **Requires i3wm**. Shows the current workspaces and highlights the active one. You can click a workspace name to change to there.
 
-`i3 = Barr::Blocks::I3.new focus_markers: ["\u",""]`
-
-| Option | Value | Description | Default |
-| --- | --- | --- | --- | 
-| `focus_markers` | 2 element Array | These are used to 'highlight' the active workspace. The first element is used on the left of the active workspace, the second element on the right. | [">", "<"] | 
-
-#### ip 
-
-Shows the selected adaptor's IPv4 address. If no device is specified, it will make a guess.
-
-`ip = Barr::Blocks::Ip.new device: "enp3s0"`
+`i3 = Barr::Blocks::I3.new focus_markers: ["\u",'']`
 
 | Option | Value | Description | Default |
 | --- | --- | --- | --- |
-| `device` | String | The name of the device | `192` | 
- 
-#### Mem 
+| `focus_markers` | 2 element Array | These are used to 'highlight' the active workspace. The first element is used on the left of the active workspace, the second element on the right. | `['>', '<']` |
 
-Shows current RAM usage. 
+#### ip
+
+Shows the selected adaptor's IP (IPv4 by default) address. If no device is specified, it will make a guess.
+
+`ip = Barr::Blocks::IP.new device: 'enp3s0'`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `device` | String | The name of the device | `192` |
+| `ipv6` | Boolean | Get the IPv6 address of the device | `false` |
+
+#### Mem
+
+Shows current RAM usage.
 
 `mem = Barr::Blocks::Mem.new`
- 
+
 There are no `Mem` block specific configurable options.
 
-#### Rhythmbox 
+#### Rhythmbox
 
-**Requires Rhythmbox and rhythmbox-client**. Shows currently playing artist and/or track, as well as control buttons.
+**Requires Rhythmbox and rhythmbox-client**. Shows currently playing artist and/or track, as well as control buttons. Control buttons use FontAwesome.
 
-`rb = Barr::Blocks::Rhythmbox.new show_buttons: false` 
+`rb = Barr::Blocks::Rhythmbox.new buttons: false`
 
-| Option | Value | Description | Default 
+| Option | Value | Description | Default |
 | --- | --- | --- | --- |
-| `show_artist` | bool | Set to `true` or `false` to set whether or not the currently playing artist should be shown. | `true` |
-| `show_title` | bool | As above, but for the track title | `true` |
-| `show_buttons` | bool | As above, but for the player control buttons | `true` |
+| `artist` | bool | Set to `true` or `false` to set whether or not the currently playing artist should be shown. | `true` |
+| `buttons` | bool | As above, but for the player control buttons | `true` |
+| `title` | bool | As above, but for the track title | `true` |
 
 #### Temperature
 
 Shows the current temperature and summary of a given location ID. Clicking it will open the full report in your browser.
 
-`temp = Barr::Blocks::Temperature.new location: "11921", unit: "F"`
+`temp = Barr::Blocks::Temperature.new location: '11921', unit: 'F'`
 
-| Option | Value | Description | Default | 
+| Option | Value | Description | Default |
 | --- | --- | --- | --- |
 | `location` | Yahoo Weather string | The ID [Yahoo Weather](https://weather.yahoo.com) uses for your chosen location. Search for your location then use the number that appears at the end of the URL. For example, New York is 2459115| **REQUIRED**
 | `unit` | `'C'` or `'F'` | Choose between Celcius and Fahrenheit. | `'C'`
 
 
-#### WhoAmI 
+#### Whoami
 
-Shows the currently logged in user. 
+Shows the currently logged in user.
 
-`who = Barr::Blocks::WhoAmI.new` 
+`who = Barr::Blocks::Whoami.new`
 
-There are no `WhoAmI` block specific configurable options.
+There are no `Whoami` block specific configurable options.
 
 ## Create Your Own Block
 
-It's reasonably simple to add your own block to your script. Create a `class` that inherits from `Barr::Block` and add your custom `initialize` and `update` methods. The `Barr::Manager` object will read your block's `@output` on each update. 
+It's reasonably simple to add your own block to your script. Create a `class` that inherits from `Barr::Block` and add your custom `initialize` and `update!` methods. The `Barr::Manager` object will read your block's `@data` on each update.
 
 For example, a block which increments an integer might look like this:
 
-```ruby 
-#!/usr/bin/env ruby 
+```ruby
+#!/usr/bin/env ruby
 
 require 'rubygems'
 require 'barr'
 
-class Incrementer < Barr::Block 
+class Incrementer < Barr::Block
 
     def initialize opts={}  # Don't forget to accept your options hash!
-    
-      # super ensures the common configurable options can be set 
-      super 
-      
+
+      # super ensures the common configurable options can be set
+      super
+
       # Accept a 'count' option, defaulting to 0 if none is provided
-      @count = opts[:count] || 0       
-    
+      @count = opts[:count] || 0
     end
-    
-    def update 
-     
+
+    def update!
+
       # Increment the current count
-      @count += 1 
-      
-      # Set the @output to be the current count. This is what will be sent to lemonbar
-      @output = @count.to_s
+      @count += 1
+
+      # Set the @data to be the current count. This is what will be sent to lemonbar
+      @data = @count.to_s
     end
 
 end
 
-@man = Barr::Manager.new 
+@man = Barr::Manager.new
 
 block = Incrementer.new count: 1, align: :r
-@man.add_block block
+@man.add block
 
-@man.run
+@man.run!
 ```
 
-## TODO 
+## TODO
 
 Here are a few things I have planned
 
-* MPD support 
-* Powerline styling options 
-* More configuration for existing blocks 
-* Some form of Conky support 
-* Volume display / control 
-* Stricter option typing 
+* MPD support
+* Powerline styling options
+* More configuration for existing blocks
+* Some form of Conky support
+* Volume display / control
+* Stricter option typing
 * RSS support
- 
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/OkayDave/barr. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-I'd love to see PRs for more blocks. If you do make any, please ensure that you've added their config options to this README and that you've written some specs for it (including stubbing / mocking out any system and/or API calls it makes). 
+I'd love to see PRs for more blocks. If you do make any, please ensure that you've added their config options to this README and that you've written some specs for it (including stubbing / mocking out any system and/or API calls it makes).
 
 If there's a block you'd like to see, but don't have the time, knowledge, or desire to make one then please do open a request on the [Issue Tracker](https://github.com/OkayDave/barr/issues).
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-

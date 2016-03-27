@@ -1,24 +1,20 @@
-require 'spec_helper'
+require 'barr/blocks/clock'
 
-Clock = Barr::Blocks::Clock
- 
-describe Barr::Blocks::Clock do
-  describe "#initialize" do
-    it "should set default format" do
-      expect(Clock.new.format).to eq("%H:%M %m %b %Y")
+RSpec.describe Barr::Blocks::Clock do
+
+  describe '#update!' do
+    before do
+      time = Time.local(2016, 3, 17, 20, 0, 0)
+      Timecop.travel(time)
+
+      subject.update!
     end
 
-    it "should allow custom format" do
-      expect(Clock.new(format: "%H").format).to eq("%H")
-    end
-  end
+    after { Timecop.return }
 
-  describe "#update" do
-    it "should set the output correctly" do
-      @b = Clock.new format: "%Y"
-      @b.update
-      
-      expect(@b.output).to eq(Time.now.year.to_s)
+    it 'sets the correct output' do
+      expect(subject.data).to eq '20:00 17 Mar 2016'
     end
   end
+
 end

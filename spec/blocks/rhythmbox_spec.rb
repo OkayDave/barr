@@ -1,78 +1,73 @@
-# coding: utf-8
-require 'spec_helper'
+require 'barr/blocks/rhythmbox'
 
-class BoxTest < Barr::Blocks::Rhythmbox 
-  attr_writer :running
-  def sys_cmd cmd
-    "Marilyn Manson - Into The Fire"
+RSpec.describe Barr::Blocks::Rhythmbox do
+
+  let(:sys_cmd) { 'Marilyn Manson - Into The Fire' }
+
+  before do
+    allow(subject).to receive(:running?).and_return(true)
+    allow(subject).to receive(:sys_cmd).and_return(sys_cmd)
   end
 
-  def running?
-    @running 
-  end
-
-  def initialize opts={}
-    super
-    @running = true
-  end
-end
-
-describe Barr::Blocks::Rhythmbox do
-
-  describe "#initialize" do
-    it "sets default options" do
-      b = BoxTest.new
-
-      expect(b.show_title).to eq(true)
-      expect(b.show_artist).to eq(true)
-      expect(b.show_buttons).to eq(true)
-    end
-
-    it "accepts options" do
-      b = BoxTest.new show_title: false, show_artist: false, show_buttons: false
-
-      expect(b.show_title).to eq(false)
-      expect(b.show_artist).to eq(false)
-      expect(b.show_buttons).to eq(false)
+  describe '#initialize' do
+    it 'sets default options' do
+      expect(subject.view_opts[:artist]).to eq true
+      expect(subject.view_opts[:buttons]).to eq true
+      expect(subject.view_opts[:title]).to eq true
     end
   end
 
-  describe "#update" do
-    it "renders properly with all enabled" do
-      b = BoxTest.new
-      b.update
+  describe '#update!' do
+    context 'with everything enabled' do
+      before { subject.update! }
 
-      expect(b.output).to eq("Marilyn Manson - Into The Fire %{A:rhythmbox-client --previous:}%{A} %{A:rhythmbox-client --play-pause:}%{A} %{A:rhythmbox-client --next:}%{A}")
-      
+      it 'sets the data correctly' do
+        expect(subject.data).to eq('Marilyn Manson - Into The Fire %{A:rhythmbox-client --previous:}%{A} %{A:rhythmbox-client --play-pause:}%{A} %{A:rhythmbox-client --next:}%{A}')
+      end
     end
 
-    it "renders properly with only artist" do
-      b = BoxTest.new show_title: false, show_buttons: false
-      b.update
+    context 'with only artist enabled' do
+      subject { described_class.new title: false, buttons: false }
 
-      expect(b.output).to eq("Marilyn Manson")
+      before { subject.update! }
+
+      it 'sets the data correctly' do
+        expect(subject.data).to eq('Marilyn Manson')
+      end
     end
 
-    it "renders properly with only title" do
-      b = BoxTest.new show_artist: false, show_buttons: false
-      b.update
+    context 'with only title enabled' do
+      subject { described_class.new artist: false, buttons: false }
 
-      expect(b.output).to eq("Into The Fire")
+      before { subject.update! }
+
+      it 'sets the data correctly' do
+        expect(subject.data).to eq('Into The Fire')
+      end
     end
 
-    it "renders properly with only buttons" do
-      b = BoxTest.new show_title: false, show_artist: false
-      b.update
+    context 'with only buttons enabled' do
+      subject { described_class.new title: false, artist: false }
 
-      expect(b.output).to eq("%{A:rhythmbox-client --previous:}%{A} %{A:rhythmbox-client --play-pause:}%{A} %{A:rhythmbox-client --next:}%{A}")
+      before { subject.update! }
+
+      it 'sets the data correctly' do
+        expect(subject.data).to eq('%{A:rhythmbox-client --previous:}%{A} %{A:rhythmbox-client --play-pause:}%{A} %{A:rhythmbox-client --next:}%{A}')
+      end
     end
 
-    it "renders properly when no music playing" do
-      b = BoxTest.new show_buttons: false
-      b.running = false
-      b.update
+    context 'when nothing is playing' do
+      subject { described_class.new buttons: false }
 
-      expect(b.output).to eq("None")
+      before do
+        allow(subject).to receive(:running?).and_return(false)
+
+        subject.update!
+      end
+
+      it 'sets the data correctly' do
+        expect(subject.data).to eq('None')
+      end
     end
-  end 
+  end
 end

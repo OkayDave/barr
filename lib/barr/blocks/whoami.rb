@@ -1,15 +1,19 @@
+require 'barr/block'
+
 module Barr
   module Blocks
+    class Whoami < Block
 
-    class WhoAmI < Block
-      def initialize opts={}
-        super 
-        @output = sys_cmd 
+      def update!
+        @data = sys_cmd
       end
+
+      private
 
       def sys_cmd
         `whoami`.chomp
       end
+
     end
   end
 end

@@ -1,30 +1,40 @@
 module Barr
-  class Block                                        
-    attr_reader :output, :align, :fcolor, :bcolor, :interval, :icon                            
-    
+  class Block
+    attr_reader :align, :bgcolor, :data, :fgcolor, :icon, :interval
 
-    def align; @align; end                           
-    def fcolor; @fcolor; end                         
-    def bcolor; @bcolor; end                         
-    def color_out; "%{B#{bcolor}}%{F#{fcolor}}"; end 
-    def interval; @interval; end                     
-    def icon; @icon; end                             
-                                                     
-    def update; @update = ""; end                            
-    def draw; "#{color_out} #{icon} #{@output} "; end
-    def destroy; true; end                           
-                                                     
-    def initialize(opts={})                          
-      @align = opts[:align] || :l                    
-      @fcolor = opts[:fcolor] || "-"           
-      @bcolor = opts[:bcolor] || "-"           
-      @interval = opts[:interval] || 5               
-      @icon = opts[:icon] || ""
-      @output = ""
+    def initialize(opts = {})
+      @align = opts[:align] || :l
+      @bgcolor = opts[:bgcolor] || '-'
+      @fgcolor = opts[:fgcolor] || '-'
+      @icon = opts[:icon] || ''
+      @interval = opts[:interval] || 5
+
+      @data = ''
     end
 
-    def append_output str
-      @output += str
+    def <<(str)
+      @data << str
     end
-  end                                                
+
+    def colors
+      "%{B#{bgcolor}}%{F#{fgcolor}}"
+    end
+
+    def draw
+      "#{colors} #{icon} #{@data} #{reset_colors}"
+    end
+
+    def destroy!
+    end
+
+    def update!
+    end
+
+    private
+
+    def reset_colors
+      '%{F-}%{B-}'
+    end
+
+  end
 end
