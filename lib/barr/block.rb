@@ -24,7 +24,7 @@ module Barr
       "#{colors} #{icon} #{@data} #{reset_colors}"
     end
 
-    def destroy
+    def destroy!
     end
 
     def update!
