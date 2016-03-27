@@ -1,13 +1,16 @@
-require "barr/version"
-require "barr/manager"
-require "barr/block"
+require 'barr/version'
+require 'barr/manager'
+require 'barr/block'
 
-require 'weather-api'
-require 'i3ipc'
-
-Dir[File.dirname(__FILE__) + '/barr/blocks/*.rb'].each do |file|
-  require file
-end
+require 'barr/blocks/clock'
+require 'barr/blocks/cpu'
+require 'barr/blocks/hdd'
+require 'barr/blocks/i3'
+require 'barr/blocks/ip'
+require 'barr/blocks/mem'
+require 'barr/blocks/rhythm_box'
+require 'barr/blocks/temperature'
+require 'barr/blocks/who_am_i'
 
 module Barr
 end
