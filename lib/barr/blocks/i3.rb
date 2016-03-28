@@ -11,13 +11,14 @@ module Barr
         super
 
         @focus_markers = opts[:focus_markers] || %w(> <)
+        @invert_focus_colors = opts[:invert_focus_colors] || false 
         @i3 = i3_connection
       end
 
       def update!
         @workspaces = @i3.workspaces.map do |wsp|
           if wsp.focused
-            "#{l_marker}#{wsp.name}#{r_marker}"
+            "#{invert_colors if @invert_focus_colors}#{l_marker}#{wsp.name}#{r_marker}#{invert_colors if @invert_focus_colors}"
           else
             "%{A:barr_i3ipc \"workspace #{wsp.name.gsub(":","\\:")}\":} #{wsp.name} %{A}"
           end
