@@ -5,14 +5,17 @@ require 'barr'
 
 @man = Barr::Manager.new
 
-i3 = Barr::Blocks::I3.new icon: "\uf108", bcolor: "#114152", fcolor: "#DAC1DE", align: :l, focus_markers: ["\uf0a4",""]
-cpu = Barr::Blocks::Cpu.new icon: "\uf108 CPU:", bcolor: "#491A5E", align: :r
-mem = Barr::Blocks::Mem.new icon: "RAM:", align: :r, bcolor: "#2F113D"
-disk = Barr::Blocks::Hdd.new icon: "SSD:", align: :r, bcolor: "#380B4D", device: "sda2"
+i3 = Barr::Blocks::I3.new icon: "\uf108", bgcolor: '#114152', fgcolor: '#DAC1DE', align: :l, focus_markers: ["\uf0a4",'']
 
-@man.add_block i3
-@man.add_block cpu
-@man.add_block mem
-@man.add_block disk
+cpu = Barr::Blocks::CPU.new icon: "\uf108 CPU:", bgcolor: '#491A5E', align: :r
 
-@man.run
+mem = Barr::Blocks::Mem.new icon: 'RAM:', align: :r, bgcolor: '#2F113D'
+
+disk = Barr::Blocks::HDD.new icon: 'SSD:', align: :r, bgcolor: '#380B4D', device: 'sda2'
+
+@man.add i3
+@man.add cpu
+@man.add mem
+@man.add disk
+
+@man.run!
