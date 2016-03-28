@@ -27,9 +27,9 @@ module Barr
         outputs[block.align] << block.draw
       end
 
-      left_blocks = outputs[:l].join ' '
-      centre_blocks = outputs[:c].join ' '
-      right_blocks = outputs[:r].join ' '
+      left_blocks = outputs[:l].join ''
+      centre_blocks = outputs[:c].join ''
+      right_blocks = outputs[:r].join ''
 
       bar_render = ''
       bar_render << "%{l}#{left_blocks} " if left_blocks.length > 0
