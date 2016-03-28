@@ -37,7 +37,7 @@ require 'barr'
 # Add a 'Whoami' block. This just outputs logged in username
 # Give it a peach background, grey text and updates every 10000 seconds
 # It will be aligned to the left of the bar
-@manager.add Barr::Blocks::Whoami.new(bcolor: '#FFAAAA', fcolor: '#333333', interval: 10000)
+@manager.add Barr::Blocks::Whoami.new(bgcolor: '#FFAAAA', fgcolor: '#333333', interval: 10000)
 
 # Add a 'Clock' block.
 # Clocks can be formatted in the type strftime fashion. This example outputs the current Hour and Minute
@@ -80,7 +80,7 @@ All blocks inherit their behaviour from a base Block. This means that all blocks
 | Option | Value | Description | Default |
 | ------ | ----- | ----------- | ------- |
 | `fgcolor` | RGB Hex string or `-` | Equivalent to lemonbar's `%{F}` format. Takes a hex string in the format of `#FFF`, `#FFFFFF`, or `#FFFFFFFF` (for transparency). | `'-'` |
-| `bgcolor` | RGB Hex string or `-` | As above. To use the configured lemonbar colors, use `'-'`. This also applies to the `fcolor` option. | `'-'` |
+| `bgcolor` | RGB Hex string or `-` | As above. To use the configured lemonbar colors, use `'-'`. This also applies to the `fgcolor` option. | `'-'` |
 | `icon`   | String | This is prepended to each blocks' data. It can be a normal string like `'CPU:'` or a unicode string like `"\uf164"` (thumbs up in Font Awesome | `''` |
 | `interval` | Integer | How frequently the Block should perform its `update!` method in seconds. The block is drawn to lemonbar every second, this just affects how frequently the data can change.  | `5` |
 | `align` | Symbol | One of `:l`, `:c`, `:r` for left, centre and right alignment respectively. | `:l` |
@@ -138,7 +138,7 @@ You can also add Blocks straight to the manager if you'd like to skip that step,
 
 seperate_block = Barr::Blocks::Whoami.new
 
-@man.add Barr::Blocks::Whoami.new bcolor: '#000', fcolor: '#FFF'
+@man.add Barr::Blocks::Whoami.new bgcolor: '#000', fgcolor: '#FFF'
 @man.add(Barr::Blocks::Whoami.new(icon: 'Me!', align: :c))
 @man.add separate_block
 ```
