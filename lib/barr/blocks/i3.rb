@@ -19,7 +19,7 @@ module Barr
           if wsp.focused
             "#{l_marker}#{wsp.name}#{r_marker}"
           else
-            "%{A:barr_i3ipc workspace #{wsp.num}:} #{wsp.name} %{A}"
+            "%{A:barr_i3ipc \"workspace #{wsp.name.gsub(":","\\:")}\":} #{wsp.name} %{A}"
           end
         end
 

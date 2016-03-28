@@ -26,7 +26,7 @@ RSpec.describe Barr::Blocks::I3 do
     end
 
     it 'renders to the correct format' do
-      expect(subject.output).to eq '%{A:barr_i3ipc workspace 1:} a %{A}%{A:barr_i3ipc workspace 2:} b %{A}>c<'
+      expect(subject.output).to eq '%{A:barr_i3ipc "workspace a":} a %{A}%{A:barr_i3ipc "workspace 2\: b":} 2: b %{A}>c<'
     end
   end
 
