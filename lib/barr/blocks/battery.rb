@@ -9,16 +9,16 @@ module Barr
 
       def update
 	if @showRemaining == true
-	  @output=batNoRem
-	else
 	  @output=batRem
+	else
+	  @output=batNoRem
 	end
       end
 
-      def batNoRem
+      def batRem
         `acpi | cut -d ',' -f 2-3`
       end
-      def batRem
+      def batNoRem
 	`acpi | cut -d ',' -f 2`
       end
     end
