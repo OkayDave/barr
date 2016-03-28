@@ -27,5 +27,3 @@
 ## two_temperatures.rb 
 
 ![two_temperatures.rb](http://i.imgur.com/V2vSJBs.png)
-
-

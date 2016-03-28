@@ -1,19 +1,18 @@
-require 'spec_helper'
+require 'barr/blocks/cpu'
 
-Cpu = Barr::Blocks::Cpu
+RSpec.describe Barr::Blocks::CPU do
 
-describe Cpu do
-  it "exists" do
-    @b = Cpu.new
-    expect(Cpu.new).to be_a_kind_of(Barr::Blocks::Cpu)
-    expect(Cpu.new).to be_a_kind_of(Barr::Block)
-  end
+  describe '#update!' do
+    let(:sys_cmd) { '%Cpu(s):  7.9 us,  1.2 sy,  1.7 ni, 88.6 id,  0.5 wa' }
 
-  it "renders in the correct format" do
-    @b = Cpu.new
-    @b.update
+    before do
+      allow(subject).to receive(:sys_cmd).and_return(sys_cmd)
+      subject.update!
+    end
 
-    expect(@b.output).to match(/\d+(\.\d+|)%/)
+    it 'sets the data correctly' do
+      expect(subject.output).to eq '11.4%'
+    end
   end
 
 end

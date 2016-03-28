@@ -1,29 +1,20 @@
-require 'spec_helper'
+require 'barr/blocks/hdd'
 
-class HddTest < Barr::Blocks::Hdd
-  def sys_cmd
-    return "213G 34G 17%"
-  end
-end
+RSpec.describe Barr::Blocks::HDD do
 
-describe Barr::Blocks::Hdd do
-  describe "#initialize" do
-    it "sets the device" do
-      expect(HddTest.new(device: "sdc2").device).to eq("sdc2")
+  describe '#update!' do
+    subject { described_class.new device: 'sdc2' }
+
+    let(:sys_cmd) { '213G 34G 17%' }
+
+    before do
+      allow(subject).to receive(:sys_cmd).and_return(sys_cmd)
+      subject.update!
     end
 
-    it "exists" do
-      expect(HddTest.new).to be_a_kind_of(Barr::Blocks::Hdd)
-      expect(HddTest.new).to be_a_kind_of(Barr::Block)
+    it 'sets the data correctly' do
+      expect(subject.output).to eq '34G / 213G (17%)'
     end
   end
 
-  describe "#update" do
-    it "renders in the correct format" do
-      @b = HddTest.new(device: "sdc2")
-      @b.update
-      
-      expect(@b.output).to match(/\d+(G|M) \/ \d+(G|M) \(\d+%\)/)
-    end
-  end
 end

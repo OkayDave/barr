@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Dave Russell"]
   spec.email         = ["dave.kerr@gmail.com"]
 
-  spec.summary       = "Barr is a status line generate for use with Lemonbar"
+  spec.summary       = "Barr is a status line generator for use with Lemonbar"
   spec.homepage      = "https://github.com/OkayDave/barr"
   spec.license       = "MIT"
 
@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "timecop", "~> 0.8.0"
 
   spec.add_runtime_dependency "i3ipc", "0.2.0"
   spec.add_runtime_dependency "weather-api", "1.2.0"
