@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'weather-api'
 require 'barr/block'
 
@@ -16,7 +17,7 @@ module Barr
 
       def update!
         action = "xdg-open weather.yahoo.com\/country\/state\/city-#{@location}\/"
-        @data = "%{A:#{action}:}#{weather.condition.temp}°#{@unit} #{weather.condition.text}%{A}"
+        @output = "%{A:#{action}:}#{weather.condition.temp}°#{@unit} #{weather.condition.text}%{A}"
       end
 
       private

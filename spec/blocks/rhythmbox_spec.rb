@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'barr/blocks/rhythmbox'
 
 RSpec.describe Barr::Blocks::Rhythmbox do
@@ -21,8 +22,8 @@ RSpec.describe Barr::Blocks::Rhythmbox do
     context 'with everything enabled' do
       before { subject.update! }
 
-      it 'sets the data correctly' do
-        expect(subject.data).to eq('Marilyn Manson - Into The Fire %{A:rhythmbox-client --previous:}%{A} %{A:rhythmbox-client --play-pause:}%{A} %{A:rhythmbox-client --next:}%{A}')
+      it 'sets the output correctly' do
+        expect(subject.output).to eq('Marilyn Manson - Into The Fire %{A:rhythmbox-client --previous:}%{A} %{A:rhythmbox-client --play-pause:}%{A} %{A:rhythmbox-client --next:}%{A}')
       end
     end
 
@@ -31,8 +32,8 @@ RSpec.describe Barr::Blocks::Rhythmbox do
 
       before { subject.update! }
 
-      it 'sets the data correctly' do
-        expect(subject.data).to eq('Marilyn Manson')
+      it 'sets the output correctly' do
+        expect(subject.output).to eq('Marilyn Manson')
       end
     end
 
@@ -41,8 +42,8 @@ RSpec.describe Barr::Blocks::Rhythmbox do
 
       before { subject.update! }
 
-      it 'sets the data correctly' do
-        expect(subject.data).to eq('Into The Fire')
+      it 'sets the output correctly' do
+        expect(subject.output).to eq('Into The Fire')
       end
     end
 
@@ -51,8 +52,8 @@ RSpec.describe Barr::Blocks::Rhythmbox do
 
       before { subject.update! }
 
-      it 'sets the data correctly' do
-        expect(subject.data).to eq('%{A:rhythmbox-client --previous:}%{A} %{A:rhythmbox-client --play-pause:}%{A} %{A:rhythmbox-client --next:}%{A}')
+      it 'sets the output correctly' do
+        expect(subject.output).to eq('%{A:rhythmbox-client --previous:}%{A} %{A:rhythmbox-client --play-pause:}%{A} %{A:rhythmbox-client --next:}%{A}')
       end
     end
 
@@ -65,8 +66,8 @@ RSpec.describe Barr::Blocks::Rhythmbox do
         subject.update!
       end
 
-      it 'sets the data correctly' do
-        expect(subject.data).to eq('None')
+      it 'sets the output correctly' do
+        expect(subject.output).to eq('None')
       end
     end
   end

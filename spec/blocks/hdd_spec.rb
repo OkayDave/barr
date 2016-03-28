@@ -13,7 +13,7 @@ RSpec.describe Barr::Blocks::HDD do
     end
 
     it 'sets the data correctly' do
-      expect(subject.data).to eq '34G / 213G (17%)'
+      expect(subject.output).to eq '34G / 213G (17%)'
     end
   end
 

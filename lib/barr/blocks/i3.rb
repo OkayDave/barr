@@ -23,7 +23,7 @@ module Barr
           end
         end
 
-        @data = @workspaces.join('')
+        @output = @workspaces.join('')
       end
 
       def destroy!

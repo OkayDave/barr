@@ -10,7 +10,7 @@ module Barr
       end
 
       def update!
-        @data = Time.now.strftime(@format)
+        @output = Time.now.strftime(@format)
       end
 
     end

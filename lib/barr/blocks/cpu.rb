@@ -7,7 +7,7 @@ module Barr
       def update!
         idle = sys_cmd.scan(/(\d{1,3}\.\d) id/).flatten.first.to_f
 
-        @data = "#{(100 - idle).round(1)}%"
+        @output = "#{(100 - idle).round(1)}%"
       end
 
       private
@@ -17,5 +17,7 @@ module Barr
       end
 
     end
+
+    Cpu = CPU
   end
 end

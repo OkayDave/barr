@@ -9,7 +9,7 @@ module Barr
       end
 
       def update!
-        @data = sys_cmd
+        @output = sys_cmd
       end
 
       private
@@ -19,5 +19,7 @@ module Barr
       end
 
     end
+
+    WhoAmI = Whoami
   end
 end

@@ -7,9 +7,12 @@ module Barr
 
       def initialize(opts = {})
         super
+        reassign_deprecated_option opts, :show_artist, :artist
+        reassign_deprecated_option opts, :show_title, :title
+        reassign_deprecated_option opts, :show_buttons, :buttons
 
         @view_opts = {
-          artist: opts[:artist].nil? || opts[:artist],
+          artist:   opts[:artist].nil? || opts[:artist],
           buttons: opts[:buttons].nil? || opts[:buttons],
           title: opts[:title].nil? || opts[:title]
         }
@@ -36,7 +39,7 @@ module Barr
 
         op << buttons if @view_opts[:buttons]
 
-        @data = op.join(' ')
+        @output = op.join(' ')
 
       end
 

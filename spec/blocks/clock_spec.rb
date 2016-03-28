@@ -13,7 +13,7 @@ RSpec.describe Barr::Blocks::Clock do
     after { Timecop.return }
 
     it 'sets the correct output' do
-      expect(subject.data).to eq '20:00 17 Mar 2016'
+      expect(subject.output).to eq '20:00 17 Mar 2016'
     end
   end
 

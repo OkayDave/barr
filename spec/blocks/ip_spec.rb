@@ -18,7 +18,7 @@ RSpec.describe Barr::Blocks::IP do
       end
 
       it 'sets the data correctly' do
-        expect(subject.data).to eq 'lo > 192.168.1.100'
+        expect(subject.output).to eq 'lo > 192.168.1.100'
       end
     end
   end
@@ -35,7 +35,7 @@ RSpec.describe Barr::Blocks::IP do
       end
 
       it 'sets the data correctly' do
-        expect(subject.data).to eq 'lo > dead::beef'
+        expect(subject.output).to eq 'lo > dead::beef'
       end
     end
   end

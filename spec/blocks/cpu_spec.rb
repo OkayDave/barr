@@ -11,7 +11,7 @@ RSpec.describe Barr::Blocks::CPU do
     end
 
     it 'sets the data correctly' do
-      expect(subject.data).to eq '11.4%'
+      expect(subject.output).to eq '11.4%'
     end
   end
 

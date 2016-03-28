@@ -9,8 +9,8 @@ RSpec.describe Barr::Blocks::Whoami do
   describe '#update!' do
     before { subject.update! }
 
-    it 'sets the data correctly' do
-      expect(subject.data).to eq('dave')
+    it 'sets the output correctly' do
+      expect(subject.output).to eq('dave')
     end
   end
 

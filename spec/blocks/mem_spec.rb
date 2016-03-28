@@ -11,7 +11,7 @@ RSpec.describe Barr::Blocks::Mem do
     end
 
     it 'sets the data correctly' do
-      expect(subject.data).to eq '6.0G / 15.6G'
+      expect(subject.output).to eq '6.0G / 15.6G'
     end
   end
 

@@ -178,7 +178,7 @@ Shows selected filesystem's used and free space.
 
 **Requires i3wm**. Shows the current workspaces and highlights the active one. You can click a workspace name to change to there.
 
-`i3 = Barr::Blocks::I3.new focus_markers: ["\u",'']`
+`i3 = Barr::Blocks::I3.new focus_markers: ["\u02C3",'']`
 
 | Option | Value | Description | Default |
 | --- | --- | --- | --- |
@@ -237,7 +237,7 @@ There are no `Whoami` block specific configurable options.
 
 ## Create Your Own Block
 
-It's reasonably simple to add your own block to your script. Create a `class` that inherits from `Barr::Block` and add your custom `initialize` and `update!` methods. The `Barr::Manager` object will read your block's `@data` on each update.
+It's reasonably simple to add your own block to your script. Create a `class` that inherits from `Barr::Block` and add your custom `initialize` and `update!` methods. The `Barr::Manager` object will read your block's `@output` on each update.
 
 For example, a block which increments an integer might look like this:
 
@@ -263,8 +263,8 @@ class Incrementer < Barr::Block
       # Increment the current count
       @count += 1
 
-      # Set the @data to be the current count. This is what will be sent to lemonbar
-      @data = @count.to_s
+      # Set the @output to be the current count. This is what will be sent to lemonbar
+      @output = @count.to_s
     end
 
 end

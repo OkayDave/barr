@@ -15,7 +15,7 @@ module Barr
       def update!
         ip = sys_cmd.split('/').first
 
-        @data = "#{@device} > #{ip}"
+        @output = "#{@device} > #{ip}"
       end
 
       private
@@ -24,5 +24,6 @@ module Barr
         `ip addr show #{@device} | grep '#{@version}\s' | awk '{print $2}'`.chomp
       end
     end
+    Ip = IP
   end
 end

@@ -13,7 +13,7 @@ module Barr
       def update!
         total, used, perc = sys_cmd.split(' ')
 
-        @data = "#{used} / #{total} (#{perc})"
+        @output = "#{used} / #{total} (#{perc})"
       end
 
       private
@@ -23,5 +23,7 @@ module Barr
       end
 
     end
+
+    Hdd = HDD
   end
 end

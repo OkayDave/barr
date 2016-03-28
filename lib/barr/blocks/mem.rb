@@ -5,7 +5,7 @@ module Barr
     class Mem < Block
 
       def update!
-        @data = sys_cmd
+        @output = sys_cmd
       end
 
       private

@@ -55,13 +55,22 @@ module Barr
           block.update! if @count == 0 || (@count % block.interval == 0)
         rescue StandardError => e
           STDERR.puts e.message
-          block << ERROR_ICON unless block.data.include?(ERROR_ICON)
+          block << ERROR_ICON unless block.output.include?(ERROR_ICON)
           next
         end
       end
 
       @count += 1
     end
+    
+    # compatibility methods.
+    # alias_method would work here, but for consistency with Block
+    # I'll define them this way
+
+    def update; update!; end
+    def run; run!; end
+    def destroy; destroy!; end
+    def add_block; add; end
 
   end
 end

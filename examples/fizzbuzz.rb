@@ -12,7 +12,7 @@ class FizzBuzz < Barr::Block
   def update!
     @count += 1
 
-    @data = if (@count % 3 == 0) && (@count % 5 == 0)
+    @output = if (@count % 3 == 0) && (@count % 5 == 0)
               'FizzBuzz'
             elsif @count % 3 == 0
               'Fizz'
