@@ -51,5 +51,9 @@ module Barr
       '%{F-}%{B-}'
     end
 
+    def invert_colors
+      '%{R}'
+    end
+
   end
 end
