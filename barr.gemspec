@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Dave Russell"]
   spec.email         = ["dave.kerr@gmail.com"]
 
-  spec.summary       = "Barr is a status line generate for use with Lemonbar"
+  spec.summary       = "Barr is a status line generator for use with Lemonbar"
   spec.homepage      = "https://github.com/OkayDave/barr"
   spec.license       = "MIT"
 

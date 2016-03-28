@@ -70,7 +70,7 @@ module Barr
     def update; update!; end
     def run; run!; end
     def destroy; destroy!; end
-    def add_block; add; end
+    def add_block(block); add(block); end
 
   end
 end
