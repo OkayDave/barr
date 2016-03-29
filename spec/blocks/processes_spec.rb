@@ -1,11 +1,12 @@
-require 'spec_helper'
+require 'barr/blocks/processes'
 
-Processes = Barr::Blocks::Processes
+RSpec.describe Barr::Blocks::Processes do
+  let(:sys_cmd) { "468" }
 
-describe Barr::Blocks::Processes do
+  before { allow(subject).to receive(:sys_cmd).and_return(sys_cmd) }
+  
   it "sets number of active processes" do
-	b = Processes.new
-	b.update
-	expect(b.output).to eq(`ps -e | wc -l`)
+	  subject.update
+	  expect(subject.output).to eq("468")
   end
 end

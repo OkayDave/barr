@@ -1,52 +1,20 @@
 # coding: utf-8
-require 'spec_helper'
+require 'barr/blocks/temperature'
+require './spec/mocks/weather'
 
-class Temperature < Barr::Blocks::Temperature
-  def weather_data
-    WeatherDataTest.new
-  end
-end
+RSpec.describe Barr::Blocks::Temperature do
 
-class WeatherDataTest
-  def condition
-    Class.new do
-      def temp
-        return "100"
-      end
+  describe '#update!' do
+    subject { described_class.new location: '12723' }
 
-      def text
-        return "Nice day"
-      end
-    end.new
-  end
-end
-
-describe Barr::Blocks::Temperature do
-  it "exists" do
-    expect(Temperature.new).to be_a_kind_of(Barr::Blocks::Temperature)
-    expect(Temperature.new).to be_a_kind_of(Barr::Block)
-  end
-
-  describe '#initialize' do
-    it "accepts location option" do
-      expect(Temperature.new(location: "12723").location).to eq("12723") 
+    before do
+      allow(subject).to receive(:weather).and_return(WeatherMock.new)
+      subject.update!
     end
 
-    it "accepts unit option" do
-      expect(Temperature.new(unit: "F").unit).to eq("F")
-    end
-
-    it "sets default unit" do
-      expect(Temperature.new.unit).to eq("C")
+    it 'sets the data correctly' do
+      expect(subject.output).to eq '%{A:xdg-open weather.yahoo.com/country/state/city-12723/:}100°C Nice day%{A}'
     end
   end
 
-  describe "update" do
-    it "renders in the correct format" do
-      @b = Temperature.new location: "12723"
-      @b.update
-
-      expect(@b.output).to match(/%\{A\:xdg-open weather.yahoo.com\/country\/state\/city-12723\/:\}\d+°(C|F) (\w+| )+%{A}/)
-    end
-  end
 end

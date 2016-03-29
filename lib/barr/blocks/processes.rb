@@ -2,16 +2,12 @@ module Barr
   module Blocks
 
     class Processes < Block
-      def initialize opts={}
-        super 
-      end
-
-      def update
-	@output=sys_cmd
+      def update!
+	      @output = sys_cmd
       end
 
       def sys_cmd
-        `ps -e | wc -l`
+        `ps -e | wc -l`.chomp
       end
     end
   end

@@ -2,7 +2,11 @@ require 'barr/block'
 
 module Barr
   module Blocks
-    class Mem < Block
+    class Whoami < Block
+
+      def initialize(opts = {})
+        super
+      end
 
       def update!
         @output = sys_cmd
@@ -11,9 +15,11 @@ module Barr
       private
 
       def sys_cmd
-        `free -h | grep 'cache:' | awk '{printf "%s / %sG", $(NF-1), $(NF-1)+$(NF)}'`.chomp
+        `whoami`.chomp
       end
+
     end
+
+    WhoAmI = Whoami
   end
-  
 end

@@ -2,24 +2,27 @@ module Barr
   module Blocks
 
     class Battery < Block
+      attr_reader :show_remaining
+      
       def initialize opts={}
         super
-	@showRemaining=opts[:showRemaining] 
+	      @show_remaining = opts[:show_remaining] || true
       end
 
-      def update
-	if @showRemaining == true
-	  @output=batRem
-	else
-	  @output=batNoRem
-	end
+      def update!
+        if @show_remaining
+	        @output = battery_remaining
+        else
+	        @output = battery_no_remaining
+        end
       end
 
-      def batRem
-        `acpi | cut -d ',' -f 2-3`
+      def battery_remaining
+        `acpi | cut -d ',' -f 2-3`.chomp
       end
-      def batNoRem
-	`acpi | cut -d ',' -f 2`
+      
+      def battery_no_remaining
+        `acpi | cut -d ',' -f 2`.chomp
       end
     end
   end
