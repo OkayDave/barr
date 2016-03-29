@@ -4,7 +4,7 @@ class I3IpcMock
   end
 
   def workspaces
-    @workspaces ||= [WorkspaceMock.new(1, "a"), WorkspaceMock.new(2, "b"), WorkspaceMock.new(3, "c", true)]
+    @workspaces ||= [WorkspaceMock.new(1, "a"), WorkspaceMock.new(2, "2: b"), WorkspaceMock.new(3, "c", true)]
   end
 end
 
