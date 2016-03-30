@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "i3ipc", "0.2.0"
   spec.add_runtime_dependency "weather-api", "1.2.0"
+  spec.add_runtime_dependency "ruby-dbus", "~> 0.11.0"
 
   spec.requirements << "Lemonbar with XFT support (https://github.com/krypt-n/bar)"
   spec.requirements << "(Optional) I3 for Workspace support"

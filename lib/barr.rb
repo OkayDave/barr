@@ -11,6 +11,7 @@ require 'barr/blocks/ip'
 require 'barr/blocks/mem'
 require 'barr/blocks/processes'
 require 'barr/blocks/rhythmbox'
+require 'barr/blocks/spotify'
 require 'barr/blocks/temperature'
 require 'barr/blocks/whoami'
 
