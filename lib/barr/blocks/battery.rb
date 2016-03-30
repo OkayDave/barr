@@ -1,3 +1,5 @@
+require 'barr/block'
+
 module Barr
   module Blocks
 
@@ -6,11 +8,11 @@ module Barr
       
       def initialize opts={}
         super
-	      @show_remaining = opts[:show_remaining] || true
+	      @show_remaining = opts[:show_remaining].nil? ? true : opts[:show_remaining]
       end
 
       def update!
-        if @show_remaining
+        if @show_remaining == true
 	        @output = battery_remaining
         else
 	        @output = battery_no_remaining
