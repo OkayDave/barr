@@ -1,3 +1,5 @@
+require 'barr/block'
+
 module Barr
   module Blocks
 
