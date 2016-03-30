@@ -25,6 +25,12 @@ module Barr
         end
 
         @output = @workspaces.join('')
+      rescue => e
+        if e.message.match(/broken pipe/i)
+          @i3 = i3_connection
+        else
+          raise
+        end
       end
 
       def destroy!
