@@ -146,7 +146,7 @@ seperate_block = Barr::Blocks::Whoami.new
 
 ### Block Specific Configuration
 
-#### Battery 
+#### Battery
 
 Show battery status.
 
@@ -254,6 +254,15 @@ Shows the currently logged in user.
 `who = Barr::Blocks::Whoami.new`
 
 There are no `Whoami` block specific configurable options.
+
+
+#### Separator
+
+This block is a simple string to be used as a separator between other blocks.
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `symbol` | any string | The string to use as a separator | <code>'&#124;'</code>
 
 ## Create Your Own Block
 
