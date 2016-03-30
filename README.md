@@ -146,6 +146,17 @@ seperate_block = Barr::Blocks::Whoami.new
 
 ### Block Specific Configuration
 
+#### Battery 
+
+Show battery status.
+
+`battery = Barr::Blocks::Battery.new show_remaining: true`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `show_remaining` | bool | Show the remaining battery time | `true` |
+
+
 #### Clock
 
 Shows the current date and/or time.
@@ -203,6 +214,14 @@ Shows current RAM usage.
 `mem = Barr::Blocks::Mem.new`
 
 There are no `Mem` block specific configurable options.
+
+#### Processes
+
+Shows the number of currently active processes on your system.
+
+`proc = Barr::Blocks::Processes.new`
+
+There are no `Processes` block specific configurable options.
 
 #### Rhythmbox
 
