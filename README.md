@@ -146,7 +146,7 @@ seperate_block = Barr::Blocks::Whoami.new
 
 ### Block Specific Configuration
 
-#### Battery 
+#### Battery
 
 Show battery status.
 
@@ -228,6 +228,18 @@ There are no `Processes` block specific configurable options.
 **Requires Rhythmbox and rhythmbox-client**. Shows currently playing artist and/or track, as well as control buttons. Control buttons use FontAwesome.
 
 `rb = Barr::Blocks::Rhythmbox.new buttons: false`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `artist` | bool | Set to `true` or `false` to set whether or not the currently playing artist should be shown. | `true` |
+| `buttons` | bool | As above, but for the player control buttons | `true` |
+| `title` | bool | As above, but for the track title | `true` |
+
+#### Spotify
+
+**Requires Spotify**. Shows currently playing artist and/or track, as well as control buttons. Control buttons use FontAwesome.
+
+`rb = Barr::Blocks::Spotify.new buttons: false`
 
 | Option | Value | Description | Default |
 | --- | --- | --- | --- |
