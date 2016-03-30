@@ -3,6 +3,7 @@ require 'barr/manager'
 require 'barr/block'
 
 require 'barr/blocks/battery'
+require 'barr/blocks/bspwm'
 require 'barr/blocks/clock'
 require 'barr/blocks/conky'
 require 'barr/blocks/cpu'
