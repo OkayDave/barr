@@ -4,7 +4,7 @@ module Barr
   module Blocks
 
     class Conky < Block
-
+      attr_reader :text
       def initialize opts={}
         super
         @text = opts[:text]
@@ -18,7 +18,7 @@ module Barr
       end
 
       def sys_cmd
-        `tail -n1 #{@filename_output}`.chomp
+        `tail -n1 #{@filename_output}`.chomp.gsub("#","\u2588")
       end
 
       def write_template
@@ -45,7 +45,8 @@ module Barr
       end
 
       def destroy!
-        Process.kill(@process)
+        `rm #{@filename_template}`
+        `rm #{@filename_output}`
       end
       
     end

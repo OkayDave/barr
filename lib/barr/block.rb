@@ -1,6 +1,6 @@
 module Barr
   class Block
-    attr_reader :align, :bgcolor, :fgcolor, :icon, :interval, :output
+    attr_reader :align, :bgcolor, :fgcolor, :icon, :interval, :output 
     attr_accessor :manager
 
     def initialize(opts = {})

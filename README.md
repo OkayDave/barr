@@ -167,6 +167,17 @@ Shows the current date and/or time.
 | --- | --- | --- | --- |
 | `format` | strftime String | This takes a [strftime](http://ruby-doc.org/core-2.2.0/Time.html#method-i-strftime) formatted string. If you're not familiar with this syntax, you could use an [online generator](http://www.foragoodstrftime.com/).  | `'%H:%M %m %b %Y'` |
 
+
+#### Conky (Experimental)
+
+**Requires Conky**.  Show a conky `TEXT` formatted output. This is quite inefficient at the moment and if left running for prolonged periods will eat up your disk space. Otherwise works okay. Not all conky variables work well, will take a bit of trial and error.
+
+`conky` = Barr::Blocks::Conky.new string: "${cpu}"
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- | 
+| `text` | Conky 'TEXT' string | String made up of [one or more conky variables](http://conky.sourceforge.net/variables.html), as you might find in the `TEXT` section of a conkyrc | **REQUIRED** | 
+
 #### CPU
 
 Shows CPU load averaged across all cores.
