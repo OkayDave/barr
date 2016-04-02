@@ -78,4 +78,11 @@ RSpec.describe Barr::Block do
              ]}.to_not raise_error
     end
   end
+
+
+  describe "tmp_filename" do
+    it "should return unique filename" do
+      expect(subject.tmp_filename).to match(/^\/tmp\/(\w|\W|block|\d)+$/i)
+    end
+  end
 end
