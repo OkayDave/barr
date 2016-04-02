@@ -246,6 +246,16 @@ There are no `Processes` block specific configurable options.
 | `buttons` | bool | As above, but for the player control buttons | `true` |
 | `title` | bool | As above, but for the track title | `true` |
 
+
+#### Separator
+
+This block is a simple string to be used as a separator between other blocks.
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `symbol` | any string | The string to use as a separator | <code>'&#124;'</code>
+
+
 #### Temperature
 
 Shows the current temperature and summary of a given location ID. Clicking it will open the full report in your browser.
@@ -267,13 +277,6 @@ Shows the currently logged in user.
 There are no `Whoami` block specific configurable options.
 
 
-#### Separator
-
-This block is a simple string to be used as a separator between other blocks.
-
-| Option | Value | Description | Default |
-| --- | --- | --- | --- |
-| `symbol` | any string | The string to use as a separator | <code>'&#124;'</code>
 
 ## Create Your Own Block
 
