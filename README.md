@@ -156,6 +156,17 @@ Show battery status.
 | --- | --- | --- | --- |
 | `show_remaining` | bool | Show the remaining battery time | `true` |
 
+#### Bspwm (Experimental)
+
+**Requires Bspwm**. Shows desktops for selected monitor. and highlights focused one. Unfocused desktops are clickable. Could do with some optimization work and feedback from people that use BSP frequently, especially with multiple monitors. 
+
+`bsp = Barr::Blocks::Bspwm.new monitor: "DP-4", invert_focus_colors: true` 
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `focus_markers` | 2 element Array | These are used to 'highlight' the active workspace. The first element is used on the left of the active workspace, the second element on the right. | ['>', '<'] |
+| `invert_focus_colors` | bool | Should the block's `fgcolor` and `bgcolor` attributes be reversed for the workspace that is currently focused. | `false` |
+| `monitor` | String | The monitor ID (e.g. from `xrandr`) that the bar should read the desktops from. | First monitor found |
 
 #### Clock
 
