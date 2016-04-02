@@ -172,7 +172,7 @@ Shows the current date and/or time.
 
 **Requires Conky**.  Show a conky `TEXT` formatted output. This is quite inefficient at the moment and if left running for prolonged periods will eat up your disk space. Otherwise works okay. Not all conky variables work well, will take a bit of trial and error.
 
-`conky` = Barr::Blocks::Conky.new string: "${cpu}"
+`conky = Barr::Blocks::Conky.new string: "${cpu}"`
 
 | Option | Value | Description | Default |
 | --- | --- | --- | --- | 
