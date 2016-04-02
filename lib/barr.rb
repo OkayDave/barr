@@ -4,6 +4,7 @@ require 'barr/block'
 
 require 'barr/blocks/battery'
 require 'barr/blocks/clock'
+require 'barr/blocks/conky'
 require 'barr/blocks/cpu'
 require 'barr/blocks/hdd'
 require 'barr/blocks/i3'
