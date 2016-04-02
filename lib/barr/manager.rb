@@ -1,4 +1,5 @@
 require 'barr/block'
+require 'securerandom'
 
 module Barr
   class Manager
@@ -13,6 +14,7 @@ module Barr
     end
 
     def add(block)
+      block.manager = self
       @blocks << block
     end
 
@@ -61,6 +63,10 @@ module Barr
       end
 
       @count += 1
+    end
+
+    def id
+      @id ||= SecureRandom.uuid
     end
     
     # compatibility methods.
