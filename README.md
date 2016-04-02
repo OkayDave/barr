@@ -14,6 +14,10 @@ If that doesn't work, you probably don't have Ruby installed. I'd recommend you 
 
 For a simpler install, check your distro's package manager. That should be fine.
 
+To update to the latest release of Barr:
+
+    $ gem update barr
+
 ## Usage
 
 See [Examples folder](http://github.com/okaydave/barr/tree/master/examples) for more detailed usage examples.
@@ -81,7 +85,7 @@ All blocks inherit their behaviour from a base Block. This means that all blocks
 | ------ | ----- | ----------- | ------- |
 | `fgcolor` | RGB Hex string or `-` | Equivalent to lemonbar's `%{F}` format. Takes a hex string in the format of `#FFF`, `#FFFFFF`, or `#FFFFFFFF` (for transparency). | `'-'` |
 | `bgcolor` | RGB Hex string or `-` | As above. To use the configured lemonbar colors, use `'-'`. This also applies to the `fgcolor` option. | `'-'` |
-| `icon`   | String | This is prepended to each blocks' data. It can be a normal string like `'CPU:'` or a unicode string like `"\uf164"` (thumbs up in Font Awesome | `''` |
+| `icon`   | String | This is prepended to each blocks' data. It can be a normal string like `'CPU:'` or a unicode string like `"\uf164"` (thumbs up in Font Awesome) | `''` |
 | `interval` | Integer | How frequently the Block should perform its `update!` method in seconds. The block is drawn to lemonbar every second, this just affects how frequently the data can change.  | `5` |
 | `align` | Symbol | One of `:l`, `:c`, `:r` for left, centre and right alignment respectively. | `:l` |
 
@@ -164,7 +168,7 @@ Show battery status.
 
 | Option | Value | Description | Default |
 | --- | --- | --- | --- |
-| `focus_markers` | 2 element Array | These are used to 'highlight' the active workspace. The first element is used on the left of the active workspace, the second element on the right. | ['>', '<'] |
+| `focus_markers` | 2 element Array | These are used to 'highlight' the active workspace. The first element is used on the left of the active workspace, the second element on the right. | `['>', '<']` |
 | `invert_focus_colors` | bool | Should the block's `fgcolor` and `bgcolor` attributes be reversed for the workspace that is currently focused. | `false` |
 | `monitor` | String | The monitor ID (e.g. from `xrandr`) that the bar should read the desktops from. | First monitor found |
 
@@ -264,7 +268,7 @@ This block is a simple string to be used as a separator between other blocks.
 
 | Option | Value | Description | Default |
 | --- | --- | --- | --- |
-| `symbol` | any string | The string to use as a separator | <code>'&#124;'</code>
+| `symbol` | any string | The string to use as a separator | `&#124;`
 
 
 #### Temperature
@@ -275,8 +279,8 @@ Shows the current temperature and summary of a given location ID. Clicking it wi
 
 | Option | Value | Description | Default |
 | --- | --- | --- | --- |
-| `location` | Yahoo Weather string | The ID [Yahoo Weather](https://weather.yahoo.com) uses for your chosen location. Search for your location then use the number that appears at the end of the URL. For example, New York is 2459115| **REQUIRED**
-| `unit` | `'C'` or `'F'` | Choose between Celcius and Fahrenheit. | `'C'`
+| `location` | Yahoo Weather string | The ID [Yahoo Weather](https://weather.yahoo.com) uses for your chosen location. Search for your location then use the number that appears at the end of the URL. For example, New York is 2459115| **REQUIRED** |
+| `unit` | `'C'` or `'F'` | Choose between Celcius and Fahrenheit. | `'C'` |
 
 
 #### Whoami
