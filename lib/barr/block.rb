@@ -11,6 +11,7 @@ module Barr
       @fgcolor = opts[:fgcolor] || '-'
       @icon = opts[:icon] || ''
       @interval = opts[:interval] || 5
+      @interval = (@interval * 10).round
 
       @output = ''
     end

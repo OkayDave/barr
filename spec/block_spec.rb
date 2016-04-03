@@ -29,7 +29,7 @@ RSpec.describe Barr::Block do
       end
 
       it 'has a default interval' do
-        expect(subject.interval).to eq 5
+        expect(subject.interval).to eq 50
       end
     end
 
