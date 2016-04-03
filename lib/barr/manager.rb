@@ -6,11 +6,12 @@ module Barr
 
     ERROR_ICON = "%{F#FF0000}\uf071%{F-}"
 
-    attr_reader :count, :blocks
+    attr_reader :count, :blocks, :block_width
 
-    def initialize
+    def initialize opts={}
       @count = 0
       @blocks = []
+      @block_width = opts[:block_width]
     end
 
     def add(block)
@@ -26,7 +27,15 @@ module Barr
       outputs = { l: [], c: [], r: [] }
 
       @blocks.each do |block|
-        outputs[block.align] << block.draw
+        bo = block.draw
+        # STDERR.puts "pre: '#{bo}"
+        if block.width && false==true
+          bo = bo[0..(block.width-1)] if bo.length > block.width
+          STDERR.puts "> '#{bo}'"
+          bo = bo.ljust!(block.width, ' ') if bo.length < block.width
+          STDERR.puts "< '#{bo}'"
+        end
+        outputs[block.align] << bo
       end
 
       left_blocks = outputs[:l].join ''

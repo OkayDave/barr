@@ -31,6 +31,10 @@ RSpec.describe Barr::Block do
       it 'has a default interval' do
         expect(subject.interval).to eq 50
       end
+
+      it 'had default width ' do
+        expect(subject.width).to be false
+      end
     end
 
   end

@@ -1,6 +1,6 @@
 module Barr
   class Block
-    attr_reader :align, :bgcolor, :fgcolor, :icon, :interval, :output 
+    attr_reader :align, :bgcolor, :fgcolor, :icon, :interval, :output, :width 
     attr_accessor :manager
 
     def initialize(opts = {})
@@ -12,6 +12,7 @@ module Barr
       @icon = opts[:icon] || ''
       @interval = opts[:interval] || 5
       @interval = (@interval * 10).round
+      @width = opts[:width].nil? ? false : opts[:width]
 
       @output = ''
     end
