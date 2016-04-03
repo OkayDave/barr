@@ -16,7 +16,7 @@ module Barr
       end
 
       def update!
-        action = "xdg-open weather.yahoo.com\/country\/state\/city-#{@location}\/"
+        action = "xdg-open 'https\:\/\/weather.yahoo.com\/country\/state\/city-#{@location}\/'"
         @output = "%{A:#{action}:}#{weather.condition.temp}°#{@unit} #{weather.condition.text}%{A}"
       end
 
