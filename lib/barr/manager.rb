@@ -47,7 +47,7 @@ module Barr
       while true
         self.update!
         self.draw
-        sleep 1
+        sleep 0.1
       end
     end
 

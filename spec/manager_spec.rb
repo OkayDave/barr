@@ -15,8 +15,7 @@ RSpec.describe Barr::Manager do
       expect(block1).to receive(:update!).twice
       expect(block2).to receive(:update!).once
 
-      subject.update!
-      subject.update!
+      20.times { subject.update! }
     end
 
     it 'increments the update count' do
