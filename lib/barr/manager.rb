@@ -39,16 +39,31 @@ module Barr
       bar_render << "%{r} #{right_blocks}" if right_blocks.length > 0
 
       bar_render.gsub! "\n", ''
-
-      system('echo', '-e', bar_render.encode('UTF-8'))
+      bar_render = bar_render.encode('UTF-8')
+      
+      bar_render.encode("UTF-8")
     end
 
     def run!
       while true
         self.update!
-        self.draw
+        system('echo', '-e', self.draw)
         sleep 0.1
       end
+    end
+
+    def run_and_sub!
+      STDERR.puts "hello"
+      IO.popen("lemonbar -g 800x30+960+45 -d -B \"#333333\" -f \"Roboto Mono Medium:size=11\" -f \"Font Awesome:size=11\" -a 30") do |pipe| 
+        loop do
+          self.update!
+          op = self.draw
+          pipe.puts op
+          STDERR.puts op
+          sleep 0.1
+        end
+      end
+      STDERR.puts "bye!"
     end
 
     def update!
