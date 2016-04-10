@@ -11,15 +11,31 @@ module Barr
     def initialize
       @count = 0
       @blocks = []
+      @controllers = {}
     end
 
     def add(block)
       block.manager = self
       @blocks << block
+      block.config
     end
 
     def destroy!
       @blocks.each(&:destroy!)
+      @controllers.values.each(&:destroy!)
+    end
+
+    def controller type, opts={}
+      opts[:id] ||= ""
+      key = "#{type}_#{opts[:id]}"
+      
+      return @controllers[key] if @controllers[key]
+        
+      controller = Object.const_get("Barr::Controllers::"+type.to_s).new(opts)
+      @controllers[key]=controller
+      controller.run!
+
+      return controller
     end
 
     def draw
@@ -56,8 +72,21 @@ module Barr
         begin
           block.update! if @count == 0 || (@count % block.interval == 0)
         rescue StandardError => e
+          STDERR.puts "block: " + e.class.name
           STDERR.puts e.message
+          STDERR.puts e.backtrace
           block << ERROR_ICON unless block.output.include?(ERROR_ICON)
+          next
+        end
+      end
+
+      @controllers.values.each do |controller| 
+        begin
+          controller.update! if @count == 1 || (@count % controller.interval == 0)
+        rescue StandardError => e
+          STDERR.puts "controller: " + e.class.name
+          STDERR.puts e.message
+          STDERR.puts e.backtrace
           next
         end
       end

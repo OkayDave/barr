@@ -1,7 +1,6 @@
 module Barr
   class Block
-    attr_reader :align, :bgcolor, :fgcolor, :icon, :interval, :output 
-    attr_accessor :manager
+    attr_accessor :align, :bgcolor, :fgcolor, :icon, :interval, :manager, :controller, :format, :output
 
     def initialize(opts = {})
       reassign_deprecated_option opts, :fcolor, :fgcolor
@@ -14,6 +13,10 @@ module Barr
       @interval = (@interval * 10).round
 
       @output = ''
+    end
+
+    def config
+      # called by manager
     end
 
     def <<(str)
@@ -35,8 +38,45 @@ module Barr
     end
 
     def tmp_filename
-      @tmp_filename ||= "/tmp/#{SecureRandom.uuid}-#{self.class.name.gsub(/::/, "-")}-#{SecureRandom.urlsafe_base64}"
+      @tmp_filename ||= "/tmp/barr-#{SecureRandom.uuid}-#{self.class.name.gsub(/::/, "-")}-#{SecureRandom.urlsafe_base64}"
       return @tmp_filename
+    end
+
+    def substitue_variables string_format, subs
+      reg = /\$\{\w+\}/i
+      new_string = string_format
+      matches = string_format.scan reg
+      matches.each do |match|
+        keyword = match.scan(/\w+/i).first.downcase
+
+        if subs.has_key? keyword
+          sub = keyword
+        else
+          sub = ""
+        end
+
+        new_string.gsub!(match, sub)
+      end
+
+      return new_string
+    end
+
+    def format_string_from_hash(hash)
+      formatted = @format.clone 
+      matches = @format.scan(/([\$][\{](\w+)[\}])/)
+
+      matches.each do |match|
+        key =  match[1].downcase.to_sym
+        if hash.has_key? key
+          sub = hash[key]
+        else
+          sub = ""
+        end
+
+        formatted.gsub! match[0], sub
+      end
+
+      return formatted
     end
 
     # Backwards compatiblity methods.
