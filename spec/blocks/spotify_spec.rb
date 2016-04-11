@@ -1,5 +1,6 @@
 # coding: utf-8
 require 'barr/blocks/spotify'
+require './spec/mocks/spotify'
 
 RSpec.describe Barr::Blocks::Spotify do
   let(:sys_cmd) { Hash.new(title: 'Tear In My Heart',
@@ -12,6 +13,7 @@ RSpec.describe Barr::Blocks::Spotify do
   before do
     allow(subject).to receive(:running?).and_return(true)
     allow(subject).to receive(:sys_cmd).and_return(sys_cmd)
+    allow(subject).to receive(:spotify_iface).and_return(SpotifyDbusMock.new)
   end
 
   describe '#initialize' do
@@ -19,6 +21,11 @@ RSpec.describe Barr::Blocks::Spotify do
       expect(subject.view_opts[:artist]).to eq true
       expect(subject.view_opts[:buttons]).to eq true
       expect(subject.view_opts[:title]).to eq true
+    end
+
+    it 'sets a DBus connection' do
+      subject { described_class.new }
+      expect(subject.spotify_iface).to be_a(SpotifyDbusMock)
     end
   end
 

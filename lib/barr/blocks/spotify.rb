@@ -9,7 +9,7 @@ module Barr
       DBUS_NEXT = 'dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next'.freeze
       DBUS_PREV = 'dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous'.freeze
 
-      attr_reader :view_opts
+      attr_reader :view_opts, :spotify_iface
 
       def initialize(opts = {})
         super
@@ -19,11 +19,7 @@ module Barr
           buttons: opts[:buttons].nil? || opts[:buttons],
           title: opts[:title].nil? || opts[:title]
         }
-
-        spotify_service = DBus.session_bus['org.mpris.MediaPlayer2.spotify']
-        @spotify_player = spotify_service.object '/org/mpris/MediaPlayer2'
-        @spotify_player.introspect
-        @spotify_iface = @spotify_player['org.mpris.MediaPlayer2.Player']
+        @spotify_iface = dbus_connection
       end
 
       def update!
@@ -61,6 +57,23 @@ module Barr
           "%{A:#{DBUS_PLAY}:}\uf04b%{A}",
           "%{A:#{DBUS_NEXT}:}\uf051%{A}"
         ].join(' ').freeze
+      end
+
+      def dbus_connection
+        begin
+          spotify_service = DBus.session_bus['org.mpris.MediaPlayer2.spotify']
+          spotify_player = spotify_service.object '/org/mpris/MediaPlayer2'
+          spotify_player.introspect
+        rescue DBus::Error
+          # This should only happen when testing and Spotify is not running,
+          # because DBus cannot find a service file that provides
+          # org.mpris.MediaPlayer2.spotify. This will not be an issue with
+          # typical usage as long as #running? is checked before using this
+          # method or #sys_cmd.
+          return nil
+        else
+          return spotify_player['org.mpris.MediaPlayer2.Player']
+        end
       end
 
       private
