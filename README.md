@@ -162,9 +162,9 @@ Show battery status.
 
 #### Bspwm (Experimental)
 
-**Requires Bspwm**. Shows desktops for selected monitor. and highlights focused one. Unfocused desktops are clickable. Could do with some optimization work and feedback from people that use BSP frequently, especially with multiple monitors. 
+**Requires Bspwm**. Shows desktops for selected monitor. and highlights focused one. Unfocused desktops are clickable. Could do with some optimization work and feedback from people that use BSP frequently, especially with multiple monitors.
 
-`bsp = Barr::Blocks::Bspwm.new monitor: "DP-4", invert_focus_colors: true` 
+`bsp = Barr::Blocks::Bspwm.new monitor: "DP-4", invert_focus_colors: true`
 
 | Option | Value | Description | Default |
 | --- | --- | --- | --- |
@@ -190,8 +190,8 @@ Shows the current date and/or time.
 `conky = Barr::Blocks::Conky.new string: "${cpu}"`
 
 | Option | Value | Description | Default |
-| --- | --- | --- | --- | 
-| `text` | Conky 'TEXT' string | String made up of [one or more conky variables](http://conky.sourceforge.net/variables.html), as you might find in the `TEXT` section of a conkyrc | **REQUIRED** | 
+| --- | --- | --- | --- |
+| `text` | Conky 'TEXT' string | String made up of [one or more conky variables](http://conky.sourceforge.net/variables.html), as you might find in the `TEXT` section of a conkyrc | **REQUIRED** |
 
 #### CPU
 
@@ -261,7 +261,6 @@ There are no `Processes` block specific configurable options.
 | `buttons` | bool | As above, but for the player control buttons | `true` |
 | `title` | bool | As above, but for the track title | `true` |
 
-
 #### Separator
 
 This block is a simple string to be used as a separator between other blocks.
@@ -270,6 +269,17 @@ This block is a simple string to be used as a separator between other blocks.
 | --- | --- | --- | --- |
 | `symbol` | any string | The string to use as a separator | `&#124;`
 
+#### Spotify
+
+**Requires Spotify**. Shows currently playing artist and/or track, as well as control buttons. Control buttons use FontAwesome.
+
+`rb = Barr::Blocks::Spotify.new buttons: false`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `artist` | bool | Set to `true` or `false` to set whether or not the currently playing artist should be shown. | `true` |
+| `buttons` | bool | As above, but for the player control buttons | `true` |
+| `title` | bool | As above, but for the track title | `true` |
 
 #### Temperature
 
