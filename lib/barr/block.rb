@@ -1,6 +1,7 @@
 module Barr
   class Block
-    attr_reader :align, :bgcolor, :fgcolor, :icon, :interval, :output
+    attr_reader :align, :bgcolor, :fgcolor, :icon, :interval, :output 
+    attr_accessor :manager
 
     def initialize(opts = {})
       reassign_deprecated_option opts, :fcolor, :fgcolor
@@ -10,6 +11,7 @@ module Barr
       @fgcolor = opts[:fgcolor] || '-'
       @icon = opts[:icon] || ''
       @interval = opts[:interval] || 5
+      @interval = (@interval * 10).round
 
       @output = ''
     end
@@ -32,6 +34,11 @@ module Barr
     def update!
     end
 
+    def tmp_filename
+      @tmp_filename ||= "/tmp/#{SecureRandom.uuid}-#{self.class.name.gsub(/::/, "-")}-#{SecureRandom.urlsafe_base64}"
+      return @tmp_filename
+    end
+
     # Backwards compatiblity methods.
     # can't use alias/alias_method as they don't
     # trickle down to subclasses 
@@ -40,7 +47,7 @@ module Barr
     
     def reassign_deprecated_option opts, old, new
       if opts[new].nil? && !opts[old].nil?
-        STDERR.puts "Warning: the '#{old}' option will soon be deprecated in favour of '#{new}'. \n Please update your script."
+        STDERR.puts "Warning: #{self.class.name}'s '#{old}' option will soon be deprecated in favour of '#{new}'. \n Please update your script."
         opts[new] = opts[old]
       end
     end

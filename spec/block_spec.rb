@@ -29,7 +29,7 @@ RSpec.describe Barr::Block do
       end
 
       it 'has a default interval' do
-        expect(subject.interval).to eq 5
+        expect(subject.interval).to eq 50
       end
     end
 
@@ -76,6 +76,13 @@ RSpec.describe Barr::Block do
               Barr::Blocks::Ip,
               Barr::Blocks::WhoAmI
              ]}.to_not raise_error
+    end
+  end
+
+
+  describe "tmp_filename" do
+    it "should return unique filename" do
+      expect(subject.tmp_filename).to match(/^\/tmp\/(\w|\W|block|\d)+$/i)
     end
   end
 end

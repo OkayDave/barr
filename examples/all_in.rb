@@ -11,7 +11,8 @@ i3 = Barr::Blocks::I3.new(fgcolor: '#FFF',
                           bgcolor: '#145266',
                           focus_markers: %w(> <),
                           align: :r,
-                          icon: "\uf009")
+                          icon: "\uf009",
+                          interval: 0.2)
 
 artist = Barr::Blocks::Rhythmbox.new(bgcolor: '#466B41',
                                      icon: "\uf028",

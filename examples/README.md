@@ -8,6 +8,10 @@
 
 ![barr_example.rb](http://i.imgur.com/r4dtoqm.png)
 
+## bsp.rb
+
+![bsp.rb](http://i.imgur.com/DDqCoeq.png)
+
 ## fizzbuzz.rb
 
 ![fizzbuzz.rb](http://i.imgur.com/Cy0ZdrN.png)
