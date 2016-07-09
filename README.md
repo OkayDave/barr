@@ -353,7 +353,7 @@ block = Incrementer.new count: 1, align: :r
 
 Here are a few things I have planned
 
-* MPD support
+* ~~MPD support~~
 * Powerline styling options
 * More configuration for existing blocks
 * Some form of Conky support
