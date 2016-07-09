@@ -1,9 +1,9 @@
 # coding: utf-8
-require 'barr/blocks/rhythmbox'
+require 'barr/blocks/mpd'
 
 RSpec.describe Barr::Blocks::MPD do
 
-  let(:sys_cmd) { 'Marilyn Manson - Into The Fire' }
+  let(:sys_cmd) { 'Muse - Knights Of Cydonia' }
 
   before do
     allow(subject).to receive(:running?).and_return(true)
@@ -23,7 +23,7 @@ RSpec.describe Barr::Blocks::MPD do
       before { subject.update! }
 
       it 'sets the output correctly' do
-        expect(subject.output).to eq('Marilyn Manson - Into The Fire %{A:rhythmbox-client --previous:}%{A} %{A:rhythmbox-client --play-pause:}%{A} %{A:rhythmbox-client --next:}%{A}')
+        expect(subject.output).to eq('Muse - Knights Of Cydonia %{A:mpc prev:}%{A} %{A:mpc toggle:}%{A} %{A:mpc next:}%{A}')
       end
     end
 
@@ -33,7 +33,7 @@ RSpec.describe Barr::Blocks::MPD do
       before { subject.update! }
 
       it 'sets the output correctly' do
-        expect(subject.output).to eq('Marilyn Manson')
+        expect(subject.output).to eq('Muse')
       end
     end
 
@@ -43,7 +43,7 @@ RSpec.describe Barr::Blocks::MPD do
       before { subject.update! }
 
       it 'sets the output correctly' do
-        expect(subject.output).to eq('Into The Fire')
+        expect(subject.output).to eq('Knights Of Cydonia')
       end
     end
 
@@ -53,7 +53,7 @@ RSpec.describe Barr::Blocks::MPD do
       before { subject.update! }
 
       it 'sets the output correctly' do
-        expect(subject.output).to eq('%{A:rhythmbox-client --previous:}%{A} %{A:rhythmbox-client --play-pause:}%{A} %{A:rhythmbox-client --next:}%{A}')
+        expect(subject.output).to eq('%{A:mpc prev:}%{A} %{A:mpc toggle:}%{A} %{A:mpc next:}%{A}')
       end
     end
 
