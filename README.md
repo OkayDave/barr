@@ -261,6 +261,20 @@ There are no `Processes` block specific configurable options.
 | `buttons` | bool | As above, but for the player control buttons | `true` |
 | `title` | bool | As above, but for the track title | `true` |
 
+#### MPD
+
+**Requires MPD server (mpd or mopidy) and MPC**. Shows currently playing artist and/or track, as well as control buttons. Control buttons use FontAwesome.
+
+`mpd = Barr::Blocks::MPD.new buttons: false`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `artist` | bool | Set to `true` or `false` to set whether or not the currently playing artist should be shown. | `true` |
+| `buttons` | bool | As above, but for the player control buttons | `true` |
+| `title` | bool | As above, but for the track title | `true` |
+
+_ps. Most of the code for this block was directly taken from the above Rhythmbox
+block so most of the credit should go to them :wink:_
 
 #### Separator
 
@@ -339,7 +353,7 @@ block = Incrementer.new count: 1, align: :r
 
 Here are a few things I have planned
 
-* MPD support
+* ~~MPD support~~
 * Powerline styling options
 * More configuration for existing blocks
 * Some form of Conky support
