@@ -160,6 +160,29 @@ Show battery status.
 | --- | --- | --- | --- |
 | `show_remaining` | bool | Show the remaining battery time | `true` |
 
+#### BBCWeather 
+
+Shows configurable weather information as provided by the BBC. Recommended over the `Temperature` block due to how much more reliable the BBC service is.
+
+`bbc = Barr::Blocks::BBCWeather.new location: "5308655", format: "${TEMPERATURE} wind: ${WINDSPEED} ${WINDDIRECTION}"
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `format` | string | Configurable format for showing which weather information is displayed. See table below for options. | `"${TEMPERATURE} - ${SUMMARY}"` |
+| `location` | string | Find your location on the [BBC Weather](http://www.bbc.co.uk/weather) service and use the last part of the URL as the location string. For example, Phoenix Arizona is "5308655". | **REQUIRED** |
+| `speed_unit` | "mph" or "kph" | Whether to show speeds in mph or kph | `"mph"`
+| `temp_unit` | "c" or "f" | Whether to show temperatures in C or F | `"c"`
+
+| Option | Description | 
+| --- | --- | 
+| `${TEMPERATURE}` | Current temperature | 
+| `${SUMMARY}` | Brief summary of weather, e.g. "Light cloud" | 
+| `${WINDSPEED}` | Current wind speed | 
+| `${WINDDIRECTION}` | Current wind direction | 
+| `${HUMIDITY}` | Current humidity percentage | 
+| `${VISIBILITY}` | Sumamry of visbility, e.g. "Excellent" | 
+| `${PRESSURE}` | Current pressure and trend, e.g. "1000mb, Falling" |
+ 
 #### Bspwm (Experimental)
 
 **Requires Bspwm**. Shows desktops for selected monitor. and highlights focused one. Unfocused desktops are clickable. Could do with some optimization work and feedback from people that use BSP frequently, especially with multiple monitors. 

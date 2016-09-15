@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+
+cmd = ARGV.join('://').gsub("\\","")
+`xdg-open #{cmd}`
