@@ -19,18 +19,17 @@ module Barr
         @tree = nil
         op = []
         focused = ""
-        
         bsp_tree["monitors"].each do |monitor|
-          next if monitor["name"] != @monitor
-          focused = monitor["focusedDesktopName"]
+          next if (monitor["id"] != @monitor) && (monitor["name"] != @monitor) 
+          focused = monitor["focusedDesktopId"]
           monitor["desktops"].each do |desktop|
-            if desktop["name"] == focused
+            if desktop["id"] == focused
               op << focused_desktop(desktop)
             else
               op << unfocused_desktop(desktop)
             end
           end
-          
+
         end
 
         @output = op.join(" ")
@@ -53,15 +52,15 @@ module Barr
 
       def unfocused_desktop desktop
         op = ""
-        op += "%{A:bspc desktop -f #{desktop["name"].gsub(":","\:")}:} "
+        op += "%{A:bspc desktop -f #{desktop["id"]}:} "
         op += "#{desktop["name"]}"
         op += " %{A}"
 
         return op
       end
-      
+
       def first_monitor
-        bsp_tree["primaryMonitorName"]
+        bsp_tree["monitors"].first["id"]
       end
 
       def sys_cmd

@@ -17,7 +17,7 @@ RSpec.describe Barr::Blocks::Bspwm do
     end
 
     it "sets default monitor" do
-      expect(subject.monitor).to eq("DP-4")
+      expect(subject.monitor).to eq(2097153)
     end
 
   end
@@ -30,8 +30,8 @@ RSpec.describe Barr::Blocks::Bspwm do
     end
  
     it "desktops" do
-      expect(subject.tree["monitors"].first["desktops"].count).to eq(10)
-      expect(subject.tree["monitors"].first["desktops"].first["name"]).to eq("I")
+      expect(subject.tree["monitors"].first["desktops"].count).to eq(6)
+      expect(subject.tree["monitors"].first["desktops"].first["name"]).to eq("web")
     end
 
   end
@@ -40,7 +40,7 @@ RSpec.describe Barr::Blocks::Bspwm do
     before { subject.update! }
 
     it "renders output correctly" do
-      expect(subject.output).to eq("> I < %{A:bspc desktop -f II:} II %{A} %{A:bspc desktop -f III:} III %{A} %{A:bspc desktop -f IV:} IV %{A} %{A:bspc desktop -f V:} V %{A} %{A:bspc desktop -f VI:} VI %{A} %{A:bspc desktop -f VII:} VII %{A} %{A:bspc desktop -f VIII:} VIII %{A} %{A:bspc desktop -f IX:} IX %{A} %{A:bspc desktop -f X:} X %{A}")
+      expect(subject.output).to eq("> web < %{A:bspc desktop -f 2097156:} media %{A} %{A:bspc desktop -f 2097157:} web %{A} %{A:bspc desktop -f 2097158:} shell %{A} %{A:bspc desktop -f 2097159:} steam %{A} %{A:bspc desktop -f 2097160:} sys %{A}")
     end
   end
 
@@ -59,7 +59,7 @@ RSpec.describe Barr::Blocks::Bspwm do
       before { @op = subject.focused_desktop(@fd) }
 
       it "renders in the correct format" do
-        expect(@op).to eq("%{R}> I <%{R}")
+        expect(@op).to eq("%{R}> web <%{R}")
       end
     end
 
@@ -67,7 +67,7 @@ RSpec.describe Barr::Blocks::Bspwm do
       before { @op = subject.unfocused_desktop(@ud) }
 
       it "renders in the correct format" do
-        expect(@op).to eq("%{A:bspc desktop -f X:} X %{A}")
+        expect(@op).to eq("%{A:bspc desktop -f 2097160:} sys %{A}")
       end
     end
   end
