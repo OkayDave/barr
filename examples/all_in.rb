@@ -39,7 +39,7 @@ weather = Barr::Blocks::Temperature.new(bgcolor: '#4A072B',
                                         icon: "\uf0c2 Philadelphia: ",
                                         interval: 1500)
 
-cpu = Barr::Blocks::CPU.new icon: "\uf1fe"
+cpu = Barr::Blocks::CPU.new icon: "\uf1fe", format: "${LOAD}% ${TEMP}"
 
 mem = Barr::Blocks::Mem.new bgcolor: '#333333'
 
