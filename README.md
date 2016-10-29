@@ -222,7 +222,14 @@ Shows CPU load averaged across all cores.
 
 `cpu = Barr::Blocks::CPU.new`
 
-There are no `CPU` block specific configurable options.
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `format` | string | Configurable format for showing which weather information is displayed. See table below for options. | `"${LOAD}"` |
+
+| Option | Description |
+| --- | --- |
+| `${LOAD}` | Current load in % |
+| `${TEMP}` | Current temperature |
 
 #### HDD
 
