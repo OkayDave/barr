@@ -164,7 +164,7 @@ Show battery status.
 
 Shows configurable weather information as provided by the BBC. Recommended over the `Temperature` block due to how much more reliable the BBC service is.
 
-`bbc = Barr::Blocks::BBCWeather.new location: "5308655", format: "${TEMPERATURE} wind: ${WINDSPEED} ${WINDDIRECTION}"
+`bbc = Barr::Blocks::BBCWeather.new location: "5308655", format: "${TEMPERATURE} wind: ${WINDSPEED} ${WINDDIRECTION}"`
 
 | Option | Value | Description | Default |
 | --- | --- | --- | --- |
@@ -180,7 +180,7 @@ Shows configurable weather information as provided by the BBC. Recommended over 
 | `${WINDSPEED}` | Current wind speed | 
 | `${WINDDIRECTION}` | Current wind direction | 
 | `${HUMIDITY}` | Current humidity percentage | 
-| `${VISIBILITY}` | Sumamry of visbility, e.g. "Excellent" | 
+| `${VISIBILITY}` | Summary of visbility, e.g. "Excellent" | 
 | `${PRESSURE}` | Current pressure and trend, e.g. "1000mb, Falling" |
  
 #### Bspwm (Experimental)

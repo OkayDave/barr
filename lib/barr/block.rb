@@ -42,25 +42,6 @@ module Barr
       return @tmp_filename
     end
 
-    def substitue_variables string_format, subs
-      reg = /\$\{\w+\}/i
-      new_string = string_format
-      matches = string_format.scan reg
-      matches.each do |match|
-        keyword = match.scan(/\w+/i).first.downcase
-
-        if subs.has_key? keyword
-          sub = keyword
-        else
-          sub = ""
-        end
-
-        new_string.gsub!(match, sub)
-      end
-
-      return new_string
-    end
-
     def format_string_from_hash(hash)
       formatted = @format.clone 
       matches = @format.scan(/([\$][\{](\w+)[\}])/)
