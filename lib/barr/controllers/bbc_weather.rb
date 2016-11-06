@@ -13,10 +13,6 @@ module Barr
         @speed_unit = (opts[:speed_unit] || "mph").downcase
       end
       
-      def update!
-        @output = JSON.parse(`cat #{filename}`, symbolize_names: true)
-      end
-
       def run!
         @thread = Thread.new do  
           loop do 
