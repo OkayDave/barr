@@ -241,6 +241,19 @@ Shows selected filesystem's used and free space.
 | --- | --- | --- | --- |
 | `device` | String | This is the name of the device for which you'd like to see free/used space. Something like `/dev/sda2`. Run `df -h` in your terminal and look at the first column.  | **REQUIRED** |
 
+#### HTTPGrab 
+
+Grabs a piece of text from a URL based on a css or xpath selector. Optionally opens the link in a browser when clicked. Makes a reasonable effort at supporting pages controlled by javascript.
+
+`http = Barr::Blocks::HTTPGrab.new url: "http://www.bbc.co.uk/news", selector: "span.most-popular-list-item__headline"`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `link` | Bool | Set to `true` or `false` to set whether or not the block should open the given URL in a browser when clicked. | `false` |
+| `selector` | String | The CSS or XPath selector for the DOM node of the text you'd like grabbed | **REQUIRED** | 
+| `type` | Symbol | Set to `:css` or `:xpath` to set which type of selector you have provided | `:css` |
+| `url` | String | URL that you'd like to grab from | **REQUIRED** |
+
 #### I3
 
 **Requires i3wm**. Shows the current workspaces and highlights the active one. You can click a workspace name to change to there.

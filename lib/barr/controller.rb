@@ -13,7 +13,7 @@ module Barr
     end
 
     def update!
-      
+      @output = JSON.parse(`cat #{filename}`, symbolize_names: true)
     end
 
     def file

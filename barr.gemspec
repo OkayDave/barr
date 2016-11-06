@@ -29,11 +29,12 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "timecop", "~> 0.8.0"
-  spec.add_development_dependency "pry", "~> 0.10"
+  spec.add_development_dependency "pry-byebug", "~> 3.4"
 
   spec.add_runtime_dependency "i3ipc", "0.2.0"
   spec.add_runtime_dependency "weather-api", "1.2.0"
   spec.add_runtime_dependency "nokogiri", "~> 1.6"
+  spec.add_runtime_dependency "poltergeist", "~> 1.11"
 
   spec.requirements << "Lemonbar with XFT support (https://github.com/krypt-n/bar)"
   spec.requirements << "(Optional) I3 for Workspace support"
