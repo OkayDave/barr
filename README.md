@@ -261,7 +261,29 @@ Grabs a piece of text from a URL based on a css or xpath selector. Optionally op
 | Option | Value | Description | Default |
 | --- | --- | --- | --- |
 | `id` | `hue` light ID | You can list all of your lights and their IDs by running `hue lights`. The ID is the first column, e.g. `1`. | **REQUIRED** | 
-| `format` | string | Configurable format for 
+| `format` | string | Configurable format for choosing the buttons and their behaviours. See table below for options | `"${OFF} ${ON}"`| 
+
+| Option | Description | 
+| `${OFF}` | Adds a button to turn the selected light off. Can be configured with custom text | 
+| `${ON}` | Adss a button to turn the selected light on. Several buttons can be added with individual behaviours | 
+
+Both the `${OFF}` and `${ON}` buttons allow additional button specific behaviours to be configured. The supported options are:
+
+| Option | Description | 
+| `B` | Brightness. Value between `0` and `255`.
+| `H` | Hue. Value between `0` and `65535`.
+| `A` | Alert. Value of either `select` (for a single flash) or `lselect` (for 30s of flashing)
+| `T` | Button Text. Any character string that will be shown as the button's text.
+
+These can be applied to the Block's `format` string options by appending them with a colon and passing the option with a hyphen: 
+
+`${ON:B-25}` - Sets the light's brightness to 25 (out of 255).
+
+You can add multiple options to a single button by separating the options with a comma:
+
+`${ON:B-255,T-Bright}` - creates a button that looks like `[Bright]` which sets the light to maximum brightness.
+
+See the [hue.rb](https://github.com/OkayDave/barr/blob/develop/examples/hue.rb) file for more examples.
 
 #### I3
 
