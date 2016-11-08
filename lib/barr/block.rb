@@ -42,14 +42,22 @@ module Barr
       return @tmp_filename
     end
 
-    def format_string_from_hash(hash)
-      formatted = @format.clone 
-      matches = @format.scan(/([\$][\{](\w+)[\}])/)
+    def wrap_button text, action
+      "%{A:#{action}:}#{text}%{A}"
+    end
 
+    def format_string_from_hash(hash, sender=nil)
+      formatted = @format.clone 
+      matches = @format.scan(/([\$][\{](\w+)(:?([^:\}]+)?)[\}])/)
+      # binding.pry
       matches.each do |match|
         key =  match[1].downcase.to_sym
         if hash.has_key? key
-          sub = hash[key]
+          if !match[3].nil? && sender && sender.respond_to?(:additions_for_format)
+            sub = sender.additions_for_format(key, match[3])
+          else
+            sub = hash[key]
+          end
         else
           sub = ""
         end
