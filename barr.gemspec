@@ -35,6 +35,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "weather-api", "1.2.0"
   spec.add_runtime_dependency "nokogiri", "~> 1.6"
   spec.add_runtime_dependency "poltergeist", "~> 1.11"
+  spec.add_runtime_dependency "hue", "~> 0.2"
 
   spec.requirements << "Lemonbar with XFT support (https://github.com/krypt-n/bar)"
   spec.requirements << "(Optional) I3 for Workspace support"

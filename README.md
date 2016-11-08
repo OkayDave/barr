@@ -254,6 +254,15 @@ Grabs a piece of text from a URL based on a css or xpath selector. Optionally op
 | `type` | Symbol | Set to `:css` or `:xpath` to set which type of selector you have provided | `:css` |
 | `url` | String | URL that you'd like to grab from | **REQUIRED** |
 
+#### HueLight
+
+**Requires [Hue](https://github.com/soffes/hue) gem to be installed and configured prior to use** Allows you to set buttons for controlling a single Philips Hue Light.
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `id` | `hue` light ID | You can list all of your lights and their IDs by running `hue lights`. The ID is the first column, e.g. `1`. | **REQUIRED** | 
+| `format` | string | Configurable format for 
+
 #### I3
 
 **Requires i3wm**. Shows the current workspaces and highlights the active one. You can click a workspace name to change to there.
