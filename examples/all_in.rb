@@ -47,6 +47,12 @@ hdd = Barr::Blocks::HDD.new bgcolor: '#444444', device: 'sdc2', interval: 300
 
 local = Barr::Blocks::IP.new bgcolor: '#937739', align: :r, icon: "\uf1ce"
 
+office_lights = Barr::Blocks::HueGroup.new id: "3",
+                                     icon: "\uf1ad",
+                                     format: "${OFF} ${ON:H-1,H-65535,B-255} ${ON:B-120,T-dim}",
+                                     align: :r,
+                                     bgcolor: '#0c1e3a',
+                                     fcolor: '#EEEEEE'
 # Left
 @man.add artist
 @man.add song
@@ -56,6 +62,7 @@ local = Barr::Blocks::IP.new bgcolor: '#937739', align: :r, icon: "\uf1ce"
 @man.add hdd
 
 # Right 
+@man.add office_lights
 @man.add i3
 @man.add local
 @man.add who
