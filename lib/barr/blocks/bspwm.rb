@@ -61,7 +61,7 @@ module Barr
       end
       
       def first_monitor
-        bsp_tree["primaryMonitorName"]
+          bsp_tree["monitors"].find {|monitor| monitor["id"] == bsp_tree["primaryMonitorId"]}["name"]
       end
 
       def sys_cmd
