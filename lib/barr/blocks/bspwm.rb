@@ -22,9 +22,9 @@ module Barr
         
         bsp_tree["monitors"].each do |monitor|
           next if monitor["name"] != @monitor
-          focused = monitor["focusedDesktopName"]
+          focused = monitor["focusedDesktopId"]
           monitor["desktops"].each do |desktop|
-            if desktop["name"] == focused
+            if desktop["id"] == focused
               op << focused_desktop(desktop)
             else
               op << unfocused_desktop(desktop)
@@ -61,7 +61,7 @@ module Barr
       end
       
       def first_monitor
-        bsp_tree["primaryMonitorName"]
+          bsp_tree["monitors"].find {|monitor| monitor["id"] == bsp_tree["primaryMonitorId"]}["name"]
       end
 
       def sys_cmd
