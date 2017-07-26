@@ -272,10 +272,10 @@ Grabs a piece of text from a URL based on a css or xpath selector. Optionally op
 Both the `${OFF}` and `${ON}` buttons allow additional button specific behaviours to be configured. The supported options are:
 
 | Option | Description |
-| `B` | Brightness. Value between `0` and `255`.
-| `H` | Hue. Value between `0` and `65535`.
-| `A` | Alert. Value of either `select` (for a single flash) or `lselect` (for 30s of flashing)
-| `T` | Button Text. Any character string that will be shown as the button's text.
+| `B` | Brightness. Value between `0` and `255`. |
+| `H` | Hue. Value between `0` and `65535`. |
+| `A` | Alert. Value of either `select` (for a single flash) or `lselect` (for 30s of flashing) |
+| `T` | Button Text. Any character string that will be shown as the button's text. |
 
 These can be applied to the Block's `format` string options by appending them with a colon and passing the option with a hyphen:
 
@@ -299,16 +299,18 @@ See the [hue.rb](https://github.com/OkayDave/barr/blob/develop/examples/hue.rb) 
 | `format` | string | Configurable format for choosing the buttons and their behaviours. See table below for options | `"${OFF} ${ON}"`| 
 
 | Option | Description | 
+| --- | --- |
 | `${OFF}` | Adds a button to turn the selected light off. Can be configured with custom text | 
-| `${ON}` | Adss a button to turn the selected light on. Several buttons can be added with individual behaviours | 
+| `${ON}` | Adds a button to turn the selected light on. Several buttons can be added with individual behaviours | 
 
 Both the `${OFF}` and `${ON}` buttons allow additional button specific behaviours to be configured. The supported options are:
 
 | Option | Description | 
-| `B` | Brightness. Value between `0` and `255`.
-| `H` | Hue. Value between `0` and `65535`.
-| `A` | Alert. Value of either `select` (for a single flash) or `lselect` (for 30s of flashing)
-| `T` | Button Text. Any character string that will be shown as the button's text.
+| --- | --- |
+| `B` | Brightness. Value between `0` and `255`. |
+| `H` | Hue. Value between `0` and `65535`. |
+| `A` | Alert. Value of either `select` (for a single flash) or `lselect` (for 30s of flashing) |
+| `T` | Button Text. Any character string that will be shown as the button's text. |
 
 These can be applied to the Block's `format` string options by appending them with a colon and passing the option with a hyphen: 
 
@@ -350,6 +352,24 @@ Shows current RAM usage.
 
 There are no `Mem` block specific configurable options.
 
+#### Playerctl
+
+**Requires [Playerctl](https://github.com/acrisci/playerctl)**. Shows configurable information about currently playing track on a variety of players. Option to include control buttons.
+
+`pctl = Barr::Blocks::Playerctl.new player: "spotify", format: "${ARTIST} - ${TITLE} - ${BUTTONS}`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `format` | string | Configurable format for defining how the information is displayed. See table below for options | `"${ARTIST} - ${TRACK}"` | 
+| `player` | string | ID of the media app you want to control. Run `playerctl -l` to see what is available | '' | 
+
+| Format Option | Description |
+| --- | --- |
+| `${ARTIST}` | Artist of currently playing track |
+| `${ALBUM}` | Album of currently playing track |
+| `${TITLE}` | Title of currently playing track |
+| `${BUTTONS}` | Buttons to control playback |
+
 #### Processes
 
 Shows the number of currently active processes on your system.
@@ -359,7 +379,7 @@ Shows the number of currently active processes on your system.
 There are no `Processes` block specific configurable options.
 
 #### Rhythmbox
-
+**DEPRECATED** It's reccommended to use the `Playerctl` block instead of this. It's compatible with Rhythmbox and many other players, including Spotify.
 **Requires Rhythmbox and rhythmbox-client**. Shows currently playing artist and/or track, as well as control buttons. Control buttons use FontAwesome.
 
 `rb = Barr::Blocks::Rhythmbox.new buttons: false`
