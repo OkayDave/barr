@@ -18,7 +18,7 @@ module Barr
 
       def update!
         op = @controller.output
-        @output = "%{A:barr_open_url http www.bbc.co.uk\/weather\/#{@location}:}#{format_string_from_hash(op)}%{A}"
+        @output = "%{A:barr_open_url https www.bbc.co.uk\/weather\/#{@location}:}#{format_string_from_hash(op)}%{A}"
       end
     end
   end

@@ -21,7 +21,7 @@ RSpec.describe Barr::Blocks::BBCWeatherBlockMock do
       subject.config
       subject.controller.update!
       subject.update!
-      expect(subject.output).to eq('%{A:barr_open_url http www.bbc.co.uk/weather/123456:}17 C - Nice outside%{A}')
+      expect(subject.output).to eq('%{A:barr_open_url https www.bbc.co.uk/weather/123456:}17 C - Nice outside%{A}')
     end
   end
 end
