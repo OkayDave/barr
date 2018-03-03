@@ -16,6 +16,7 @@ require 'barr/blocks/hue_group'
 require 'barr/blocks/i3'
 require 'barr/blocks/ip'
 require 'barr/blocks/mem'
+require 'barr/blocks/playerctl'
 require 'barr/blocks/processes'
 require 'barr/blocks/rhythmbox'
 require 'barr/blocks/mpd'
@@ -25,6 +26,7 @@ require 'barr/blocks/separator'
 
 require 'barr/controllers/bbc_weather'
 require 'barr/controllers/http_grab'
+require 'barr/controllers/playerctl'
 
 module Barr
 end

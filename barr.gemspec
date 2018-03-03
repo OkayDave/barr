@@ -42,4 +42,5 @@ Gem::Specification.new do |spec|
   spec.requirements << "(Optional) Bspwm for Bspwm desktop support"
   spec.requirements << "(Optional) RhythmBox & rhythmbox-client"
   spec.requirements << "(Optional) FontAwesome font"
+  spec.requirements << "(Optional) playerctl"
 end
