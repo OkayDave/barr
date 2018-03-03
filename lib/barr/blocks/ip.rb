@@ -3,7 +3,6 @@ require 'barr/block'
 module Barr
   module Blocks
     class IP < Block
-
       attr_reader :device
 
       def initialize(opts = {})

@@ -9,7 +9,7 @@ module Barr
         super
 
         @id = opts[:id]
-        @format = opts[:format] || "${ON} ${OFF}"
+        @format = opts[:format] || '${ON} ${OFF}'
       end
 
       def update!
@@ -18,17 +18,17 @@ module Barr
 
       def additions_for_format(key, option_str)
         agg = []
-        text = ""
+        text = ''
         options = option_str.split(/(?<!\\),/)
 
         if options.nil?
           case key.downcase
           when :on
             agg << 'on'
-            text = "on"
+            text = 'on'
           when :off
             agg << 'off'
-            text = "off"
+            text = 'off'
           end
 
         else
@@ -36,28 +36,28 @@ module Barr
             option = option.split(/(?<!\\)-/)
 
             case option[0].downcase
-              when 'b'
-                agg << "--brightness #{option[1]}"
-              when 'h'
-                agg << "--hue #{option[1]}"
-              when 'a'
-                agg << "--alert #{option[1]}"
-              when 't'
-                text = option[1]
+            when 'b'
+              agg << "--brightness #{option[1]}"
+            when 'h'
+              agg << "--hue #{option[1]}"
+            when 'a'
+              agg << "--alert #{option[1]}"
+            when 't'
+              text = option[1]
             end
           end
 
         end
 
         if text.empty?
-          text = key == :off ? "off" : "on"
+          text = key == :off ? 'off' : 'on'
         end
 
         if agg.empty?
-          agg << key == :off ? "off" : "on"
+          agg << key == :off ? 'off' : 'on'
         end
 
-        return wrap_button("[#{text}]", "#{sys_cmd} #{agg.join(" ")}")
+        wrap_button("[#{text}]", "#{sys_cmd} #{agg.join(' ')}")
       end
 
       private
@@ -67,15 +67,14 @@ module Barr
 
         return @base_options unless @base_options.empty?
 
-        @base_options[:on] = wrap_button("[on]", "#{sys_cmd} on")
-        @base_options[:off] = wrap_button("[off]", "#{sys_cmd} off")
-        return @base_options
+        @base_options[:on] = wrap_button('[on]', "#{sys_cmd} on")
+        @base_options[:off] = wrap_button('[off]', "#{sys_cmd} off")
+        @base_options
       end
 
       def sys_cmd
         "hue light #{@id}"
       end
-
     end
   end
 end

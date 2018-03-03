@@ -1,4 +1,4 @@
-$bsp_json = <<EOF
+$bsp_json = <<BSP # rubocop:disable Style/GlobalVars
 {
   "focusedMonitorId": 2097153,
   "clientsCount": 7,
@@ -979,4 +979,4 @@ $bsp_json = <<EOF
     37748739
   ]
 }
-EOF
+BSP

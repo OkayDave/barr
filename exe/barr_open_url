@@ -2,5 +2,5 @@
 
 require 'rubygems'
 
-cmd = ARGV.join('://').gsub("\\","")
+cmd = ARGV.join('://').delete('\\')
 `xdg-open #{cmd}`

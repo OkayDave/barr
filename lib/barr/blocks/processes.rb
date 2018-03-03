@@ -2,10 +2,9 @@ require 'barr/block'
 
 module Barr
   module Blocks
-
     class Processes < Block
       def update!
-	      @output = sys_cmd
+        @output = sys_cmd
       end
 
       def sys_cmd

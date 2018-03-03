@@ -3,7 +3,6 @@ require 'barr/block'
 module Barr
   module Blocks
     class Whoami < Block
-
       def initialize(opts = {})
         super
       end
@@ -17,7 +16,6 @@ module Barr
       def sys_cmd
         `whoami`.chomp
       end
-
     end
 
     WhoAmI = Whoami

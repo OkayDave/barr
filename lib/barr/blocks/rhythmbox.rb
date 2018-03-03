@@ -22,7 +22,7 @@ module Barr
         op = []
 
         if @view_opts[:artist] || @view_opts[:title]
-          if(running?)
+          if running?
             info = sys_cmd.split(' - ')
 
             if @view_opts[:artist] && @view_opts[:title]
@@ -40,11 +40,10 @@ module Barr
         op << buttons if @view_opts[:buttons]
 
         @output = op.join(' ')
-
       end
 
       def running?
-        `pgrep rhythmbox`.chomp.length != 0
+        !`pgrep rhythmbox`.chomp.empty?
       end
 
       def buttons

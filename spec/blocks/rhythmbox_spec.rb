@@ -1,8 +1,7 @@
-# coding: utf-8
+
 require 'barr/blocks/rhythmbox'
 
 RSpec.describe Barr::Blocks::Rhythmbox do
-
   let(:sys_cmd) { 'Marilyn Manson - Into The Fire' }
 
   before do

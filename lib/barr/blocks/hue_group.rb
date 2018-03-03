@@ -10,7 +10,6 @@ module Barr
       def sys_cmd
         "hue group #{@id}"
       end
-
     end
   end
 end

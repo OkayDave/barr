@@ -9,7 +9,7 @@ who = Barr::Blocks::Whoami.new align: :r, icon: "\uf007"
 
 i3 = Barr::Blocks::I3.new(fgcolor: '#FFF',
                           bgcolor: '#145266',
-                          focus_markers: %w(> <),
+                          focus_markers: %w[> <],
                           align: :r,
                           icon: "\uf009",
                           interval: 0.2)
@@ -39,7 +39,7 @@ weather = Barr::Blocks::Temperature.new(bgcolor: '#4A072B',
                                         icon: "\uf0c2 Philadelphia: ",
                                         interval: 1500)
 
-cpu = Barr::Blocks::CPU.new icon: "\uf1fe", format: "${LOAD}% ${TEMP}"
+cpu = Barr::Blocks::CPU.new icon: "\uf1fe", format: '${LOAD}% ${TEMP}'
 
 mem = Barr::Blocks::Mem.new bgcolor: '#333333'
 
@@ -47,12 +47,12 @@ hdd = Barr::Blocks::HDD.new bgcolor: '#444444', device: 'sdc2', interval: 300
 
 local = Barr::Blocks::IP.new bgcolor: '#937739', align: :r, icon: "\uf1ce"
 
-office_lights = Barr::Blocks::HueGroup.new id: "3",
-                                     icon: "\uf1ad",
-                                     format: "${OFF} ${ON:H-1,H-65535,B-255} ${ON:B-120,T-dim}",
-                                     align: :r,
-                                     bgcolor: '#0c1e3a',
-                                     fcolor: '#EEEEEE'
+office_lights = Barr::Blocks::HueGroup.new id: '3',
+                                           icon: "\uf1ad",
+                                           format: '${OFF} ${ON:H-1,H-65535,B-255} ${ON:B-120,T-dim}',
+                                           align: :r,
+                                           bgcolor: '#0c1e3a',
+                                           fcolor: '#EEEEEE'
 # Left
 @man.add artist
 @man.add song
@@ -61,7 +61,7 @@ office_lights = Barr::Blocks::HueGroup.new id: "3",
 @man.add mem
 @man.add hdd
 
-# Right 
+# Right
 @man.add office_lights
 @man.add i3
 @man.add local

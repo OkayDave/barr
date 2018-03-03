@@ -1,8 +1,7 @@
-# coding: utf-8
+
 require 'barr/blocks/cpu'
 
 RSpec.describe Barr::Blocks::CPU do
-
   describe '#update!' do
     let(:load_sys_cmd) { '6.7744' }
     let(:temp_sys_cmd) { '28500' }
@@ -24,5 +23,4 @@ RSpec.describe Barr::Blocks::CPU do
       expect(subject.output).to eq '28.5°'
     end
   end
-
 end
