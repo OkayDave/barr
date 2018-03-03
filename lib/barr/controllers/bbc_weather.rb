@@ -16,19 +16,21 @@ module Barr
         @thread = Thread.new do
           loop do
             begin
-              url = "http://www.bbc.co.uk/weather/#{@id}"
+              url = "https://www.bbc.co.uk/weather/0/#{@id}"
 
               op = {}
 
               noko = Nokogiri::HTML(open(url))
 
-              op[:temperature] = noko.css("div.observationsRecord span.units-value.temperature-value.temperature-value-unit-#{@temp_unit}").text
-              op[:summary] = noko.css('div.observationsRecord p.weather-type img').attribute('alt').value
-              op[:windspeed] = noko.css("div.observationsRecord span.speed span.units-values.windspeed-units-values span.windspeed-value-unit-#{@speed_unit}").text
-              op[:winddirection] = noko.css('div.observationsRecord p.wind-speed span.wind.wind-speed').attribute('data-tooltip-mph').value.split(', ')[1]
-              op[:humidity] = noko.css('div.observationsRecord p.humidity span.data').text
-              op[:visibility] = noko.css('div.observationsRecord p.visibility span.data').text
-              op[:pressure] = noko.css('div.observationsRecord p.pressure span.data').text
+              op[:temperature] = noko.css("div.wr-value--temperature .wr-value--temperature--#{@temp_unit} .wr-hide-visually").text
+              op[:summary] = noko.css('.wr-day__weather-type-description-container')[0].text
+              op[:windspeed] = noko.css("span.wr-wind-speed__icon span[data-unit=#{@speed_unit}]")[0].text
+              op[:winddirection] = noko.css('span.wind-rose__direction-abbr')[0].text.delete(' ')
+
+              hvp = noko.css('li.wr-c-station-data__observation')
+              op[:humidity] = hvp[0].text
+              op[:visibility] = hvp[1].text
+              op[:pressure] = hvp[2].text
 
               File.write(filename, op.to_json)
 
