@@ -3,8 +3,7 @@ require 'securerandom'
 
 module Barr
   class Manager
-
-    ERROR_ICON = "%{F#FF0000}\uf071%{F-}"
+    ERROR_ICON = "%{F#FF0000}\uf071%{F-}".freeze
 
     attr_reader :count, :blocks
 
@@ -22,20 +21,20 @@ module Barr
 
     def destroy!
       @blocks.each(&:destroy!)
-      @controllers.values.each(&:destroy!)
+      @controllers.each_value(&:destroy!)
     end
 
-    def controller type, opts={}
-      opts[:id] ||= ""
+    def controller(type, opts = {})
+      opts[:id] ||= ''
       key = "#{type}_#{opts[:id]}"
-      
+
       return @controllers[key] if @controllers[key]
-        
-      controller = Object.const_get("Barr::Controllers::"+type.to_s).new(opts)
-      @controllers[key]=controller
+
+      controller = Object.const_get('Barr::Controllers::' + type.to_s).new(opts)
+      @controllers[key] = controller
       controller.run!
 
-      return controller
+      controller
     end
 
     def draw
@@ -50,19 +49,19 @@ module Barr
       right_blocks = outputs[:r].join ''
 
       bar_render = ''
-      bar_render << "%{l}#{left_blocks} " if left_blocks.length > 0
-      bar_render << "%{c} #{centre_blocks} " if centre_blocks.length > 0
-      bar_render << "%{r} #{right_blocks}" if right_blocks.length > 0
+      bar_render << "%{l}#{left_blocks} " unless left_blocks.empty?
+      bar_render << "%{c} #{centre_blocks} " unless centre_blocks.empty?
+      bar_render << "%{r} #{right_blocks}" unless right_blocks.empty?
 
-      bar_render.gsub! "\n", ''
+      bar_render.delete! "\n"
 
       system('echo', '-e', bar_render.encode('UTF-8'))
     end
 
     def run!
-      while true
-        self.update!
-        self.draw
+      loop do
+        update!
+        draw
         sleep 0.1
       end
     end
@@ -70,9 +69,9 @@ module Barr
     def update!
       @blocks.each do |block|
         begin
-          block.update! if @count == 0 || (@count % block.interval == 0)
+          block.update! if @count.zero? || (@count % block.interval).zero?
         rescue StandardError => e
-          STDERR.puts "block: " + e.class.name
+          STDERR.puts 'block: ' + e.class.name
           STDERR.puts e.message
           STDERR.puts e.backtrace
           block << ERROR_ICON unless block.output.include?(ERROR_ICON)
@@ -80,11 +79,11 @@ module Barr
         end
       end
 
-      @controllers.values.each do |controller| 
+      @controllers.each_value do |controller|
         begin
-          controller.update! if @count == 1 || (@count % controller.interval == 0)
+          controller.update! if @count == 1 || (@count % controller.interval).zero?
         rescue StandardError => e
-          STDERR.puts "controller: " + e.class.name
+          STDERR.puts 'controller: ' + e.class.name
           STDERR.puts e.message
           STDERR.puts e.backtrace
           next
@@ -97,15 +96,25 @@ module Barr
     def id
       @id ||= SecureRandom.uuid
     end
-    
+
     # compatibility methods.
     # alias_method would work here, but for consistency with Block
     # I'll define them this way
 
-    def update; update!; end
-    def run; run!; end
-    def destroy; destroy!; end
-    def add_block(block); add(block); end
+    def update
+      update!
+    end
 
+    def run
+      run!
+    end
+
+    def destroy
+      destroy!
+    end
+
+    def add_block(block)
+      add(block)
+    end
   end
 end

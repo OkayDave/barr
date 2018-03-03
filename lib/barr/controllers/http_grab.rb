@@ -10,7 +10,7 @@ module Barr
     class HTTPGrab < Controller
       include Capybara::DSL
 
-      def initialize opts={}
+      def initialize(opts = {})
         super
         @type = (opts[:type] || 'css').downcase.to_sym
         @selector = opts[:selector]
@@ -19,23 +19,23 @@ module Barr
 
       def run!
         @thread = Thread.new do
-           loop do
+          loop do
             begin
-              grabbed = ""
+              grabbed = ''
               visit(@url)
               noko = Nokogiri::HTML(page.html)
-              
+
               if @type == :css
                 grabbed = noko.css(@selector).first.text
               elsif @type == :xpath
                 grabbed = noko.xpath(@selector).first.text
               end
 
-              File.write(filename, {text: grabbed}.to_json)
+              File.write(filename, { text: grabbed }.to_json)
 
               sleep @interval
             rescue StandardError => e
-              STDERR.puts "HTTPGrab Controller Error"
+              STDERR.puts 'HTTPGrab Controller Error'
               STDERR.puts e.message
               STDERR.puts e.backtrace
             end

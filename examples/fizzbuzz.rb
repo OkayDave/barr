@@ -12,18 +12,17 @@ class FizzBuzz < Barr::Block
   def update!
     @count += 1
 
-    @output = if (@count % 3 == 0) && (@count % 5 == 0)
-              'FizzBuzz'
-            elsif @count % 3 == 0
-              'Fizz'
-            elsif @count % 5 == 0
-              'Buzz'
-            else
-              @count.to_s
-            end 
+    @output = if (@count % 3).zero? && (@count % 5).zero?
+                'FizzBuzz'
+              elsif (@count % 3).zero?
+                'Fizz'
+              elsif (@count % 5).zero?
+                'Buzz'
+              else
+                @count.to_s
+              end
   end
 end
-
 
 clock = Barr::Blocks::Clock.new align: :r
 counter = FizzBuzz.new align: :l, bgcolor: '#8CB8FF', fgcolor: '#333333', icon: "\uf1ec", interval: 1

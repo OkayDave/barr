@@ -1,7 +1,6 @@
 require 'barr/manager'
 
 RSpec.describe Barr::Manager do
-
   let(:block1) { Barr::Block.new interval: 1 }
   let(:block2) { Barr::Block.new interval: 5 }
 
@@ -50,5 +49,4 @@ RSpec.describe Barr::Manager do
       subject.destroy!
     end
   end
-
 end

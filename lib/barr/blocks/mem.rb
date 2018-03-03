@@ -3,7 +3,6 @@ require 'barr/block'
 module Barr
   module Blocks
     class Mem < Block
-
       def update!
         @output = sys_cmd
       end
@@ -15,5 +14,4 @@ module Barr
       end
     end
   end
-  
 end

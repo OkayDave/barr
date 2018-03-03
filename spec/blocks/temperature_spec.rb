@@ -1,9 +1,8 @@
-# coding: utf-8
+
 require 'barr/blocks/temperature'
 require './spec/mocks/weather'
 
 RSpec.describe Barr::Blocks::Temperature do
-
   describe '#update!' do
     subject { described_class.new location: '12723' }
 
@@ -16,5 +15,4 @@ RSpec.describe Barr::Blocks::Temperature do
       expect(subject.output).to eq "%{A:xdg-open 'https\:\/\/weather.yahoo.com/country/state/city-12723/':}100°C Nice day%{A}"
     end
   end
-
 end
