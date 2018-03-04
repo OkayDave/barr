@@ -231,6 +231,17 @@ Shows the current date and/or time.
 | `${LOAD}` | Current load in % |
 | `${TEMP}` | Current temperature |
 
+#### Free Text
+
+Displays a string of text. Useful for creating a set of clickable areas or creating space.
+
+`free = Barr::Blocks::FreeText.new text: 'Hello'`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `text` | string | The text to display in the block. Supports Lemonbar syntax | `''` |
+
+
 #### HDD
 
 Shows selected filesystem's used and free space.
