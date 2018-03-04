@@ -20,11 +20,12 @@ module Barr
       private
 
       def load_sys_cmd
-        `grep 'cpu ' /proc/stat | awk -v RS="" '{print ($13-$2+$15-$4)*100/($13-$2+$15-$4+$16-$5)}'`
+        # courtesy of https://stackoverflow.com/a/9229907
+        `mpstat | awk '$12 ~ /[0-9.]+/ { print 100 - $12"%" }'`
       end
 
       def temp_sys_cmd
-        `cat /sys/class/thermal/thermal_zone0/temp`
+        `cat /sys/class/thermal/thermal_zone0/temp`.chomp
       end
     end
 
