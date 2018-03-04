@@ -44,4 +44,5 @@ Gem::Specification.new do |spec|
   spec.requirements << '(Optional) RhythmBox & rhythmbox-client'
   spec.requirements << '(Optional) FontAwesome font'
   spec.requirements << '(Optional) playerctl'
+  spec.requirements << '(Optional) mpstat from sysstat'
 end

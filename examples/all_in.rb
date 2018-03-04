@@ -34,7 +34,7 @@ weather = Barr::Blocks::BBCWeather.new(bgcolor: '#4A072B',
                                        icon: "\uf0c2 Birmingham: ",
                                        interval: 60)
 
-cpu = Barr::Blocks::CPU.new icon: "\uf1fe", format: '${LOAD}% ${TEMP}'
+cpu = Barr::Blocks::CPU.new icon: "\uf1fe", format: '${LOAD} ${TEMP}'
 
 mem = Barr::Blocks::Mem.new bgcolor: '#333333'
 

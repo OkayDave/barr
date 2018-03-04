@@ -218,7 +218,7 @@ Shows the current date and/or time.
 
 #### CPU
 
-Shows CPU load averaged across all cores.
+**Requires mpstat from [sysstat](https://github.com/sysstat/sysstat)**. Shows CPU load averaged across all cores.
 
 `cpu = Barr::Blocks::CPU.new`
 
