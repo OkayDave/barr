@@ -20,10 +20,6 @@
 
 ![i3_cpu_mem.rb](http://i.imgur.com/J3qNpw5.png)
 
-## rhythm.rb 
-
-![rhythm.rb](http://i.imgur.com/1P05aih.png)
-
 ## time_and_date.rb 
 
 ![time_and_date.rb](http://i.imgur.com/Lg81tSG.png)
