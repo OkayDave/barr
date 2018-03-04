@@ -3,7 +3,6 @@ require 'barr/block'
 module Barr
   module Blocks
     class Separator < Block
-
       def initialize(opts = {})
         super
         @symbol = opts[:symbol] || '|'
@@ -12,7 +11,6 @@ module Barr
       def update!
         @output = @symbol
       end
-
     end
   end
 end

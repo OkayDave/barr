@@ -1,7 +1,6 @@
 module Barr
   class Block
-    attr_reader :align, :bgcolor, :fgcolor, :icon, :interval, :output 
-    attr_accessor :manager
+    attr_accessor :align, :bgcolor, :fgcolor, :icon, :interval, :manager, :controller, :format, :output
 
     def initialize(opts = {})
       reassign_deprecated_option opts, :fcolor, :fgcolor
@@ -16,6 +15,10 @@ module Barr
       @output = ''
     end
 
+    def config
+      # called by manager
+    end
+
     def <<(str)
       @output << str
     end
@@ -28,28 +31,57 @@ module Barr
       "#{colors} #{icon} #{@output} #{reset_colors}"
     end
 
-    def destroy!
-    end
-    
-    def update!
-    end
+    def destroy!; end
+
+    def update!; end
 
     def tmp_filename
-      @tmp_filename ||= "/tmp/#{SecureRandom.uuid}-#{self.class.name.gsub(/::/, "-")}-#{SecureRandom.urlsafe_base64}"
-      return @tmp_filename
+      @tmp_filename ||= "/tmp/barr-#{SecureRandom.uuid}-#{self.class.name.gsub(/::/, '-')}-#{SecureRandom.urlsafe_base64}"
+      @tmp_filename
+    end
+
+    def wrap_button(text, action)
+      "%{A:#{action}:}#{text}%{A}"
+    end
+
+    def format_string_from_hash(hash, sender = nil)
+      formatted = @format.clone
+      matches = @format.scan(/([\$][\{](\w+)(:?([^:\}]+)?)[\}])/)
+      matches.each do |match|
+        key = match[1].downcase.to_sym
+        sub = if hash.key? key
+                if !match[3].nil? && sender && sender.respond_to?(:additions_for_format)
+                  sender.additions_for_format(key, match[3])
+                else
+                  hash[key]
+                end
+              else
+                ''
+              end
+
+        formatted.gsub! match[0], sub
+      end
+
+      formatted
     end
 
     # Backwards compatiblity methods.
     # can't use alias/alias_method as they don't
-    # trickle down to subclasses 
-    def update; update!; end
-    def destroy; destroy!; end
-    
-    def reassign_deprecated_option opts, old, new
-      if opts[new].nil? && !opts[old].nil?
-        STDERR.puts "Warning: #{self.class.name}'s '#{old}' option will soon be deprecated in favour of '#{new}'. \n Please update your script."
-        opts[new] = opts[old]
-      end
+    # trickle down to subclasses
+    def update
+      update!
+    end
+
+    def destroy
+      destroy!
+    end
+
+    def reassign_deprecated_option(opts, old, new)
+      return unless opts[new].nil?
+      return if opts[old].nil?
+
+      STDERR.puts "Warning: #{self.class.name}'s '#{old}' option will soon be deprecated in favour of '#{new}'. \n Please update your script."
+      opts[new] = opts[old]
     end
 
     private
@@ -61,6 +93,5 @@ module Barr
     def invert_colors
       '%{R}'
     end
-
   end
 end

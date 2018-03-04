@@ -1,7 +1,6 @@
 require 'barr/blocks/hdd'
 
 RSpec.describe Barr::Blocks::HDD do
-
   describe '#update!' do
     subject { described_class.new device: 'sdc2' }
 
@@ -16,5 +15,4 @@ RSpec.describe Barr::Blocks::HDD do
       expect(subject.output).to eq '34G / 213G (17%)'
     end
   end
-
 end

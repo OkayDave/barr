@@ -1,7 +1,6 @@
 require 'barr/blocks/ip'
 
 RSpec.describe Barr::Blocks::IP do
-
   describe '#initialize' do
     it 'sets a default device' do
       expect(subject.device).to eq 'lo'
@@ -39,5 +38,4 @@ RSpec.describe Barr::Blocks::IP do
       end
     end
   end
-
 end

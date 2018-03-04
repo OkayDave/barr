@@ -1,7 +1,6 @@
 require 'barr/blocks/whoami'
 
 RSpec.describe Barr::Blocks::Whoami do
-
   before do
     allow(subject).to receive(:sys_cmd).and_return('dave')
   end
@@ -13,5 +12,4 @@ RSpec.describe Barr::Blocks::Whoami do
       expect(subject.output).to eq('dave')
     end
   end
-
 end

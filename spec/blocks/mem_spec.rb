@@ -1,7 +1,6 @@
 require 'barr/blocks/mem'
 
 RSpec.describe Barr::Blocks::Mem do
-
   describe '#update!' do
     let(:sys_cmd) { '6.0G / 15.6G' }
 
@@ -14,5 +13,4 @@ RSpec.describe Barr::Blocks::Mem do
       expect(subject.output).to eq '6.0G / 15.6G'
     end
   end
-
 end

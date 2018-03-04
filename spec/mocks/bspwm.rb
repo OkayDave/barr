@@ -1,1630 +1,982 @@
-
-$bsp_json = <<EOF
+$bsp_json = <<BSP # rubocop:disable Style/GlobalVars
 {
-  "focusedMonitorName":"DP-4",
-  "primaryMonitorName":"DP-4",
-  "clientsCount":8,
-  "monitors":[
+  "focusedMonitorId": 2097153,
+  "clientsCount": 7,
+  "monitors": [
     {
-      "name":"DP-4",
-      "id":8388610,
-      "randrId":526,
-      "wired":true,
-      "stickyCount":0,
-      "windowGap":20,
-      "borderWidth":6,
-      "padding":{
-        "top":60,
-        "right":0,
-        "bottom":0,
-        "left":0
+      "name": "DP-4",
+      "id": 2097153,
+      "randrId": 453,
+      "wired": true,
+      "stickyCount": 0,
+      "windowGap": 20,
+      "borderWidth": 3,
+      "focusedDesktopId": 2097155,
+      "padding": {
+        "top": 100,
+        "right": 100,
+        "bottom": 100,
+        "left": 100
       },
-      "rectangle":{
-        "x":0,
-        "y":0,
-        "width":3840,
-        "height":2160
+      "rectangle": {
+        "x": 0,
+        "y": 0,
+        "width": 3840,
+        "height": 2160
       },
-      "focusedDesktopName":"I",
-      "desktops":[
+      "desktops": [
         {
-          "name":"I",
-          "id":8388612,
-          "layout":"tiled",
-          "windowGap":20,
-          "borderWidth":6,
-          "focusedNodeId":18874378,
-          "padding":{
-            "top":0,
-            "right":0,
-            "bottom":0,
-            "left":0
+          "name": "web",
+          "id": 2097155,
+          "layout": "tiled",
+          "windowGap": 20,
+          "borderWidth": 3,
+          "focusedNodeId": 37748739,
+          "padding": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
           },
-          "root":{
-            "id":8388658,
-            "splitType":"vertical",
-            "splitRatio":0.572094,
-            "birthRotation":90,
-            "vacant":false,
-            "sticky":false,
-            "private":false,
-            "locked":false,
-            "presel":null,
-            "rectangle":{
-              "x":20,
-              "y":80,
-              "width":3820,
-              "height":2080
+          "root": {
+            "id": 2097161,
+            "splitType": "vertical",
+            "splitRatio": 0.55,
+            "birthRotation": 0,
+            "vacant": false,
+            "hidden": false,
+            "sticky": false,
+            "private": false,
+            "locked": false,
+            "presel": null,
+            "rectangle": {
+              "x": 120,
+              "y": 120,
+              "width": 3620,
+              "height": 1940
             },
-            "firstChild":{
-              "id":23068807,
-              "splitType":"vertical",
-              "splitRatio":0.520000,
-              "birthRotation":90,
-              "vacant":false,
-              "sticky":false,
-              "private":false,
-              "locked":false,
-              "presel":null,
-              "rectangle":{
-                "x":20,
-                "y":80,
-                "width":2185,
-                "height":2080
+            "firstChild": {
+              "id": 35651871,
+              "splitType": "vertical",
+              "splitRatio": 0.55,
+              "birthRotation": 0,
+              "vacant": false,
+              "hidden": false,
+              "sticky": false,
+              "private": false,
+              "locked": false,
+              "presel": null,
+              "rectangle": {
+                "x": 120,
+                "y": 120,
+                "width": 1991,
+                "height": 1940
               },
-              "firstChild":null,
-              "secondChild":null,
-              "client":{
-                "className":"Emacs24",
-                "instanceName":"emacs",
-                "borderWidth":6,
-                "state":"tiled",
-                "lastState":"tiled",
-                "layer":"normal",
-                "lastLayer":"normal",
-                "urgent":false,
-                "visible":true,
-                "icccmFocus":true,
-                "icccmInput":true,
-                "minWidth":21,
-                "maxWidth":0,
-                "minHeight":30,
-                "maxHeight":0,
-                "wmStatesCount":0,
-                "wmState":[
-
-                ],
-                "tiledRectangle":{
-                  "x":20,
-                  "y":80,
-                  "width":2153,
-                  "height":2048
+              "firstChild": null,
+              "secondChild": null,
+              "client": {
+                "className": "Emacs",
+                "instanceName": "emacs",
+                "borderWidth": 3,
+                "state": "tiled",
+                "lastState": "floating",
+                "layer": "normal",
+                "lastLayer": "normal",
+                "urgent": false,
+                "shown": true,
+                "tiledRectangle": {
+                  "x": 120,
+                  "y": 120,
+                  "width": 1965,
+                  "height": 1914
                 },
-                "floatingRectangle":{
-                  "x":1617,
-                  "y":800,
-                  "width":2149,
-                  "height":2040
+                "floatingRectangle": {
+                  "x": 1541,
+                  "y": 773,
+                  "width": 656,
+                  "height": 612
                 }
               }
             },
-            "secondChild":{
-              "id":8388622,
-              "splitType":"vertical",
-              "splitRatio":0.562478,
-              "birthRotation":0,
-              "vacant":false,
-              "sticky":false,
-              "private":false,
-              "locked":false,
-              "presel":null,
-              "rectangle":{
-                "x":2205,
-                "y":80,
-                "width":1635,
-                "height":2080
+            "secondChild": {
+              "id": 2097166,
+              "splitType": "horizontal",
+              "splitRatio": 0.55,
+              "birthRotation": 0,
+              "vacant": false,
+              "hidden": false,
+              "sticky": false,
+              "private": false,
+              "locked": false,
+              "presel": null,
+              "rectangle": {
+                "x": 2111,
+                "y": 120,
+                "width": 1629,
+                "height": 1940
               },
-              "firstChild":{
-                "id":18874378,
-                "splitType":"vertical",
-                "splitRatio":0.520000,
-                "birthRotation":0,
-                "vacant":false,
-                "sticky":false,
-                "private":false,
-                "locked":false,
-                "presel":null,
-                "rectangle":{
-                  "x":2205,
-                  "y":80,
-                  "width":919,
-                  "height":2080
+              "firstChild": {
+                "id": 16777218,
+                "splitType": "vertical",
+                "splitRatio": 0.55,
+                "birthRotation": 0,
+                "vacant": false,
+                "hidden": false,
+                "sticky": false,
+                "private": false,
+                "locked": false,
+                "presel": null,
+                "rectangle": {
+                  "x": 2111,
+                  "y": 120,
+                  "width": 1629,
+                  "height": 1067
                 },
-                "firstChild":null,
-                "secondChild":null,
-                "client":{
-                  "className":"URxvt",
-                  "instanceName":"urxvt",
-                  "borderWidth":6,
-                  "state":"tiled",
-                  "lastState":"tiled",
-                  "layer":"normal",
-                  "lastLayer":"normal",
-                  "urgent":false,
-                  "visible":true,
-                  "icccmFocus":false,
-                  "icccmInput":true,
-                  "minWidth":11,
-                  "maxWidth":0,
-                  "minHeight":19,
-                  "maxHeight":0,
-                  "wmStatesCount":0,
-                  "wmState":[
-
-                  ],
-                  "tiledRectangle":{
-                    "x":2205,
-                    "y":80,
-                    "width":887,
-                    "height":2048
+                "firstChild": null,
+                "secondChild": null,
+                "client": {
+                  "className": "google-chrome",
+                  "instanceName": "google-chrome",
+                  "borderWidth": 3,
+                  "state": "tiled",
+                  "lastState": "tiled",
+                  "layer": "normal",
+                  "lastLayer": "normal",
+                  "urgent": false,
+                  "shown": true,
+                  "tiledRectangle": {
+                    "x": 2111,
+                    "y": 120,
+                    "width": 1603,
+                    "height": 1041
                   },
-                  "floatingRectangle":{
-                    "x":1632,
-                    "y":892,
-                    "width":564,
-                    "height":364
+                  "floatingRectangle": {
+                    "x": 2114,
+                    "y": 123,
+                    "width": 1603,
+                    "height": 1311
                   }
                 }
               },
-              "secondChild":{
-                "id":20971530,
-                "splitType":"vertical",
-                "splitRatio":0.520000,
-                "birthRotation":0,
-                "vacant":false,
-                "sticky":false,
-                "private":false,
-                "locked":false,
-                "presel":null,
-                "rectangle":{
-                  "x":3124,
-                  "y":80,
-                  "width":716,
-                  "height":2080
+              "secondChild": {
+                "id": 2097168,
+                "splitType": "vertical",
+                "splitRatio": 0.55,
+                "birthRotation": 0,
+                "vacant": false,
+                "hidden": false,
+                "sticky": false,
+                "private": false,
+                "locked": false,
+                "presel": null,
+                "rectangle": {
+                  "x": 2111,
+                  "y": 1187,
+                  "width": 1629,
+                  "height": 873
                 },
-                "firstChild":null,
-                "secondChild":null,
-                "client":{
-                  "className":"URxvt",
-                  "instanceName":"urxvt",
-                  "borderWidth":6,
-                  "state":"tiled",
-                  "lastState":"tiled",
-                  "layer":"normal",
-                  "lastLayer":"normal",
-                  "urgent":false,
-                  "visible":true,
-                  "icccmFocus":false,
-                  "icccmInput":true,
-                  "minWidth":11,
-                  "maxWidth":0,
-                  "minHeight":19,
-                  "maxHeight":0,
-                  "wmStatesCount":0,
-                  "wmState":[
-
-                  ],
-                  "tiledRectangle":{
-                    "x":3124,
-                    "y":80,
-                    "width":684,
-                    "height":2048
+                "firstChild": {
+                  "id": 27262979,
+                  "splitType": "vertical",
+                  "splitRatio": 0.55,
+                  "birthRotation": 0,
+                  "vacant": false,
+                  "hidden": false,
+                  "sticky": false,
+                  "private": false,
+                  "locked": false,
+                  "presel": null,
+                  "rectangle": {
+                    "x": 2111,
+                    "y": 1187,
+                    "width": 895,
+                    "height": 873
                   },
-                  "floatingRectangle":{
-                    "x":1632,
-                    "y":892,
-                    "width":564,
-                    "height":364
+                  "firstChild": null,
+                  "secondChild": null,
+                  "client": {
+                    "className": "Termite",
+                    "instanceName": "termite",
+                    "borderWidth": 3,
+                    "state": "tiled",
+                    "lastState": "tiled",
+                    "layer": "normal",
+                    "lastLayer": "normal",
+                    "urgent": false,
+                    "shown": true,
+                    "tiledRectangle": {
+                      "x": 2111,
+                      "y": 1187,
+                      "width": 869,
+                      "height": 847
+                    },
+                    "floatingRectangle": {
+                      "x": 1537,
+                      "y": 865,
+                      "width": 760,
+                      "height": 424
+                    }
+                  }
+                },
+                "secondChild": {
+                  "id": 37748739,
+                  "splitType": "vertical",
+                  "splitRatio": 0.55,
+                  "birthRotation": 0,
+                  "vacant": false,
+                  "hidden": false,
+                  "sticky": false,
+                  "private": false,
+                  "locked": false,
+                  "presel": null,
+                  "rectangle": {
+                    "x": 3006,
+                    "y": 1187,
+                    "width": 734,
+                    "height": 873
+                  },
+                  "firstChild": null,
+                  "secondChild": null,
+                  "client": {
+                    "className": "Termite",
+                    "instanceName": "termite",
+                    "borderWidth": 3,
+                    "state": "tiled",
+                    "lastState": "tiled",
+                    "layer": "normal",
+                    "lastLayer": "normal",
+                    "urgent": false,
+                    "shown": true,
+                    "tiledRectangle": {
+                      "x": 3006,
+                      "y": 1187,
+                      "width": 708,
+                      "height": 847
+                    },
+                    "floatingRectangle": {
+                      "x": 1537,
+                      "y": 865,
+                      "width": 760,
+                      "height": 424
+                    }
+                  }
+                },
+                "client": null
+              },
+              "client": null
+            },
+            "client": null
+          }
+        },
+        {
+          "name": "media",
+          "id": 2097156,
+          "layout": "tiled",
+          "windowGap": 20,
+          "borderWidth": 3,
+          "focusedNodeId": 29360135,
+          "padding": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "root": {
+            "id": 2097164,
+            "splitType": "vertical",
+            "splitRatio": 0.55,
+            "birthRotation": 0,
+            "vacant": false,
+            "hidden": false,
+            "sticky": false,
+            "private": false,
+            "locked": false,
+            "presel": null,
+            "rectangle": {
+              "x": 120,
+              "y": 120,
+              "width": 3620,
+              "height": 1940
+            },
+            "firstChild": {
+              "id": 18874388,
+              "splitType": "vertical",
+              "splitRatio": 0.55,
+              "birthRotation": 90,
+              "vacant": false,
+              "hidden": false,
+              "sticky": false,
+              "private": false,
+              "locked": false,
+              "presel": null,
+              "rectangle": {
+                "x": 120,
+                "y": 120,
+                "width": 1991,
+                "height": 1940
+              },
+              "firstChild": null,
+              "secondChild": null,
+              "client": {
+                "className": "Git-cola",
+                "instanceName": "git-cola",
+                "borderWidth": 3,
+                "state": "tiled",
+                "lastState": "tiled",
+                "layer": "normal",
+                "lastLayer": "normal",
+                "urgent": false,
+                "shown": false,
+                "tiledRectangle": {
+                  "x": 120,
+                  "y": 120,
+                  "width": 1965,
+                  "height": 1914
+                },
+                "floatingRectangle": {
+                  "x": 123,
+                  "y": 123,
+                  "width": 1965,
+                  "height": 1914
+                }
+              }
+            },
+            "secondChild": {
+              "id": 2097162,
+              "splitType": "horizontal",
+              "splitRatio": 0.55,
+              "birthRotation": 0,
+              "vacant": false,
+              "hidden": false,
+              "sticky": false,
+              "private": false,
+              "locked": false,
+              "presel": null,
+              "rectangle": {
+                "x": 2111,
+                "y": 120,
+                "width": 1629,
+                "height": 1940
+              },
+              "firstChild": {
+                "id": 33554435,
+                "splitType": "vertical",
+                "splitRatio": 0.55,
+                "birthRotation": 0,
+                "vacant": false,
+                "hidden": false,
+                "sticky": false,
+                "private": false,
+                "locked": false,
+                "presel": null,
+                "rectangle": {
+                  "x": 2111,
+                  "y": 120,
+                  "width": 1629,
+                  "height": 1067
+                },
+                "firstChild": null,
+                "secondChild": null,
+                "client": {
+                  "className": "Pavucontrol",
+                  "instanceName": "pavucontrol",
+                  "borderWidth": 3,
+                  "state": "tiled",
+                  "lastState": "tiled",
+                  "layer": "normal",
+                  "lastLayer": "normal",
+                  "urgent": false,
+                  "shown": false,
+                  "tiledRectangle": {
+                    "x": 2111,
+                    "y": 120,
+                    "width": 1603,
+                    "height": 1041
+                  },
+                  "floatingRectangle": {
+                    "x": 1480,
+                    "y": 799,
+                    "width": 874,
+                    "height": 555
                   }
                 }
               },
-              "client":null
+              "secondChild": {
+                "id": 29360135,
+                "splitType": "vertical",
+                "splitRatio": 0.55,
+                "birthRotation": 0,
+                "vacant": false,
+                "hidden": false,
+                "sticky": false,
+                "private": false,
+                "locked": false,
+                "presel": null,
+                "rectangle": {
+                  "x": 2111,
+                  "y": 1187,
+                  "width": 1629,
+                  "height": 873
+                },
+                "firstChild": null,
+                "secondChild": null,
+                "client": {
+                  "className": "Rhythmbox",
+                  "instanceName": "rhythmbox",
+                  "borderWidth": 3,
+                  "state": "tiled",
+                  "lastState": "tiled",
+                  "layer": "normal",
+                  "lastLayer": "normal",
+                  "urgent": false,
+                  "shown": false,
+                  "tiledRectangle": {
+                    "x": 2111,
+                    "y": 1187,
+                    "width": 1603,
+                    "height": 847
+                  },
+                  "floatingRectangle": {
+                    "x": 2111,
+                    "y": 1187,
+                    "width": 1603,
+                    "height": 847
+                  }
+                }
+              },
+              "client": null
             },
-            "client":null
+            "client": null
           }
         },
         {
-          "name":"II",
-          "id":8388613,
-          "layout":"tiled",
-          "windowGap":20,
-          "borderWidth":6,
-          "focusedNodeId":35651591,
-          "padding":{
-            "top":0,
-            "right":0,
-            "bottom":0,
-            "left":0
+          "name": "web",
+          "id": 2097157,
+          "layout": "tiled",
+          "windowGap": 20,
+          "borderWidth": 3,
+          "focusedNodeId": 0,
+          "padding": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
           },
-          "root":{
-            "id":8388626,
-            "splitType":"vertical",
-            "splitRatio":0.520000,
-            "birthRotation":0,
-            "vacant":false,
-            "sticky":false,
-            "private":false,
-            "locked":false,
-            "presel":null,
-            "rectangle":{
-              "x":20,
-              "y":80,
-              "width":3820,
-              "height":2080
-            },
-            "firstChild":{
-              "id":37748746,
-              "splitType":"vertical",
-              "splitRatio":0.520000,
-              "birthRotation":0,
-              "vacant":false,
-              "sticky":false,
-              "private":false,
-              "locked":false,
-              "presel":null,
-              "rectangle":{
-                "x":20,
-                "y":80,
-                "width":1986,
-                "height":2080
-              },
-              "firstChild":null,
-              "secondChild":null,
-              "client":{
-                "className":"URxvt",
-                "instanceName":"urxvt",
-                "borderWidth":6,
-                "state":"tiled",
-                "lastState":"tiled",
-                "layer":"normal",
-                "lastLayer":"normal",
-                "urgent":false,
-                "visible":false,
-                "icccmFocus":false,
-                "icccmInput":true,
-                "minWidth":11,
-                "maxWidth":0,
-                "minHeight":19,
-                "maxHeight":0,
-                "wmStatesCount":0,
-                "wmState":[
-
-                ],
-                "tiledRectangle":{
-                  "x":20,
-                  "y":80,
-                  "width":1954,
-                  "height":2048
-                },
-                "floatingRectangle":{
-                  "x":1632,
-                  "y":892,
-                  "width":564,
-                  "height":364
-                }
-              }
-            },
-            "secondChild":{
-              "id":35651591,
-              "splitType":"vertical",
-              "splitRatio":0.520000,
-              "birthRotation":0,
-              "vacant":false,
-              "sticky":false,
-              "private":false,
-              "locked":false,
-              "presel":null,
-              "rectangle":{
-                "x":2006,
-                "y":80,
-                "width":1834,
-                "height":2080
-              },
-              "firstChild":null,
-              "secondChild":null,
-              "client":{
-                "className":"Rhythmbox",
-                "instanceName":"rhythmbox",
-                "borderWidth":6,
-                "state":"tiled",
-                "lastState":"tiled",
-                "layer":"normal",
-                "lastLayer":"normal",
-                "urgent":false,
-                "visible":false,
-                "icccmFocus":true,
-                "icccmInput":true,
-                "minWidth":241,
-                "maxWidth":0,
-                "minHeight":341,
-                "maxHeight":0,
-                "wmStatesCount":0,
-                "wmState":[
-
-                ],
-                "tiledRectangle":{
-                  "x":2006,
-                  "y":80,
-                  "width":1802,
-                  "height":2048
-                },
-                "floatingRectangle":{
-                  "x":100,
-                  "y":100,
-                  "width":2003,
-                  "height":1760
-                }
-              }
-            },
-            "client":null
-          }
+          "root": null
         },
         {
-          "name":"III",
-          "id":8388614,
-          "layout":"tiled",
-          "windowGap":20,
-          "borderWidth":6,
-          "focusedNodeId":39845892,
-          "padding":{
-            "top":0,
-            "right":0,
-            "bottom":0,
-            "left":0
+          "name": "shell",
+          "id": 2097158,
+          "layout": "tiled",
+          "windowGap": 20,
+          "borderWidth": 3,
+          "focusedNodeId": 0,
+          "padding": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
           },
-          "root":{
-            "id":39845892,
-            "splitType":"vertical",
-            "splitRatio":0.520000,
-            "birthRotation":0,
-            "vacant":false,
-            "sticky":false,
-            "private":false,
-            "locked":false,
-            "presel":null,
-            "rectangle":{
-              "x":20,
-              "y":80,
-              "width":3820,
-              "height":2080
-            },
-            "firstChild":null,
-            "secondChild":null,
-            "client":{
-              "className":"Thunar",
-              "instanceName":"thunar",
-              "borderWidth":6,
-              "state":"tiled",
-              "lastState":"tiled",
-              "layer":"normal",
-              "lastLayer":"normal",
-              "urgent":false,
-              "visible":false,
-              "icccmFocus":true,
-              "icccmInput":true,
-              "minWidth":110,
-              "maxWidth":0,
-              "minHeight":178,
-              "maxHeight":0,
-              "wmStatesCount":0,
-              "wmState":[
-
-              ],
-              "tiledRectangle":{
-                "x":20,
-                "y":80,
-                "width":3788,
-                "height":2048
-              },
-              "floatingRectangle":{
-                "x":1014,
-                "y":99,
-                "width":1800,
-                "height":1950
-              }
-            }
-          }
+          "root": null
         },
         {
-          "name":"IV",
-          "id":8388615,
-          "layout":"tiled",
-          "windowGap":20,
-          "borderWidth":6,
-          "focusedNodeId":41943175,
-          "padding":{
-            "top":0,
-            "right":0,
-            "bottom":0,
-            "left":0
+          "name": "steam",
+          "id": 2097159,
+          "layout": "tiled",
+          "windowGap": 20,
+          "borderWidth": 3,
+          "focusedNodeId": 0,
+          "padding": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
           },
-          "root":{
-            "id":8388661,
-            "splitType":"vertical",
-            "splitRatio":0.520000,
-            "birthRotation":0,
-            "vacant":false,
-            "sticky":false,
-            "private":false,
-            "locked":false,
-            "presel":null,
-            "rectangle":{
-              "x":20,
-              "y":80,
-              "width":3820,
-              "height":2080
-            },
-            "firstChild":{
-              "id":25165825,
-              "splitType":"vertical",
-              "splitRatio":0.520000,
-              "birthRotation":0,
-              "vacant":false,
-              "sticky":false,
-              "private":false,
-              "locked":false,
-              "presel":null,
-              "rectangle":{
-                "x":20,
-                "y":80,
-                "width":1986,
-                "height":2080
-              },
-              "firstChild":null,
-              "secondChild":null,
-              "client":{
-                "className":"google-chrome",
-                "instanceName":"google-chrome",
-                "borderWidth":6,
-                "state":"tiled",
-                "lastState":"tiled",
-                "layer":"normal",
-                "lastLayer":"normal",
-                "urgent":false,
-                "visible":false,
-                "icccmFocus":false,
-                "icccmInput":true,
-                "minWidth":378,
-                "maxWidth":0,
-                "minHeight":61,
-                "maxHeight":0,
-                "wmStatesCount":0,
-                "wmState":[
-
-                ],
-                "tiledRectangle":{
-                  "x":20,
-                  "y":80,
-                  "width":1954,
-                  "height":2048
-                },
-                "floatingRectangle":{
-                  "x":2632,
-                  "y":1206,
-                  "width":1182,
-                  "height":928
-                }
-              }
-            },
-            "secondChild":{
-              "id":41943175,
-              "splitType":"vertical",
-              "splitRatio":0.520000,
-              "birthRotation":0,
-              "vacant":false,
-              "sticky":false,
-              "private":false,
-              "locked":false,
-              "presel":null,
-              "rectangle":{
-                "x":2006,
-                "y":80,
-                "width":1834,
-                "height":2080
-              },
-              "firstChild":null,
-              "secondChild":null,
-              "client":{
-                "className":"Emacs24",
-                "instanceName":"emacs",
-                "borderWidth":6,
-                "state":"tiled",
-                "lastState":"tiled",
-                "layer":"normal",
-                "lastLayer":"normal",
-                "urgent":false,
-                "visible":false,
-                "icccmFocus":true,
-                "icccmInput":true,
-                "minWidth":21,
-                "maxWidth":0,
-                "minHeight":30,
-                "maxHeight":0,
-                "wmStatesCount":0,
-                "wmState":[
-
-                ],
-                "tiledRectangle":{
-                  "x":2006,
-                  "y":80,
-                  "width":1802,
-                  "height":2048
-                },
-                "floatingRectangle":{
-                  "x":1617,
-                  "y":800,
-                  "width":1799,
-                  "height":2040
-                }
-              }
-            },
-            "client":null
-          }
+          "root": null
         },
         {
-          "name":"V",
-          "id":8388616,
-          "layout":"tiled",
-          "windowGap":20,
-          "borderWidth":6,
-          "focusedNodeId":0,
-          "padding":{
-            "top":0,
-            "right":0,
-            "bottom":0,
-            "left":0
+          "name": "sys",
+          "id": 2097160,
+          "layout": "tiled",
+          "windowGap": 20,
+          "borderWidth": 3,
+          "focusedNodeId": 0,
+          "padding": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
           },
-          "root":null
-        },
-        {
-          "name":"VI",
-          "id":8388617,
-          "layout":"tiled",
-          "windowGap":20,
-          "borderWidth":6,
-          "focusedNodeId":0,
-          "padding":{
-            "top":0,
-            "right":0,
-            "bottom":0,
-            "left":0
-          },
-          "root":null
-        },
-        {
-          "name":"VII",
-          "id":8388618,
-          "layout":"tiled",
-          "windowGap":20,
-          "borderWidth":6,
-          "focusedNodeId":0,
-          "padding":{
-            "top":0,
-            "right":0,
-            "bottom":0,
-            "left":0
-          },
-          "root":null
-        },
-        {
-          "name":"VIII",
-          "id":8388619,
-          "layout":"tiled",
-          "windowGap":20,
-          "borderWidth":6,
-          "focusedNodeId":0,
-          "padding":{
-            "top":0,
-            "right":0,
-            "bottom":0,
-            "left":0
-          },
-          "root":null
-        },
-        {
-          "name":"IX",
-          "id":8388620,
-          "layout":"tiled",
-          "windowGap":20,
-          "borderWidth":6,
-          "focusedNodeId":0,
-          "padding":{
-            "top":0,
-            "right":0,
-            "bottom":0,
-            "left":0
-          },
-          "root":null
-        },
-        {
-          "name":"X",
-          "id":8388621,
-          "layout":"tiled",
-          "windowGap":20,
-          "borderWidth":6,
-          "focusedNodeId":0,
-          "padding":{
-            "top":0,
-            "right":0,
-            "bottom":0,
-            "left":0
-          },
-          "root":null
+          "root": null
         }
       ]
     }
   ],
-  "focusHistory":[
+  "focusHistory": [
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 0
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":0
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 0
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 29360135
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":37748746
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":37748746
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 29360135
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 33554435
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":0
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 33554435
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 33554435
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 33554435
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 29360135
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"IV",
-      "nodeId":0
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"IV",
-      "nodeId":41943175
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"IX",
-      "nodeId":0
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"IV",
-      "nodeId":41943175
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 29360135
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"IV",
-      "nodeId":41943175
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 29360135
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097157,
+      "nodeId": 0
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 29360135
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
+      "monitorId": 2097153,
+      "desktopId": 2097157,
+      "nodeId": 0
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"IV",
-      "nodeId":41943175
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 29360135
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 33554435
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 18874388
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 18874388
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 33554435
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 29360135
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 18874388
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 29360135
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 33554435
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 18874388
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 35651871
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 35651871
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 18874388
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 35651871
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 35651871
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 35651871
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 35651871
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 18874388
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 18874388
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097156,
+      "nodeId": 29360135
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 35651871
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 16777218
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 35651871
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"VIII",
-      "nodeId":0
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 35651871
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"V",
-      "nodeId":0
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 27262979
     },
     {
-      "monitorName":"DP-4",
-      "desktopName":"IX",
-      "nodeId":0
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"VI",
-      "nodeId":0
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"VIII",
-      "nodeId":0
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"VIII",
-      "nodeId":0
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"VI",
-      "nodeId":0
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"IX",
-      "nodeId":0
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"IV",
-      "nodeId":41943175
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"V",
-      "nodeId":0
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"VIII",
-      "nodeId":0
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"VIII",
-      "nodeId":0
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"IV",
-      "nodeId":41943175
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"IV",
-      "nodeId":41943175
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"IX",
-      "nodeId":0
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"IV",
-      "nodeId":41943175
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"IV",
-      "nodeId":25165825
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"IV",
-      "nodeId":25165825
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"IV",
-      "nodeId":25165825
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"IV",
-      "nodeId":25165825
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"IV",
-      "nodeId":25165825
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"IV",
-      "nodeId":41943175
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":20971530
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"III",
-      "nodeId":39845892
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"II",
-      "nodeId":35651591
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":23068807
-    },
-    {
-      "monitorName":"DP-4",
-      "desktopName":"I",
-      "nodeId":18874378
+      "monitorId": 2097153,
+      "desktopId": 2097155,
+      "nodeId": 37748739
     }
   ],
-  "stackingList":[
-    37748746,
-    25165825,
-    41943175,
-    20971530,
-    39845892,
-    35651591,
-    23068807,
-    18874378
+  "stackingList": [
+    33554435,
+    18874388,
+    29360135,
+    16777218,
+    35651871,
+    27262979,
+    37748739
   ]
 }
-EOF
+BSP

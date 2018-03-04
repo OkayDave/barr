@@ -3,7 +3,6 @@ require 'barr/block'
 module Barr
   module Blocks
     class HDD < Block
-
       def initialize(opts = {})
         super
 
@@ -21,7 +20,6 @@ module Barr
       def sys_cmd
         `df -h | grep #{@device} | awk '{printf "%s %s %s", $2, $3, $5}'`.chomp
       end
-
     end
 
     Hdd = HDD

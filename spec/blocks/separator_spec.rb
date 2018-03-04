@@ -1,7 +1,6 @@
 require 'barr/blocks/separator'
 
 RSpec.describe Barr::Blocks::Separator do
-
   describe '#update!' do
     before { subject.update! }
 
@@ -9,5 +8,4 @@ RSpec.describe Barr::Blocks::Separator do
       expect(subject.output).to eq '|'
     end
   end
-
 end

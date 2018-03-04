@@ -1,8 +1,7 @@
-# coding: utf-8
+
 require 'barr/blocks/mpd'
 
 RSpec.describe Barr::Blocks::MPD do
-
   let(:sys_cmd) { 'Muse - Knights Of Cydonia' }
 
   before do

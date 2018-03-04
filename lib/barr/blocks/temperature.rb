@@ -1,11 +1,10 @@
-# coding: utf-8
+
 require 'weather-api'
 require 'barr/block'
 
 module Barr
   module Blocks
     class Temperature < Block
-
       attr_reader :location
 
       def initialize(opts = {})
@@ -29,7 +28,6 @@ module Barr
       def weather_units
         @unit == 'F' ? Weather::Units::FAHRENHEIT : Weather::Units::CELSIUS
       end
-
     end
   end
 end

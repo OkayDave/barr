@@ -160,6 +160,29 @@ Show battery status.
 | --- | --- | --- | --- |
 | `show_remaining` | bool | Show the remaining battery time | `true` |
 
+#### BBCWeather 
+
+Shows configurable weather information as provided by the BBC. Recommended over the `Temperature` block due to how much more reliable the BBC service is.
+
+`bbc = Barr::Blocks::BBCWeather.new location: "5308655", format: "${TEMPERATURE} wind: ${WINDSPEED} ${WINDDIRECTION}"`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `format` | string | Configurable format for showing which weather information is displayed. See table below for options. | `"${TEMPERATURE} - ${SUMMARY}"` |
+| `location` | string | Find your location on the [BBC Weather](http://www.bbc.co.uk/weather) service and use the last part of the URL as the location string. For example, Phoenix Arizona is "5308655". | **REQUIRED** |
+| `speed_unit` | "mph" or "kph" | Whether to show speeds in mph or kph | `"mph"`
+| `temp_unit` | "c" or "f" | Whether to show temperatures in C or F | `"c"`
+
+| Option | Description | 
+| --- | --- | 
+| `${TEMPERATURE}` | Current temperature | 
+| `${SUMMARY}` | Brief summary of weather, e.g. "Light cloud" | 
+| `${WINDSPEED}` | Current wind speed | 
+| `${WINDDIRECTION}` | Current wind direction | 
+| `${HUMIDITY}` | Current humidity percentage | 
+| `${VISIBILITY}` | Summary of visbility, e.g. "Excellent" | 
+| `${PRESSURE}` | Current pressure and trend, e.g. "1000mb, Falling" |
+ 
 #### Bspwm (Experimental)
 
 **Requires Bspwm**. Shows desktops for selected monitor. and highlights focused one. Unfocused desktops are clickable. Could do with some optimization work and feedback from people that use BSP frequently, especially with multiple monitors. 
@@ -195,11 +218,29 @@ Shows the current date and/or time.
 
 #### CPU
 
-Shows CPU load averaged across all cores.
+**Requires mpstat from [sysstat](https://github.com/sysstat/sysstat)**. Shows CPU load averaged across all cores.
 
 `cpu = Barr::Blocks::CPU.new`
 
-There are no `CPU` block specific configurable options.
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `format` | string | Configurable format for showing which weather information is displayed. See table below for options. | `"${LOAD}"` |
+
+| Option | Description |
+| --- | --- |
+| `${LOAD}` | Current load in % |
+| `${TEMP}` | Current temperature |
+
+#### Free Text
+
+Displays a string of text. Useful for creating a set of clickable areas or creating space.
+
+`free = Barr::Blocks::FreeText.new text: 'Hello'`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `text` | string | The text to display in the block. Supports Lemonbar syntax | `''` |
+
 
 #### HDD
 
@@ -210,6 +251,87 @@ Shows selected filesystem's used and free space.
 | Option | Value | Description | Default |
 | --- | --- | --- | --- |
 | `device` | String | This is the name of the device for which you'd like to see free/used space. Something like `/dev/sda2`. Run `df -h` in your terminal and look at the first column.  | **REQUIRED** |
+
+#### HTTPGrab 
+
+Grabs a piece of text from a URL based on a css or xpath selector. Optionally opens the link in a browser when clicked. Makes a reasonable effort at supporting pages controlled by javascript.
+
+`http = Barr::Blocks::HTTPGrab.new url: "http://www.bbc.co.uk/news", selector: "span.most-popular-list-item__headline"`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `link` | Bool | Set to `true` or `false` to set whether or not the block should open the given URL in a browser when clicked. | `false` |
+| `selector` | String | The CSS or XPath selector for the DOM node of the text you'd like grabbed | **REQUIRED** | 
+| `type` | Symbol | Set to `:css` or `:xpath` to set which type of selector you have provided | `:css` |
+| `url` | String | URL that you'd like to grab from | **REQUIRED** |
+
+#### HueGroup
+
+**Requires [Hue](https://github.com/soffes/hue) gem to be installed and configured prior to use** Allows you to set buttons for controlling a designated Philips Hue Light group. This sends all options to all lights on the group.
+
+`group = Barr::Blocks::HueGroup.new id: '3', format: "${ON:T-Turn On} ${ON:B-100,T-Dim}", ${OFF}'`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `id` | `hue` group ID | You can list all of your lights and their IDs by running `hue groups`. The ID is the first column, e.g. `1`. | **REQUIRED** |
+| `format` | string | Configurable format for choosing the buttons and their behaviours. See table below for options | `"${OFF} ${ON}"`|
+
+| Option | Description |
+| `${OFF}` | Adds a button to turn the selected light off. Can be configured with custom text |
+| `${ON}` | Adss a button to turn the selected light on. Several buttons can be added with individual behaviours |
+
+Both the `${OFF}` and `${ON}` buttons allow additional button specific behaviours to be configured. The supported options are:
+
+| Option | Description |
+| `B` | Brightness. Value between `0` and `255`. |
+| `H` | Hue. Value between `0` and `65535`. |
+| `A` | Alert. Value of either `select` (for a single flash) or `lselect` (for 30s of flashing) |
+| `T` | Button Text. Any character string that will be shown as the button's text. |
+
+These can be applied to the Block's `format` string options by appending them with a colon and passing the option with a hyphen:
+
+`${ON:B-25}` - Sets the light's brightness to 25 (out of 255).
+
+You can add multiple options to a single button by separating the options with a comma:
+
+`${ON:B-255,T-Bright}` - creates a button that looks like `[Bright]` which sets the light to maximum brightness.
+
+See the [hue.rb](https://github.com/OkayDave/barr/blob/develop/examples/hue.rb) file for more examples.
+
+#### HueLight
+
+**Requires [Hue](https://github.com/soffes/hue) gem to be installed and configured prior to use** Allows you to set buttons for controlling a single Philips Hue Light.
+
+`light = Barr::Blocks::HueLight.new id: '3', format: "${ON:T-Turn On} ${ON:B-100,T-Dim}", ${OFF}'`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `id` | `hue` light ID | You can list all of your lights and their IDs by running `hue lights`. The ID is the first column, e.g. `1`. | **REQUIRED** | 
+| `format` | string | Configurable format for choosing the buttons and their behaviours. See table below for options | `"${OFF} ${ON}"`| 
+
+| Option | Description | 
+| --- | --- |
+| `${OFF}` | Adds a button to turn the selected light off. Can be configured with custom text | 
+| `${ON}` | Adds a button to turn the selected light on. Several buttons can be added with individual behaviours | 
+
+Both the `${OFF}` and `${ON}` buttons allow additional button specific behaviours to be configured. The supported options are:
+
+| Option | Description | 
+| --- | --- |
+| `B` | Brightness. Value between `0` and `255`. |
+| `H` | Hue. Value between `0` and `65535`. |
+| `A` | Alert. Value of either `select` (for a single flash) or `lselect` (for 30s of flashing) |
+| `T` | Button Text. Any character string that will be shown as the button's text. |
+
+These can be applied to the Block's `format` string options by appending them with a colon and passing the option with a hyphen: 
+
+`${ON:B-25}` - Sets the light's brightness to 25 (out of 255).
+
+You can add multiple options to a single button by separating the options with a comma:
+
+`${ON:B-255,T-Bright}` - creates a button that looks like `[Bright]` which sets the light to maximum brightness.
+
+See the [hue.rb](https://github.com/OkayDave/barr/blob/develop/examples/hue.rb) file for more examples.
 
 #### I3
 
@@ -241,6 +363,24 @@ Shows current RAM usage.
 
 There are no `Mem` block specific configurable options.
 
+#### Playerctl
+
+**Requires [Playerctl](https://github.com/acrisci/playerctl)**. Shows configurable information about currently playing track on a variety of players. Option to include control buttons.
+
+`pctl = Barr::Blocks::Playerctl.new player: "spotify", format: "${ARTIST} - ${TITLE} - ${BUTTONS}`
+
+| Option | Value | Description | Default |
+| --- | --- | --- | --- |
+| `format` | string | Configurable format for defining how the information is displayed. See table below for options | `"${ARTIST} - ${TRACK}"` | 
+| `player` | string | ID of the media app you want to control. Run `playerctl -l` to see what is available | '' | 
+
+| Format Option | Description |
+| --- | --- |
+| `${ARTIST}` | Artist of currently playing track |
+| `${ALBUM}` | Album of currently playing track |
+| `${TITLE}` | Title of currently playing track |
+| `${BUTTONS}` | Buttons to control playback |
+
 #### Processes
 
 Shows the number of currently active processes on your system.
@@ -250,7 +390,7 @@ Shows the number of currently active processes on your system.
 There are no `Processes` block specific configurable options.
 
 #### Rhythmbox
-
+**DEPRECATED** It's reccommended to use the `Playerctl` block instead of this. It's compatible with Rhythmbox and many other players, including Spotify.
 **Requires Rhythmbox and rhythmbox-client**. Shows currently playing artist and/or track, as well as control buttons. Control buttons use FontAwesome.
 
 `rb = Barr::Blocks::Rhythmbox.new buttons: false`
